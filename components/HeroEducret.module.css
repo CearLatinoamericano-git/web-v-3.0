@@ -1,0 +1,68 @@
+.title {
+  line-height: 1.2 !important;
+}
+
+.title span {
+  display: block;
+  line-height: 1;
+}
+
+.title span:first-child {
+  margin-bottom: 0.3em;
+}
+
+.description {
+  display: block;
+  line-height: 1.4 !important;
+}
+
+/* Mobile and tablet styles - max-width: 1023px */
+@media (max-width: 1023px) {
+  .heroSection {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 500px !important;
+  }
+
+  .container {
+    padding-top: 5rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .buttonContainer {
+    display: none !important;
+  }
+
+  .contentWrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .title {
+    text-align: center !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .description {
+    text-align: center !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .buttonsContainer {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .responsiveSlogan {
+    display: block !important;
+    margin-bottom: 0.2em !important;
+  }
+  .sloganDesktop {
+    display: none !important;
+  }
+}
+

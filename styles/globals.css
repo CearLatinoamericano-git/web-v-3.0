@@ -1,0 +1,1220 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-size: 18px;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #030213;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* ========================================
+     SISTEMA DE TIPOGRAFÍA UNIFORME
+     ======================================== */
+  /* Escala tipográfica basada en Inter */
+  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  
+  /* Tamaños de fuente - Mobile / Desktop */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+  --text-6xl: 3.75rem;     /* 60px */
+  
+  /* Títulos principales - Responsive */
+  --heading-1-mobile: 2rem;      /* 32px */
+  --heading-1-desktop: 3rem;     /* 48px */
+  --heading-2-mobile: 1.5rem;    /* 24px */
+  --heading-2-desktop: 2.25rem;  /* 36px */
+  --heading-3-mobile: 1.25rem;   /* 20px */
+  --heading-3-desktop: 1.75rem;  /* 28px */
+  
+  /* Subtítulos */
+  --subtitle-mobile: 1rem;       /* 16px */
+  --subtitle-desktop: 1.25rem;   /* 20px */
+  
+  /* Texto body */
+  --body-mobile: 0.875rem;       /* 14px */
+  --body-desktop: 1rem;          /* 16px */
+  
+  /* Line heights */
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+  
+  /* Letter spacing */
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+
+  /* ========================================
+     ESPACIADO UNIFORME
+     ======================================== */
+  --spacing-xs: 0.5rem;    /* 8px */
+  --spacing-sm: 0.75rem;   /* 12px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+
+  /* ========================================
+     CONFIGURACIÓN DE SOMBRAS CEAR
+     ======================================== */
+  --shadow-cear: 0 0 25px rgba(0, 0, 0, 0.3);
+  --shadow-cear-light: 0 0 25px rgba(0, 0, 0, 0.15);
+  --shadow-cear-medium: 0 0 25px rgba(0, 0, 0, 0.2);
+  --shadow-cear-hover: 0 0 25px rgba(0, 0, 0, 0.35);
+
+  /* ========================================
+     VARIABLES DE COLOR CEAR - BASE
+     ======================================== */
+  /* Configuración base oficial CEAR Latinoamericano */
+  /* Variación Azul CEAR Institucional V2 (#0B95BA) - POR DEFECTO */
+  --cear-primary: #0B95BA;
+  --cear-primary-hover: #087A98;
+  --cear-gradient-from: #0B95BA;
+  --cear-gradient-to: #087A98;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+}
+
+/* ========================================
+   CORRECCIONES CRÍTICAS PARA iOS
+   Previene bugs de viewport y overflow
+   ======================================== */
+
+/* Viewport fijo - Previene zoom y reescalado */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Root container sin overflow */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Todos los contenedores principales */
+body > div,
+main,
+section {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS LIMPIOS
+   ======================================== */
+
+/* Desktop (≥768px) - Menú completo */
+@media (min-width: 768px) {
+  header .md\:flex {
+    display: flex !important;
+  }
+  
+  header .md\:hidden {
+    display: none !important;
+  }
+}
+
+/* Móvil (<768px) - Solo hamburguesa */
+@media (max-width: 767px) {
+  header .md\:flex {
+    display: none !important;
+  }
+  
+  header .md\:hidden {
+    display: flex !important;
+  }
+}
+
+/* ========================================
+   TOUCH TARGETS iOS - Apple HIG
+   ======================================== */
+
+/* Botones y enlaces táctiles */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+/* Áreas mínimas de toque */
+button:not(.no-min-size),
+a:not(.no-min-size) {
+  min-height: 44px;
+}
+
+/* ========================================
+   SCROLLBARS PERSONALIZADOS CEAR
+   ======================================== */
+
+/* Scrollbar para navegadores WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E5E7EB;
+  border-radius: 10px;
+  margin: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0B95BA 0%, #087A98 100%);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(11, 149, 186, 0.2);
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #087A98 0%, #065F7A 100%);
+  box-shadow: 0 4px 8px rgba(11, 149, 186, 0.3);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #065F7A;
+}
+
+/* Scrollbar para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #0B95BA #E5E7EB;
+}
+
+/* ========================================
+   VARIANTE DE COLOR ÚNICA
+   ======================================== */
+
+/* Variante Única - CEAR Azul Institucional V2 */
+[data-color-variant="blue"] {
+  --cear-primary: #0B95BA;
+  --cear-primary-hover: #087A98;
+  --cear-gradient-from: #0B95BA;
+  --cear-gradient-to: #087A98;
+  --cear-primary-rgb: 11, 149, 186;
+  
+  /* Paleta monocromática azul extendida */
+  --cear-blue-50: #E8F5FA;
+  --cear-blue-100: #C2E6F3;
+  --cear-blue-200: #85D1E8;
+  --cear-blue-300: #3BB5D9;
+  --cear-blue-400: #0B95BA;  /* Principal */
+  --cear-blue-500: #087A98;  /* Hover */
+  --cear-blue-600: #066177;
+  --cear-blue-700: #054A5C;
+  --cear-blue-800: #043849;
+  --cear-blue-900: #032A35;
+}
+
+/* ========================================
+   APLICAR COLORES DINÁMICOS AUTOMÁTICAMENTE
+   A TODOS LOS ELEMENTOS (EXCEPTO HEADER/FOOTER)
+   ======================================== */
+
+/* Reemplazar colores de texto #0BDDB3 */
+[data-color-variant="blue"] main [class*="text-[#0BDDB3]"] {
+  color: var(--cear-primary) !important;
+}
+
+/* Reemplazar colores de texto #0B95BA */
+[data-color-variant="blue"] main [class*="text-[#0B95BA]"] {
+  color: var(--cear-primary) !important;
+}
+
+/* Reemplazar fondos #0BDDB3 */
+[data-color-variant="blue"] main [class*="bg-[#0BDDB3]"] {
+  background-color: var(--cear-primary) !important;
+}
+
+/* Reemplazar fondos #0B95BA */
+[data-color-variant="blue"] main [class*="bg-[#0B95BA]"] {
+  background-color: var(--cear-primary) !important;
+}
+
+/* Reemplazar hover fondos #09B894 */
+[data-color-variant="blue"] main [class*="hover:bg-[#09B894]"]:hover {
+  background-color: var(--cear-primary-hover) !important;
+}
+
+/* Reemplazar hover fondos #087A98 */
+[data-color-variant="blue"] main [class*="hover:bg-[#087A98]"]:hover {
+  background-color: var(--cear-primary-hover) !important;
+}
+
+/* Reemplazar bordes */
+[data-color-variant="blue"] main [class*="border-[#0BDDB3"],
+[data-color-variant="blue"] main [class*="border-[#0B95BA"] {
+  border-color: var(--cear-primary) !important;
+}
+
+/* Reemplazar gradientes from */
+[data-color-variant="blue"] main [class*="from-[#0BDDB3]"],
+[data-color-variant="blue"] main [class*="from-[#0B95BA]"] {
+  --tw-gradient-from: var(--cear-gradient-from) !important;
+  --tw-gradient-to: rgb(from var(--cear-gradient-from) r g b / 0) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+/* Reemplazar gradientes to */
+[data-color-variant="blue"] main [class*="to-[#0BDDB3]"],
+[data-color-variant="blue"] main [class*="to-[#0B95BA]"],
+[data-color-variant="blue"] main [class*="to-[#10E7B0]"],
+[data-color-variant="blue"] main [class*="to-[#087A98]"] {
+  --tw-gradient-to: var(--cear-gradient-to) !important;
+}
+
+/* Group hover text */
+[data-color-variant="blue"] main .group:hover [class*="group-hover:text-[#0BDDB3]"],
+[data-color-variant="blue"] main .group:hover [class*="group-hover:text-[#0B95BA]"] {
+  color: var(--cear-primary) !important;
+}
+
+/* Hover de bordes */
+[data-color-variant="blue"] main [class*="hover:border-[#0BDDB3"]:hover,
+[data-color-variant="blue"] main [class*="hover:border-[#0B95BA"]:hover {
+  border-color: var(--cear-primary) !important;
+}
+
+/* ========================================
+   ELIMINACIÓN COMPLETA DE COLORES VERDES
+   EN VARIANTE AZUL - Solo tonos de #0B95BA
+   ======================================== */
+
+/* Eliminar TODOS los verdes #10E7B0 y usar azul claro */
+[data-color-variant="blue"] main [class*="text-[#10E7B0]"] {
+  color: #3BB5D9 !important; /* Azul claro */
+}
+
+[data-color-variant="blue"] main [class*="bg-[#10E7B0]"] {
+  background-color: #0B95BA !important; /* Azul principal */
+}
+
+/* Gradientes que incluyen #10E7B0 → Usar solo azul */
+[data-color-variant="blue"] main [class*="from-[#10E7B0]"] {
+  --tw-gradient-from: #3BB5D9 !important; /* Azul claro */
+  --tw-gradient-to: rgb(59, 181, 217, 0) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+[data-color-variant="blue"] main [class*="to-[#10E7B0]"] {
+  --tw-gradient-to: #087A98 !important; /* Azul oscuro */
+}
+
+/* Gradientes combinados: from-[#0B95BA] to-[#10E7B0] → Solo azul */
+[data-color-variant="blue"] main [class*="from-[#0B95BA]"][class*="to-[#10E7B0]"] {
+  background-image: linear-gradient(to bottom right, #0B95BA, #087A98) !important;
+}
+
+/* Fondos con opacidad usando #10E7B0 → Azul claro con opacidad */
+[data-color-variant="blue"] main [class*="bg-[#10E7B0]/"] {
+  background-color: rgba(59, 181, 217, 0.1) !important;
+}
+
+[data-color-variant="blue"] main [class*="from-[#10E7B0]/5"] {
+  --tw-gradient-from: rgba(59, 181, 217, 0.05) !important;
+}
+
+[data-color-variant="blue"] main [class*="from-[#10E7B0]/10"] {
+  --tw-gradient-from: rgba(59, 181, 217, 0.1) !important;
+}
+
+[data-color-variant="blue"] main [class*="from-[#10E7B0]/20"] {
+  --tw-gradient-from: rgba(59, 181, 217, 0.2) !important;
+}
+
+[data-color-variant="blue"] main [class*="to-[#10E7B0]/5"] {
+  --tw-gradient-to: rgba(8, 122, 152, 0.05) !important;
+}
+
+[data-color-variant="blue"] main [class*="to-[#10E7B0]/10"] {
+  --tw-gradient-to: rgba(8, 122, 152, 0.1) !important;
+}
+
+[data-color-variant="blue"] main [class*="to-[#10E7B0]/20"] {
+  --tw-gradient-to: rgba(8, 122, 152, 0.2) !important;
+}
+
+/* Gradientes decorativos con verde → Solo azul */
+[data-color-variant="blue"] main [class*="from-[#10E7B0]"][class*="to-[#0B95BA]"] {
+  background-image: linear-gradient(to bottom right, #3BB5D9, #0B95BA) !important;
+}
+
+/* Badges y elementos destacados con verde → Azul */
+[data-color-variant="blue"] main [class*="from-[#10E7B0]"][class*="to-[#0B95BA]"][class*="gradient"] {
+  background-image: linear-gradient(to right, #0B95BA, #087A98) !important;
+}
+
+/* Elementos decorativos blur con verde → Azul claro */
+[data-color-variant="blue"] main div[class*="bg-[#10E7B0]/10"] {
+  background-color: rgba(11, 149, 186, 0.1) !important;
+}
+
+[data-color-variant="blue"] main div[class*="bg-[#10E7B0]/20"] {
+  background-color: rgba(11, 149, 186, 0.2) !important;
+}
+
+/* ========================================
+   HERO SECTION - VARIANTE AZUL
+   Fondo claro y limpio sin dark mode
+   PRIORIDAD MÁXIMA sobre reglas de main
+   ======================================== */
+
+/* Cambiar fondo oscuro del hero a azul brillante #0B95BA */
+[data-color-variant="blue"] section.bg-gradient-to-br {
+  background: #0B95BA !important;
+  background-image: none !important;
+}
+
+/* Sparkles decorativos en blanco suave - eliminar verde/cyan */
+[data-color-variant="blue"] section svg.lucide-sparkles {
+  color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Orbs de fondo solo azul oscuro #087A98 */
+[data-color-variant="blue"] section .blur-3xl {
+  background-color: rgba(8, 122, 152, 0.12) !important;
+}
+
+/* Subrayado de "Arbitraje" en blanco suave - SOLO en Hero Section, NO en stats */
+[data-color-variant="blue"] section.relative.min-h-screen span.bg-gradient-to-r {
+  background: rgba(255, 255, 255, 0.3) !important;
+  background-image: none !important;
+}
+
+/* Botón principal "Inscríbete Ahora" con gradiente y texto blanco - selector específico */
+[data-color-variant="blue"] section button.bg-gradient-to-r[class*="from-[#0B95BA]"][class*="to-[#10E7B0]"] {
+  background: linear-gradient(to right, #0B95BA, #10E7B0) !important;
+  background-image: linear-gradient(to right, #0B95BA, #10E7B0) !important;
+  color: white !important;
+  box-shadow: 0 10px 40px rgba(11, 149, 186, 0.4) !important;
+}
+
+[data-color-variant="blue"] section button.bg-gradient-to-r[class*="from-[#0B95BA]"][class*="to-[#10E7B0]"]:hover {
+  background: linear-gradient(to right, #087A98, #0BDDB3) !important;
+  background-image: linear-gradient(to right, #087A98, #0BDDB3) !important;
+  box-shadow: 0 20px 60px rgba(11, 149, 186, 0.5) !important;
+}
+
+/* ========================================
+   STATS SECTION - VARIANTE AZUL
+   Fondo blanco, tarjetas azules con texto blanco
+   ======================================== */
+
+/* Fondo de la sección: BLANCO */
+[data-color-variant="blue"] section.bg-gradient-to-b.from-white.via-gray-50 {
+  background: white !important;
+  background-image: none !important;
+}
+
+/* Orbs decorativos de fondo: azul muy suave */
+[data-color-variant="blue"] section.bg-gradient-to-b .blur-3xl[class*="bg-[#0B95BA]"] {
+  background-color: rgba(11, 149, 186, 0.08) !important;
+}
+
+[data-color-variant="blue"] section.bg-gradient-to-b .blur-3xl[class*="bg-[#10E7B0]"] {
+  background-color: rgba(11, 149, 186, 0.05) !important;
+}
+
+[data-color-variant="blue"] section.bg-gradient-to-b .blur-3xl[class*="from-[#0B95BA]"] {
+  background: rgba(11, 149, 186, 0.06) !important;
+  background-image: none !important;
+}
+
+/* Texto de etiqueta superior: azul (mantener) */
+[data-color-variant="blue"] section.bg-gradient-to-b p.text-\[#0B95BA\] {
+  color: #0B95BA !important;
+}
+
+/* Título principal: gris oscuro (mantener) */
+[data-color-variant="blue"] section.bg-gradient-to-b h2.text-gray-900 {
+  color: #111827 !important;
+}
+
+/* Gradiente de texto "excelencia": azul monocromático */
+[data-color-variant="blue"] section.bg-gradient-to-b span.bg-gradient-to-r.from-\[#0B95BA\].to-\[#10E7B0\] {
+  background: linear-gradient(to right, #0B95BA, #087A98) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Descripción: gris medio (mantener) */
+[data-color-variant="blue"] section.bg-gradient-to-b p.text-gray-600 {
+  color: #4b5563 !important;
+}
+
+/* ========================================
+   CARDS AZULES CON TEXTO BLANCO
+   ======================================== */
+
+/* Cards: FONDO AZUL BRILLANTE con sombra/brillo */
+[data-color-variant="blue"] section.bg-gradient-to-b .bg-white.rounded-3xl {
+  background: #0B95BA !important;
+  box-shadow: 0 20px 60px rgba(11, 149, 186, 0.4), 0 0 80px rgba(11, 149, 186, 0.2) !important;
+  border: none !important;
+}
+
+/* Hover de cards: sombra más intensa y brillante */
+[data-color-variant="blue"] section.bg-gradient-to-b .bg-white.rounded-3xl:hover {
+  box-shadow: 0 30px 80px rgba(11, 149, 186, 0.5), 0 0 120px rgba(11, 149, 186, 0.3) !important;
+  transform: translateY(-4px) !important;
+}
+
+/* Borde de cards: eliminar */
+[data-color-variant="blue"] section.bg-gradient-to-b .border-gray-100 {
+  border-color: transparent !important;
+}
+
+[data-color-variant="blue"] section.bg-gradient-to-b .hover\:border-\[#0B95BA\]\/30 {
+  border-color: transparent !important;
+}
+
+/* Efecto de brillo al hover: azul más oscuro */
+[data-color-variant="blue"] section.bg-gradient-to-b .group-hover\:from-\[#0B95BA\]\/5,
+[data-color-variant="blue"] section.bg-gradient-to-b .group-hover\:to-\[#10E7B0\]\/5 {
+  background: rgba(8, 122, 152, 0.3) !important;
+  background-image: none !important;
+}
+
+/* ========================================
+   ICONOS Y CONTENEDORES - BLANCO
+   ======================================== */
+
+/* Fondo del icono: blanco translúcido */
+[data-color-variant="blue"] section.bg-gradient-to-b div[class*="from-[#0B95BA]"][class*="to-[#10E7B0]"].rounded-2xl {
+  background: rgba(255, 255, 255, 0.15) !important;
+  background-image: none !important;
+}
+
+[data-color-variant="blue"] section.bg-gradient-to-b .group:hover div[class*="from-[#0B95BA]"][class*="to-[#10E7B0]"].rounded-2xl {
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Blur del icono: blanco */
+[data-color-variant="blue"] section.bg-gradient-to-b div[class*="from-[#0B95BA]"][class*="to-[#10E7B0]"].blur-xl {
+  background: rgba(255, 255, 255, 0.2) !important;
+  background-image: none !important;
+}
+
+/* Icono: BLANCO - múltiples selectores para asegurar captura */
+[data-color-variant="blue"] section.bg-gradient-to-b svg.text-\[#0B95BA\] {
+  color: white !important;
+}
+
+[data-color-variant="blue"] section.bg-gradient-to-b svg[class*="text-[#0B95BA]"] {
+  color: white !important;
+}
+
+[data-color-variant="blue"] section.bg-gradient-to-b .bg-white.rounded-3xl svg {
+  color: white !important;
+}
+
+[data-color-variant="blue"] section.bg-gradient-to-b .group svg {
+  color: white !important;
+}
+
+/* ========================================
+   NÚMEROS Y TEXTO - BLANCO
+   ======================================== */
+
+/* Número: TEXTO BLANCO sin fondo - solo para modo azul */
+[data-color-variant="blue"] section.bg-gradient-to-b .bg-gradient-to-br.from-\[#0B95BA\].to-\[#10E7B0\] {
+  background: transparent !important;
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: white !important;
+  color: white !important;
+}
+
+/* Selector adicional para el div contenedor del número */
+[data-color-variant="blue"] section.bg-gradient-to-b div[class*="bg-gradient-to-br"][class*="from-[#0B95BA]"][class*="to-[#10E7B0]"][class*="bg-clip-text"] {
+  background: transparent !important;
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: white !important;
+  color: white !important;
+}
+
+/* Selector más amplio para cualquier texto dentro de las cards azules */
+[data-color-variant="blue"] section.bg-gradient-to-b .bg-white.rounded-3xl .text-6xl,
+[data-color-variant="blue"] section.bg-gradient-to-b .bg-white.rounded-3xl .text-7xl,
+[data-color-variant="blue"] section.bg-gradient-to-b .bg-white.rounded-3xl .lg\:text-7xl {
+  background: transparent !important;
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: white !important;
+  color: white !important;
+}
+
+/* Texto del label: BLANCO */
+[data-color-variant="blue"] section.bg-gradient-to-b p.text-gray-700 {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-color-variant="blue"] section.bg-gradient-to-b .group:hover p.text-gray-700 {
+  color: white !important;
+}
+
+/* Línea divisoria: blanco translúcido */
+[data-color-variant="blue"] section.bg-gradient-to-b .border-t.border-gray-100 {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Barras decorativas inferiores: BLANCO */
+[data-color-variant="blue"] section.bg-gradient-to-b div[class*="from-[#0B95BA]"][class*="to-[#10E7B0]"].rounded-full {
+  background: rgba(255, 255, 255, 0.8) !important;
+  background-image: none !important;
+}
+
+/* Efecto de esquina: blanco translúcido */
+[data-color-variant="blue"] section.bg-gradient-to-b div[class*="from-[#10E7B0]/10"].rounded-bl-full {
+  background: rgba(255, 255, 255, 0.1) !important;
+  background-image: none !important;
+}
+
+/* ========================================
+   ISO SECTION - TARJETAS DE ESTADÍSTICAS
+   Modo Azul: Ambas tarjetas azules con texto blanco
+   ======================================== */
+
+/* PRIMERA TARJETA (8 años): Degradado azul monocromático con MÁXIMA PRIORIDAD */
+[data-color-variant="blue"] div[class*="bg-gradient-to-br"][class*="from-[#0B95BA]"][class*="to-[#10E7B0]"][class*="text-white"][class*="rounded-2xl"][class*="p-6"] {
+  background: linear-gradient(to bottom right, #0B95BA, #087A98) !important;
+  background-image: linear-gradient(to bottom right, #0B95BA, #087A98) !important;
+  box-shadow: 0 10px 30px rgba(11, 149, 186, 0.35) !important;
+  --tw-gradient-from: #0B95BA !important;
+  --tw-gradient-to: #087A98 !important;
+  --tw-gradient-stops: #0B95BA, #087A98 !important;
+}
+
+/* Iconos y textos de la primera tarjeta: mantener blanco */
+[data-color-variant="blue"] div[class*="bg-gradient-to-br"][class*="from-[#0B95BA]"][class*="to-[#10E7B0]"][class*="text-white"] * {
+  color: white !important;
+}
+
+[data-color-variant="blue"] div[class*="bg-gradient-to-br"][class*="from-[#0B95BA]"][class*="to-[#10E7B0]"][class*="text-white"] svg {
+  color: white !important;
+}
+
+/* Fondo del icono en primera tarjeta: blanco translúcido */
+[data-color-variant="blue"] div[class*="bg-gradient-to-br"][class*="from-[#0B95BA]"][class*="to-[#10E7B0]"] div[class*="bg-white/20"] {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* SEGUNDA TARJETA (3 certificaciones): Sin borde, solo sombra, fondo blanco */
+[data-color-variant="blue"] div[class*="bg-white"][class*="rounded-2xl"][class*="p-6"][class*="border-2"][class*="shadow-lg"] {
+  background: white !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  border-width: 0 !important;
+  box-shadow: 0 10px 30px rgba(11, 149, 186, 0.2) !important;
+}
+
+/* Textos de la segunda tarjeta: mantener colores originales para contraste con blanco */
+[data-color-variant="blue"] div[class*="bg-white"][class*="rounded-2xl"][class*="p-6"][class*="border-2"] p[class*="text-gray-900"] {
+  color: #111827 !important;
+}
+
+[data-color-variant="blue"] div[class*="bg-white"][class*="rounded-2xl"][class*="p-6"][class*="border-2"] p[class*="text-gray-600"] {
+  color: #4b5563 !important;
+}
+
+/* Iconos de la segunda tarjeta: mantener icono blanco pero el Award en azul */
+[data-color-variant="blue"] div[class*="bg-white"][class*="rounded-2xl"][class*="p-6"][class*="border-2"] svg {
+  color: white !important;
+}
+
+/* Fondo del icono en segunda tarjeta: degradado azul */
+[data-color-variant="blue"] div[class*="bg-white"][class*="rounded-2xl"][class*="p-6"][class*="border-2"] div[class*="bg-gradient-to-br"] {
+  background: linear-gradient(to bottom right, #0B95BA, #087A98) !important;
+  background-image: linear-gradient(to bottom right, #0B95BA, #087A98) !important;
+}
+
+/* ========================================
+   TARJETA DE TEXTO "Servicio confiable y moderno"
+   Modo Azul: Fondo blanco con sombra azul
+   ======================================== */
+[data-color-variant="blue"] div[class*="bg-gradient-to-r"][class*="from-[#0B95BA]/10"][class*="to-[#10E7B0]/10"][class*="border-l-4"] {
+  background: white !important;
+  background-image: none !important;
+  border-left-color: #0B95BA !important;
+  box-shadow: 0 10px 30px rgba(11, 149, 186, 0.25) !important;
+}
+
+/* Texto de la tarjeta: mantener gris oscuro para contraste */
+[data-color-variant="blue"] div[class*="bg-gradient-to-r"][class*="from-[#0B95BA]/10"][class*="to-[#10E7B0]/10"] p[class*="text-gray-900"] {
+  color: #111827 !important;
+}
+
+/* ========================================
+   FORMATION PATH - VARIANTE AZUL
+   Degradados elegantes en tonos de azul #0B95BA
+   Sin combinaciones azul-blanco extrañas
+   ======================================== */
+
+/* 1. FONDO DE LA SECCIÓN - Blanco limpio */
+[data-color-variant="blue"] section.bg-gradient-to-b.from-gray-50.via-white.to-gray-50 {
+  background: white !important;
+  background-image: none !important;
+}
+
+/* 2. ELEMENTOS DECORATIVOS - Azul muy suave */
+[data-color-variant="blue"] main .text-\\[#0B95BA\\]\\/10 {
+  color: rgba(11, 149, 186, 0.08) !important;
+}
+
+[data-color-variant="blue"] main .text-\\[#10E7B0\\]\\/10 {
+  color: rgba(11, 149, 186, 0.08) !important;
+}
+
+/* 3. LÍNEA CONECTORA CENTRAL - Degradado azul elegante */
+[data-color-variant="blue"] .bg-gradient-to-b.from-\\[#0B95BA\\].via-\\[#10E7B0\\].to-\\[#0B95BA\\] {
+  background: linear-gradient(to bottom, #0B95BA, #3BB5D9, #0B95BA) !important;
+  opacity: 0.3 !important;
+}
+
+/* 4. TARJETAS DE PASOS - Fondo blanco con borde azul */
+[data-color-variant="blue"] .bg-white.rounded-3xl.p-8.shadow-lg {
+  background: white !important;
+  border: 2px solid rgba(11, 149, 186, 0.2) !important;
+  box-shadow: 0 10px 40px rgba(11, 149, 186, 0.15) !important;
+}
+
+[data-color-variant="blue"] .bg-white.rounded-3xl.p-8.shadow-lg:hover {
+  border-color: rgba(11, 149, 186, 0.4) !important;
+  box-shadow: 0 20px 60px rgba(11, 149, 186, 0.25) !important;
+}
+
+/* 5. TARJETAS MÓVILES */
+[data-color-variant="blue"] .bg-white.rounded-3xl.p-6.shadow-lg {
+  background: white !important;
+  border: 2px solid rgba(11, 149, 186, 0.2) !important;
+  box-shadow: 0 8px 30px rgba(11, 149, 186, 0.15) !important;
+}
+
+/* 6. FEATURED CARD - Ring azul destacado */
+[data-color-variant="blue"] .ring-2.ring-\\[#10E7B0\\]\\/50 {
+  --tw-ring-color: rgba(11, 149, 186, 0.6) !important;
+  box-shadow: 0 20px 60px rgba(11, 149, 186, 0.3) !important;
+}
+
+[data-color-variant="blue"] .ring-4.ring-\\[#10E7B0\\]\\/30 {
+  --tw-ring-color: rgba(11, 149, 186, 0.4) !important;
+}
+
+/* 7. FEATURED BADGE - Azul sólido */
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#10E7B0\\].to-\\[#0B95BA\\].text-xs {
+  background: #0B95BA !important;
+  background-image: none !important;
+  color: white !important;
+  --tw-gradient-from: #0B95BA !important;
+  --tw-gradient-to: #0B95BA !important;
+  --tw-gradient-stops: #0B95BA, #0B95BA !important;
+}
+
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#10E7B0\\].to-\\[#0B95BA\\].text-xs svg {
+  color: white !important;
+  fill: white !important;
+}
+
+/* 8. BADGES DE NÚMEROS - Azul sólido */
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#0B95BA\\].to-\\[#0890B0\\] {
+  background: #0B95BA !important;
+  background-image: none !important;
+  color: white !important;
+  --tw-gradient-from: #0B95BA !important;
+  --tw-gradient-to: #0B95BA !important;
+  --tw-gradient-stops: #0B95BA, #0B95BA !important;
+}
+
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#0890B0\\].to-\\[#0B95BA\\] {
+  background: #0B95BA !important;
+  background-image: none !important;
+  color: white !important;
+  --tw-gradient-from: #0B95BA !important;
+  --tw-gradient-to: #0B95BA !important;
+  --tw-gradient-stops: #0B95BA, #0B95BA !important;
+}
+
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#0B95BA\\].to-\\[#10E7B0\\] {
+  background: #0B95BA !important;
+  background-image: none !important;
+  color: white !important;
+  --tw-gradient-from: #0B95BA !important;
+  --tw-gradient-to: #0B95BA !important;
+  --tw-gradient-stops: #0B95BA, #0B95BA !important;
+}
+
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#10E7B0\\].to-\\[#0B95BA\\] {
+  background: #0B95BA !important;
+  background-image: none !important;
+  color: white !important;
+  --tw-gradient-from: #0B95BA !important;
+  --tw-gradient-to: #0B95BA !important;
+  --tw-gradient-stops: #0B95BA, #0B95BA !important;
+}
+
+/* 9. ICONOS CENTRALES - Azul sólido sin degradados extraños */
+[data-color-variant="blue"] main .bg-gradient-to-br.from-\\[#0B95BA\\].to-\\[#0890B0\\] {
+  background: #0B95BA !important;
+  background-image: none !important;
+  --tw-gradient-from: #0B95BA !important;
+  --tw-gradient-to: #0B95BA !important;
+  --tw-gradient-stops: #0B95BA, #0B95BA !important;
+}
+
+[data-color-variant="blue"] main .bg-gradient-to-br.from-\\[#0890B0\\].to-\\[#0B95BA\\] {
+  background: #0B95BA !important;
+  background-image: none !important;
+  --tw-gradient-from: #0B95BA !important;
+  --tw-gradient-to: #0B95BA !important;
+  --tw-gradient-stops: #0B95BA, #0B95BA !important;
+}
+
+[data-color-variant="blue"] main .bg-gradient-to-br.from-\\[#0B95BA\\].to-\\[#10E7B0\\] {
+  background: #0B95BA !important;
+  background-image: none !important;
+  --tw-gradient-from: #0B95BA !important;
+  --tw-gradient-to: #0B95BA !important;
+  --tw-gradient-stops: #0B95BA, #0B95BA !important;
+}
+
+[data-color-variant="blue"] main .bg-gradient-to-br.from-\\[#10E7B0\\].to-\\[#0B95BA\\] {
+  background: #0B95BA !important;
+  background-image: none !important;
+  --tw-gradient-from: #0B95BA !important;
+  --tw-gradient-to: #0B95BA !important;
+  --tw-gradient-stops: #0B95BA, #0B95BA !important;
+}
+
+/* 9B. ASEGURAR QUE TODOS LOS ICONOS SEAN BLANCOS */
+[data-color-variant="blue"] main .bg-gradient-to-br.from-\\[#0B95BA\\].to-\\[#0890B0\\] svg,
+[data-color-variant="blue"] main .bg-gradient-to-br.from-\\[#0890B0\\].to-\\[#0B95BA\\] svg,
+[data-color-variant="blue"] main .bg-gradient-to-br.from-\\[#0B95BA\\].to-\\[#10E7B0\\] svg,
+[data-color-variant="blue"] main .bg-gradient-to-br.from-\\[#10E7B0\\].to-\\[#0B95BA\\] svg {
+  color: white !important;
+}
+
+/* 9C. ICONOS EN CÍRCULOS CON CLASE .text-white */
+[data-color-variant="blue"] main div[class*="w-24 h-24"] svg.text-white,
+[data-color-variant="blue"] main div[class*="w-16 h-16"] svg.text-white,
+[data-color-variant="blue"] main div[class*="rounded-full"] svg.text-white {
+  color: white !important;
+}
+
+/* 9D. CÍRCULOS DE ICONOS - Selector más específico */
+[data-color-variant="blue"] main div.w-24.h-24.rounded-full {
+  background: #0B95BA !important;
+  background-image: none !important;
+}
+
+/* 10. EFECTO GLOW DE ICONOS - Azul sólido con opacidad */
+[data-color-variant="blue"] main .blur-xl.bg-gradient-to-br.from-\\[#0B95BA\\].to-\\[#0890B0\\],
+[data-color-variant="blue"] main .blur-xl.bg-gradient-to-br.from-\\[#0890B0\\].to-\\[#0B95BA\\],
+[data-color-variant="blue"] main .blur-xl.bg-gradient-to-br.from-\\[#0B95BA\\].to-\\[#10E7B0\\],
+[data-color-variant="blue"] main .blur-xl.bg-gradient-to-br.from-\\[#10E7B0\\].to-\\[#0B95BA\\] {
+  background: rgba(11, 149, 186, 0.3) !important;
+  background-image: none !important;
+  --tw-gradient-from: rgba(11, 149, 186, 0.3) !important;
+  --tw-gradient-to: rgba(11, 149, 186, 0.3) !important;
+  --tw-gradient-stops: rgba(11, 149, 186, 0.3), rgba(11, 149, 186, 0.3) !important;
+}
+
+/* 11. GRADIENTE DEL TÍTULO - Azul sólido */
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#0B95BA\\].to-\\[#10E7B0\\].bg-clip-text {
+  background: #0B95BA !important;
+  background-image: none !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* 12. CTA FOOTER - Azul sólido */
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#0B95BA\\].to-\\[#10E7B0\\].rounded-3xl {
+  background: #0B95BA !important;
+  background-image: none !important;
+  --tw-gradient-from: #0B95BA !important;
+  --tw-gradient-to: #0B95BA !important;
+  --tw-gradient-stops: #0B95BA, #0B95BA !important;
+}
+
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#0B95BA\\].to-\\[#10E7B0\\].rounded-3xl h3,
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#0B95BA\\].to-\\[#10E7B0\\].rounded-3xl p {
+  color: white !important;
+}
+
+/* 13. BOTÓN DEL CTA - Blanco con texto azul y hover elegante */
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#0B95BA\\].to-\\[#10E7B0\\] button.bg-white {
+  background: white !important;
+  color: #0B95BA !important;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3) !important;
+}
+
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#0B95BA\\].to-\\[#10E7B0\\] button.bg-white:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #087A98 !important;
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.4) !important;
+}
+
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#0B95BA\\].to-\\[#10E7B0\\] button.bg-white svg {
+  color: #0B95BA !important;
+}
+
+[data-color-variant="blue"] main .bg-gradient-to-r.from-\\[#0B95BA\\].to-\\[#10E7B0\\] button.bg-white:hover svg {
+  color: #087A98 !important;
+}
+
+/* 14. ICONOS CheckCircle - Azul */
+[data-color-variant="blue"] main .text-\\[#0B95BA\\] svg {
+  color: #0B95BA !important;
+}
+
+/* 15. HOVER DE TARJETAS - Borde azul más intenso */
+[data-color-variant="blue"] main .hover\\:border-\\[#0B95BA\\]\\/30:hover {
+  border-color: rgba(11, 149, 186, 0.5) !important;
+}
+
+/* 16. ICONOS EN TARJETAS MÓVILES - Azul sólido */
+[data-color-variant="blue"] main .rounded-2xl.bg-gradient-to-br.from-\\[#0B95BA\\].to-\\[#0890B0\\],
+[data-color-variant="blue"] main .rounded-2xl.bg-gradient-to-br.from-\\[#0890B0\\].to-\\[#0B95BA\\],
+[data-color-variant="blue"] main .rounded-2xl.bg-gradient-to-br.from-\\[#0B95BA\\].to-\\[#10E7B0\\],
+[data-color-variant="blue"] main .rounded-2xl.bg-gradient-to-br.from-\\[#10E7B0\\].to-\\[#0B95BA\\] {
+  background: #0B95BA !important;
+  background-image: none !important;
+  --tw-gradient-from: #0B95BA !important;
+  --tw-gradient-to: #0B95BA !important;
+  --tw-gradient-stops: #0B95BA, #0B95BA !important;
+}
+
+/* 16B. ICONOS MÓVILES CON w-16 h-16 */
+[data-color-variant="blue"] main div.w-16.h-16.rounded-2xl {
+  background: #0B95BA !important;
+  background-image: none !important;
+}
+
+/* 17. ASEGURAR CONTRASTE EN TEXTOS */
+[data-color-variant="blue"] .text-gray-900 {
+  color: #111827 !important;
+}
+
+[data-color-variant="blue"] .text-gray-600 {
+  color: #4b5563 !important;
+}
+
+/* ========================================
+   SOMBRAS GLOBALES CEAR
+   Configuración unificada: X:0 Y:0 Blur:25px Color:30%
+   ======================================== */
+
+/* Reemplazo de todas las clases shadow de Tailwind */
+.shadow-sm {
+  box-shadow: var(--shadow-cear-light) !important;
+}
+
+.shadow,
+.shadow-md {
+  box-shadow: var(--shadow-cear-medium) !important;
+}
+
+.shadow-lg,
+.shadow-xl {
+  box-shadow: var(--shadow-cear) !important;
+}
+
+.shadow-2xl,
+.shadow-3xl {
+  box-shadow: var(--shadow-cear) !important;
+}
+
+/* Hover shadows */
+.hover\:shadow-xl:hover,
+.hover\:shadow-2xl:hover,
+.hover\:shadow-3xl:hover {
+  box-shadow: var(--shadow-cear-hover) !important;
+}
+
+/* Sombras con colores específicos - mantener configuración X:0 Y:0 Blur:25px pero con color específico */
+.shadow-\[#0B95BA\]\/50 {
+  box-shadow: 0 0 25px rgba(11, 149, 186, 0.5) !important;
+}
+
+.shadow-\[#0B95BA\]\/30 {
+  box-shadow: 0 0 25px rgba(11, 149, 186, 0.3) !important;
+}
+
+.shadow-\[#0B95BA\]\/20 {
+  box-shadow: 0 0 25px rgba(11, 149, 186, 0.2) !important;
+}
+
+.hover\:shadow-\[#0B95BA\]\/50:hover {
+  box-shadow: 0 0 25px rgba(11, 149, 186, 0.5) !important;
+}
+
+.hover\:shadow-\[#0B95BA\]\/30:hover {
+  box-shadow: 0 0 25px rgba(11, 149, 186, 0.3) !important;
+}
+
+/* ========================================
+   FIX: Eliminar degradado de "ALIANZAS ESTRATÉGICAS"
+   Forzar color plano #0B95BA
+   ======================================== */
+[data-color-variant="blue"] main section p[class*="uppercase"][class*="tracking-"],
+[data-color-variant="blue"] main section p.uppercase {
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+}
+
+/* Forzar color sólido en títulos en mayúsculas - NUEVA REGLA ESPECÍFICA */
+section p[class*="uppercase"][class*="tracking-"],
+section p.uppercase {
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  -webkit-text-fill-color: currentColor !important;
+  color: inherit !important;
+}
+
+/* FORZAR TÍTULOS EN MAYÚSCULAS SIN DEGRADADO - MÁXIMA PRIORIDAD */
+section p[class*="uppercase"],
+section p.uppercase,
+section .uppercase,
+main section p[class*="uppercase"],
+main section p.uppercase {
+  background: none !important;
+  background-image: none !important;
+  background-clip: border-box !important;
+  -webkit-background-clip: border-box !important;
+  -webkit-text-fill-color: unset !important;
+  text-fill-color: unset !important;
+}
+
+/* Eliminar cualquier pseudo-elemento que pueda tener degradado */
+section p[class*="uppercase"]::before,
+section p[class*="uppercase"]::after,
+section p.uppercase::before,
+section p.uppercase::after {
+  display: none !important;
+}

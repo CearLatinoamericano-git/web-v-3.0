@@ -1,0 +1,4 @@
+# Esta carpeta contiene assets estáticos que se sirven directamente
+# Los archivos aquí se pueden referenciar con rutas absolutas desde la raíz
+# Ejemplo: /images/logo.png
+

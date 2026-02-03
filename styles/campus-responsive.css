@@ -1,0 +1,73 @@
+/* Estilos responsive adicionales para el Campus Virtual */
+
+/* Ocultar scrollbar horizontal en tabs */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mejoras responsive para CourseView y otras vistas del campus */
+@media (max-width: 640px) {
+  /* Ajustes de texto para móviles */
+  .course-header-title {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+  }
+  
+  .module-title {
+    font-size: 1rem !important;
+    line-height: 1.5rem !important;
+  }
+  
+  .session-title {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+  }
+  
+  /* Ajustes de padding para móviles */
+  .campus-card {
+    padding: 0.75rem !important;
+  }
+  
+  .campus-card-md {
+    padding: 1rem !important;
+  }
+  
+  /* Iconos más pequeños en móvil */
+  .campus-icon {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  
+  .campus-icon-md {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+  
+  /* Badges y etiquetas */
+  .campus-badge {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+  
+  /* Botones */
+  .campus-button {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Ajustes para tablets */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .course-header-title {
+    font-size: 2rem !important;
+  }
+  
+  .module-title {
+    font-size: 1.25rem !important;
+  }
+}
