@@ -2,18 +2,16 @@ import { useState, useEffect, useLayoutEffect } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ViewportFix } from './components/ViewportFix';
+import { WhatsAppButton } from './components/WhatsAppButton';
 import { Home } from './pages/Home/Home';
 import { Courses } from './pages/Courses';
 import CourseDetail from './pages/CourseDetail';
 import { Dashboard } from './pages/Dashboard';
-import { Campus } from './pages/Campus';
 import { Enrollment } from './pages/Enrollment';
 import { Profile } from './pages/ProfilePage';
 import { About } from './pages/Nosotros/About';
 import { Contacto } from './pages/Contacto/Contacto';
 import { Instituciones } from './pages/Instituciones/Instituciones';
-import { CampusLogin } from './pages/CampusLogin';
-import { CampusVirtual } from './pages/CampusVirtual';
 import { Denuncias } from './pages/Denuncias/Denuncias';
 import { courses } from './data/coursesUpdated';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
@@ -63,14 +61,11 @@ type Page =
   | { type: 'courses' }
   | { type: 'courseDetail'; courseId: string }
   | { type: 'dashboard' }
-  | { type: 'campus'; courseId: string }
   | { type: 'enrollment'; courseId: string }
   | { type: 'profile' }
   | { type: 'about' }
   | { type: 'contact' }
   | { type: 'forInstitutions' }
-  | { type: 'campusLogin' }
-  | { type: 'campusVirtual' }
   | { type: 'complaintChannel' };
 
 // Helper function to get path from page type
@@ -94,8 +89,6 @@ const getPathFromPage = (page: Page): string => {
       return `/course/${page.courseId}`;
     case 'dashboard':
       return '/dashboard';
-    case 'campus':
-      return `/campus/${page.courseId}`;
     case 'enrollment':
       return `/enrollment/${page.courseId}`;
     case 'profile':
@@ -106,10 +99,6 @@ const getPathFromPage = (page: Page): string => {
       return '/contacto';
     case 'forInstitutions':
       return '/para-instituciones';
-    case 'campusLogin':
-      return '/campus/login';
-    case 'campusVirtual':
-      return '/campus/virtual';
     case 'complaintChannel':
       return '/denuncias';
     default:
@@ -125,16 +114,6 @@ const getPageFromPath = (path: string): Page | null => {
     return { type: 'courses' };
   } else if (path === '/dashboard') {
     return { type: 'dashboard' };
-  } else if (path.startsWith('/campus/')) {
-    const campusPath = path.replace('/campus/', '');
-    if (campusPath === 'login') {
-      return { type: 'campusLogin' };
-    } else if (campusPath === 'virtual') {
-      return { type: 'campusVirtual' };
-    } else if (campusPath) {
-      return { type: 'campus', courseId: campusPath };
-    }
-    return { type: 'campusLogin' };
   } else if (path.startsWith('/enrollment/')) {
     const courseId = path.replace('/enrollment/', '');
     return { type: 'enrollment', courseId };
@@ -281,34 +260,15 @@ function AppContent() {
 
   // Handle protected routes redirects
   useEffect(() => {
-    const protectedPages: Page['type'][] = ['dashboard', 'campus', 'enrollment', 'profile'];
+    const protectedPages: Page['type'][] = ['dashboard', 'enrollment', 'profile'];
     if (protectedPages.includes(currentPage.type) && !isLoggedIn) {
       navigateToPage({ type: 'home' }, true);
     }
   }, [currentPage.type, isLoggedIn]);
 
   const handleLogin = (email: string, password: string) => {
-    // Credenciales de prueba para el campus virtual con diferentes roles
-    const validCredentials = [
-      { email: 'estudiante@cear.com', password: 'cear2025', name: 'Juan Pérez García', role: 'student' as const },
-      { email: 'area.academica@cear.com', password: 'cear2025', name: 'Área Académica', role: 'administration' as const }
-    ];
-
-    const user = validCredentials.find(
-      cred => cred.email === email && cred.password === password
-    );
-
-    if (user) {
-      setIsLoggedIn(true);
-      setUserName(user.name);
-      setUserEmail(email);
-      setUserRole(user.role);
-      // Redirigir al campus virtual nuevo
-      navigateToPage({ type: 'campusVirtual' });
-      return true;
-    } else {
-      return false;
-    }
+    // Sistema de login deshabilitado - campus eliminado
+    return false;
   };
 
   const handleLogout = () => {
@@ -316,7 +276,7 @@ function AppContent() {
     setUserName('');
     setUserEmail('');
     setUserRole('student');
-    navigateToPage({ type: 'campusLogin' });
+    navigateToPage({ type: 'home' });
   };
 
   const handleCourseClick = (courseId: string) => {
@@ -325,7 +285,7 @@ function AppContent() {
 
   const handleEnroll = (courseId: string) => {
     if (!isLoggedIn) {
-      navigateToPage({ type: 'campusLogin' });
+      navigateToPage({ type: 'home' });
       return;
     }
     navigateToPage({ type: 'enrollment', courseId });
@@ -336,7 +296,7 @@ function AppContent() {
   };
 
   const handleCourseAccess = (courseId: string) => {
-    navigateToPage({ type: 'campus', courseId });
+    navigateToPage({ type: 'enrollment', courseId });
   };
 
   const renderPage = () => {
@@ -352,7 +312,6 @@ function AppContent() {
                 navigateToPage({ type: 'courses' });
               }
             }}
-            onShowLogin={() => navigateToPage({ type: 'campusLogin' })}
           />
         );
       
@@ -384,18 +343,12 @@ function AppContent() {
         return (
           <CourseDetail
             key={`course-${course.id}-${Date.now()}`}
-            course={course}
-            relatedCourses={relatedCourses}
+            course={{ ...course, description: course.fullDescription }}
+            relatedCourses={relatedCourses.map(c => ({ ...c, description: c.fullDescription }))}
             onNavigate={(path) => {
               if (path.startsWith('/course/')) {
                 const courseId = path.replace('/course/', '');
                 handleCourseClick(courseId);
-              } else if (path === '/campus') {
-                if (isLoggedIn) {
-                  navigateToPage({ type: 'campus', courseId: course.id });
-                } else {
-                  navigateToPage({ type: 'campusLogin' });
-                }
               }
             }}
           />
@@ -417,13 +370,6 @@ function AppContent() {
             onLogout={handleLogout}
           />
         );
-      
-      case 'campus':
-        if (!isLoggedIn) {
-          navigateToPage({ type: 'home' }, true);
-          return null;
-        }
-        return <Campus courseId={currentPage.courseId} />;
       
       case 'enrollment':
         if (!isLoggedIn) {
@@ -456,27 +402,11 @@ function AppContent() {
       case 'forInstitutions':
         return <Instituciones />;
       
-      case 'campusLogin':
-        return <CampusLogin 
-          onLogin={handleLogin}
-          onBackToMain={() => {
-            navigateToPage({ type: 'home' });
-          }}
-        />;
-      
-      case 'campusVirtual':
-        return <CampusVirtual 
-          userName={userName}
-          userEmail={userEmail}
-          userRole={userRole}
-          onLogout={handleLogout}
-        />;
-      
       case 'complaintChannel':
         return <Denuncias />;
       
       default:
-        return <Home onNavigate={() => {}} onShowLogin={() => navigateToPage({ type: 'campusLogin' })} />;
+        return <Home onNavigate={() => {}} />;
     }
   };
 
@@ -505,7 +435,7 @@ function AppContent() {
         if (pageType) {
           // Manejar rutas que requieren autenticación
           if (requiresAuth(path) && !isLoggedIn) {
-            navigateToPage({ type: 'campusLogin' });
+            navigateToPage({ type: 'home' });
             return;
           }
           
@@ -513,19 +443,12 @@ function AppContent() {
           if (path.startsWith('/course/')) {
             const courseId = path.replace('/course/', '');
             navigateToPage({ type: 'courseDetail', courseId });
-          } else if (path.startsWith('/campus/')) {
-            const courseId = path.replace('/campus/', '');
-            if (isLoggedIn) {
-              navigateToPage({ type: 'campus', courseId });
-            } else {
-              navigateToPage({ type: 'campusLogin' });
-            }
           } else if (path.startsWith('/enrollment/')) {
             const courseId = path.replace('/enrollment/', '');
             if (isLoggedIn) {
               navigateToPage({ type: 'enrollment', courseId });
             } else {
-              navigateToPage({ type: 'campusLogin' });
+              navigateToPage({ type: 'home' });
             }
           } else {
             // Rutas normales
@@ -555,11 +478,8 @@ function AppContent() {
         position: 'relative'
       }}
     >
-      {currentPage.type !== 'campusLogin' && currentPage.type !== 'campusVirtual' && currentPage.type !== 'dashboard' && currentPage.type !== 'campus' && currentPage.type !== 'profile' && (
+      {currentPage.type !== 'dashboard' && currentPage.type !== 'profile' && (
         <Header 
-          onCampusClick={() => {
-            navigateToPage({ type: 'campusLogin' });
-          }}
           currentPage={(() => {
             if (currentPage.type === 'home') return '/';
             if (currentPage.type === 'courses') return '/courses';
@@ -577,7 +497,7 @@ function AppContent() {
         {renderPage()}
       </main>
       
-      {currentPage.type !== 'campusLogin' && currentPage.type !== 'campusVirtual' && currentPage.type !== 'dashboard' && currentPage.type !== 'campus' && currentPage.type !== 'profile' && (
+      {currentPage.type !== 'dashboard' && currentPage.type !== 'profile' && (
         <Footer onNavigate={(path) => {
           // Manejar alias de rutas
           const normalizedPath = ALIAS_ROUTES[path] || path;
@@ -591,6 +511,7 @@ function AppContent() {
         }} />
       )}
       <ViewportFix />
+      <WhatsAppButton />
     </div>
   );
 }

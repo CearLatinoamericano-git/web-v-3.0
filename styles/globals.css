@@ -1218,3 +1218,25 @@ section p.uppercase::before,
 section p.uppercase::after {
   display: none !important;
 }
+
+/* ========================================
+   ANIMACIONES PARA MENÚ MÓVIL
+   ======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

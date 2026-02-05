@@ -164,6 +164,8 @@ shadow-2xl
 
 ### Requisitos Previos
 - Node.js 18+ y npm/yarn/pnpm
+- MySQL o MariaDB (para la base de datos)
+- Servidor SMTP configurado (para envío de emails)
 
 ### Pasos de Instalación
 
@@ -176,34 +178,70 @@ shadow-2xl
    pnpm install
    ```
 
-2. **Iniciar servidor de desarrollo:**
+2. **Configurar variables de entorno:**
+   
+   Crea un archivo `.env` en la raíz del proyecto con las siguientes variables:
+   ```env
+   # Backend Server Configuration
+   PORT=3005
+
+   # Database Configuration
+   DB_NAME=your_database_name
+   DB_USER=your_database_user
+   DB_PASS=your_database_password
+   DB_HOST=localhost
+   DB_DIALECT=mysql
+
+   # Email Configuration (Nodemailer)
+   HOST_MAIL=smtp.your-email-provider.com
+   PORT_MAIL=587
+   EMAIL_SECURE=false
+   USERNAME_MAIL=your_email@example.com
+   PASSWORD_MAIL=your_email_password
+
+   # Frontend API URL (for development)
+   VITE_API_BASE_URL=http://localhost:3005/api
+   ```
+
+3. **Sincronizar base de datos:**
+   ```bash
+   npm run sync:db
+   ```
+   Esto creará las tablas necesarias en tu base de datos.
+
+4. **Iniciar servidor de desarrollo (Frontend):**
    ```bash
    npm run dev
-   # o
-   yarn dev
-   # o
-   pnpm dev
    ```
+   El frontend estará disponible en `http://localhost:3000` por defecto.
 
-3. **Compilar para producción:**
+5. **Iniciar servidor backend (en otra terminal):**
    ```bash
-   npm run build
-   # o
-   yarn build
-   # o
-   pnpm build
+   npm run dev:server
    ```
+   El backend estará disponible en `http://localhost:3005` por defecto.
 
-4. **Previsualizar build de producción:**
-   ```bash
-   npm run preview
-   # o
-   yarn preview
-   # o
-   pnpm preview
-   ```
+### Scripts Disponibles
 
-El proyecto estará disponible en `http://localhost:3000` por defecto.
+- `npm run dev` - Inicia el servidor de desarrollo del frontend (Vite)
+- `npm run dev:server` - Inicia el servidor backend (Express + TypeScript)
+- `npm run build` - Compila el frontend para producción
+- `npm run start` - Inicia el servidor backend en modo producción
+- `npm run start:prod` - Compila el frontend e inicia el servidor backend
+- `npm run sync:db` - Sincroniza los modelos con la base de datos
+- `npm run preview` - Previsualiza el build de producción del frontend
+
+### Configuración del Backend
+
+El backend está ubicado en la carpeta `app/` y proporciona las siguientes APIs:
+
+- **POST /api/contacto** - Formulario de contacto
+- **POST /api/denuncia** - Formulario de denuncias (con soporte de archivos)
+- **POST /api/quejas** - Formulario de quejas y sugerencias
+- **GET /api/health** - Health check del servidor
+- **GET /api/test** - Endpoint de prueba
+
+Para más detalles sobre las APIs, consulta `DOCUMENTACION_API_FORMULARIOS.md`.
 
 ## 📁 Estructura de Archivos
 

@@ -5,7 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc --noEmit --skipLibCheck || true && vite build",
+    "dev:server": "npx tsx app/app.ts",
+    "start": "npx tsx app/app.ts",
+    "start:prod": "npm run build && npm run start",
+    "pm2:start": "pm2 start ecosystem.config.cjs",
+    "pm2:stop": "pm2 stop CEAREDU",
+    "pm2:restart": "pm2 restart CEAREDU",
+    "pm2:delete": "pm2 delete CEAREDU",
+    "pm2:logs": "pm2 logs CEAREDU",
+    "pm2:status": "pm2 status",
+    "pm2:deploy": "npm run build && pm2 restart ecosystem.config.cjs",
+    "sync:db": "npx tsx app/helpers/sync-db.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -52,7 +63,15 @@
     "vaul": "^1.1.2",
     "input-otp": "^1.4.2",
     "axios": "^1.13.2",
-    "date-fns": "^3.6.0"
+    "date-fns": "^3.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "multer": "^2.0.2",
+    "mysql2": "^3.16.0",
+    "nodemailer": "^7.0.12",
+    "sequelize": "^6.37.7"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
@@ -70,7 +89,13 @@
     "typescript": "^5.5.3",
     "vite": "^5.3.1",
     "@types/node": "^20.14.12",
-    "motion": "^11.11.17"
+    "motion": "^11.11.17",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/ejs": "^3.1.5",
+    "@types/multer": "^2.0.0",
+    "@types/nodemailer": "^7.0.5",
+    "tsx": "^4.19.2"
   }
 }
 

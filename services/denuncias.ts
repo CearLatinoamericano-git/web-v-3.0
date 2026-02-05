@@ -63,13 +63,17 @@ function validateFiles(files: File[]): { valid: boolean; error?: string } {
  * @returns Promise con la respuesta del servidor
  */
 export async function storeDenuncias(data: DenunciaFormData): Promise<any> {
+  console.log('[storeDenuncias] Función llamada con datos:', data);
+  
   // Validar archivos
   const validation = validateFiles(data.prueba);
+  console.log('[storeDenuncias] Validación de archivos:', validation);
   if (!validation.valid) {
     throw new Error(validation.error);
   }
 
   try {
+    console.log('[storeDenuncias] Creando FormData...');
     // Crear FormData con los campos que espera el backend
     const formData = new FormData();
     formData.append("presunto_hecho", data.hecho);
@@ -91,8 +95,20 @@ export async function storeDenuncias(data: DenunciaFormData): Promise<any> {
     console.log(`[API] Llamando a la ruta del backend: ${rutaCompleta}`);
     console.log(`[API] Método: POST`);
     console.log(`[API] Endpoint: /denuncia`);
+    console.log(`[API] API_BASE_URL:`, API_BASE_URL);
+    console.log(`[API] Datos del FormData:`, {
+      presunto_hecho: formData.get('presunto_hecho'),
+      fecha_desde: formData.get('fecha_desde'),
+      fecha_hasta: formData.get('fecha_hasta'),
+      continua: formData.get('continua'),
+      involucrados: formData.get('involucrados'),
+      correo: formData.get('correo'),
+      archivos_count: formData.getAll('archivos').length
+    });
 
+    console.log(`[API] Realizando petición POST...`);
     const response = await apiClient.post("/denuncia", formData);
+    console.log(`[API] Respuesta recibida:`, response);
 
     return response.data;
   } catch (error: any) {

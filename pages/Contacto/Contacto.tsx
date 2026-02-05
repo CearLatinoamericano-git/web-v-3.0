@@ -1,4 +1,4 @@
-import { ArrowRight, Download, AlertCircle, Loader2, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, AlertCircle, Loader2, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
 import { storeContacto, storeQuejas, type ContactFormData, type SuggestionComplaintData } from '../../services/solicitudes';
 
@@ -6,6 +6,7 @@ import svgPathsHero from '../../imports/svg-w5f5at1h4o';
 
 import svgPathsContact from '../../imports/svg-bqxdqeyz84';
 import svgPathsSuggestions from '../../imports/svg-lyayekpngu';
+import styles from './Contacto.module.css';
 
 const contactanos_fondo_gris = '/images/contact/contactanos fondo_gris.png';
 const recepcionista = '/images/contact/recepcionista.webp';
@@ -126,107 +127,134 @@ export function Contacto() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className={styles.contactoPage}>
       {/* Hero Section - CONTACTO */}
-      <section
-        className="relative h-[659px] md:h-[750px] lg:h-[800px] xl:h-[850px] 2xl:h-[850px] overflow-hidden rounded-b-[20px] md:rounded-b-[25px] lg:rounded-b-[30px]"
-        style={{ backgroundImage: "linear-gradient(5.70811deg, rgb(28, 152, 183) 5.3068%, rgb(86, 18, 137) 90.834%)" }}
-      >
+      <section className={styles.heroSection}>
         {/* Background Image - Gris con opacidad */}
-        <div className="absolute h-[550px] md:h-[620px] lg:h-[680px] xl:h-[680px] 2xl:h-[750px] left-0 md:left-[40px] lg:left-[60px] xl:left-[100px] 2xl:left-[150px] top-[60px] md:top-[90px] lg:top-[90px] xl:top-[100px] 2xl:top-[110px] w-full md:w-[850px] lg:w-[850px] xl:w-[1000px] 2xl:w-[1200px] px-4 md:px-0">
-          <div className="absolute inset-0 mix-blend-multiply opacity-55 overflow-hidden pointer-events-none">
+        <div className={styles.heroBackgroundContainer}>
+          <div className={styles.heroBackgroundOverlay}>
             <img
               src={contactanos_fondo_gris}
               alt=""
-              className="absolute h-full left-0 max-w-none top-0 w-full object-cover"
+              className={styles.heroBackgroundImage}
             />
           </div>
         </div>
 
-        {/* Imagen de recepcionista - Card derecha */}
-        <div className="hidden xl:block absolute right-[40px] xl:right-[60px] 2xl:right-[100px] top-[190px] lg:top-[130px] xl:top-[170px] 2xl:top-[190px] w-[420px] lg:w-[320px] xl:w-[420px] 2xl:w-[540px] h-[380px] lg:h-[300px] xl:h-[380px] 2xl:h-[487px] rounded-[20px] lg:rounded-[16px] xl:rounded-[18px] 2xl:rounded-[20px] overflow-hidden z-10">
-          <div className="flex items-center justify-center size-full">
-            <div className="flex-none rotate-180 scale-y-[-100%] size-full">
-              <div className="relative size-full overflow-hidden rounded-[inherit]">
-                <img
-                  src={recepcionista}
-                  alt="Recepcionista CEAR"
-                  className="w-full h-full object-cover object-center pt-[-8px] pr-[0px] pb-[0px] pl-[0px] mt-[1px] mr-[0px] mb-[0px] ml-[0px]"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Decorative Wave SVGs at bottom */}
-        <div className="absolute left-0 bottom-0 w-full h-[144px]">
-          <div className="absolute inset-[30.83%_0_0_0]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1643.21 98.4742">
+        <div className={styles.heroWavesContainer}>
+          <div className={styles.waveLayer1}>
+            <svg className={styles.waveSvg} fill="none" preserveAspectRatio="none" viewBox="0 0 1643.21 98.4742">
               <path d={svgPathsHero.p21097b90} fill="white" fillOpacity="0.1" />
             </svg>
           </div>
-          <div className="absolute inset-[47.92%_0_0_0]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1643.21 74.1523">
+          <div className={styles.waveLayer2}>
+            <svg className={styles.waveSvg} fill="none" preserveAspectRatio="none" viewBox="0 0 1643.21 74.1523">
               <path d={svgPathsHero.p3cb85d00} fill="white" fillOpacity="0.03" />
             </svg>
           </div>
         </div>
 
-        {/* Content Container */}
-        <div className="absolute left-4 sm:left-8 md:left-[80px] lg:left-[100px] xl:left-[130px] 2xl:left-[200px] top-[100px] sm:top-[120px] md:top-[160px] lg:top-[180px] xl:top-[200px] 2xl:top-[230px] w-[calc(100%-2rem)] sm:w-[calc(100%-4rem)] md:w-[520px] lg:w-[460px] xl:w-[500px] 2xl:w-[700px] z-10">
-          <div className="flex flex-col gap-[13px] md:gap-[8px] lg:gap-[10px] xl:gap-[12px] 2xl:gap-[13px] items-start">
-            {/* Text Content */}
-            <div className="flex flex-col items-start w-full gap-[13px] md:gap-[8px] lg:gap-[10px] xl:gap-[12px] 2xl:gap-[13px]">
-              {/* Title */}
-              <div className="flex items-start justify-start w-full">
-                <h1 className="font-bold leading-[54px] md:leading-[42px] lg:leading-[48px] xl:leading-[54px] 2xl:leading-[62px] sm:text-[52px] md:text-[38px] lg:text-[44px] xl:text-[50px] 2xl:text-[62.288px] text-white tracking-[-0.9258px] md:tracking-[-0.6px] lg:tracking-[-0.7px] xl:tracking-[-0.8px] 2xl:tracking-[-0.9258px] w-full text-[48px] drop-shadow-[0_4px_8px_rgba(0,0,0,0.4)]">
-                  ¿Desea comunicarse con nosotros?
-                </h1>
+        {/* Content Container - Flex Layout */}
+        <div className={styles.heroContentWrapper}>
+          <div className={styles.heroContentContainer}>
+            {/* Text Content Container */}
+            <div className={styles.textContentWrapper}>
+              {/* Text Content */}
+              <div className={styles.textContent}>
+                {/* Title */}
+                <div className={styles.titleWrapper}>
+                  <h1 className={styles.title}>
+                    ¿Desea comunicarse con nosotros?
+                  </h1>
+                </div>
+
+                {/* Description */}
+                <div className={styles.descriptionWrapper}>
+                  <p className={styles.description}>
+                    Estamos a su disposición para atender todas sus dudas, consultas y preguntas, brindándole una orientación clara y oportuna a través de nuestro equipo especializado.
+                  </p>
+                </div>
               </div>
 
-              {/* Description */}
-              <div className="flex items-start justify-start w-full">
-                <p className="font-semibold leading-[28px] sm:leading-[32px] md:leading-[26px] lg:leading-[30px] xl:leading-[34px] 2xl:leading-[37px] sm:text-[24px] md:text-[18px] lg:text-[21px] xl:text-[24px] 2xl:text-[30.867px] text-[rgba(255,255,255,0.85)] tracking-[-0.4156px] md:tracking-[-0.3px] lg:tracking-[-0.35px] xl:tracking-[-0.38px] 2xl:tracking-[-0.4156px] w-full text-[20px] max-w-[90%] pt-0 pr-0 pb-0 pl-0 m-0 text-justify">
-                  Estamos a su disposición para atender todas sus dudas, consultas y preguntas, brindándole una orientación clara y oportuna a través de nuestro equipo especializado.
-                </p>
+              {/* Buttons */}
+              <div className={styles.buttonsContainer}>
+                {/* Enviar mensajes - Orange button */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    const element = document.getElementById('contact-form');
+                    
+                    if (element) {
+                      // Usar scrollIntoView con scroll-margin-top aplicado en el CSS
+                      // Esto es más confiable y respeta el offset del header automáticamente
+                      element.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start',
+                        inline: 'nearest'
+                      });
+                    } else {
+                      console.error('Elemento #contact-form no encontrado');
+                    }
+                  }}
+                  className={`${styles.button} ${styles.buttonOrange} cursor-pointer`}
+                >
+                  <div className={styles.buttonContent}>
+                    <span className={styles.buttonText}>
+                      Enviar mensajes
+                    </span>
+                    <div className={styles.buttonIcon}>
+                      <ArrowRight className="w-full h-full text-white" strokeWidth={1.72215} />
+                    </div>
+                  </div>
+                </button>
+
+                {/* Contactar asesor - WhatsApp button */}
+                <a
+                  href="https://api.whatsapp.com/send/?phone=51944004447&text=Hola,%20necesito%20contactar%20con%20el%20área%20académica%20de%20CEAR%20LATINOAMERICANO&type=phone_number&app_absent=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${styles.button} ${styles.buttonGreen}`}
+                >
+                  <div className={styles.buttonContent}>
+                    <svg
+                      width="18"
+                      height="18"
+                      fill="#fff"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="shrink-0"
+                    >
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+                    </svg>
+                    <span className={styles.buttonText}>
+                      Contactar asesor
+                    </span>
+                  </div>
+                </a>
               </div>
             </div>
-
-            {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-[29.661px] md:gap-[14px] lg:gap-[18px] xl:gap-[22px] 2xl:gap-[29.661px] items-start w-full md:mt-[12px] lg:mt-[16px] xl:mt-[20px] 2xl:mt-[24px] mt-[8px] px-0 py-[16px] md:py-[10px] lg:py-[12px] xl:py-[14px] 2xl:py-[16px]">
-              {/* Enviar mensajes - Orange button */}
-              <a
-                href="#contact-form"
-                className="bg-[#ee8a28] h-[44px] sm:h-[50px] md:h-[46px] lg:h-[50px] xl:h-[54px] 2xl:h-[58px] rounded-[12px] md:rounded-[10px] lg:rounded-[11px] xl:rounded-[12px] 2xl:rounded-[13px] w-full sm:w-[260px] md:w-[220px] lg:w-[240px] xl:w-[260px] 2xl:w-[280px] hover:bg-[#d67821] transition-colors"
-              >
-                <div className="flex gap-[10px] md:gap-[7px] lg:gap-[8px] xl:gap-[9px] 2xl:gap-[10px] items-center justify-center h-full px-3 md:px-2.5 lg:px-3 xl:px-3.5 2xl:px-4">
-                  <span className="font-semibold leading-[22px] md:leading-[18px] lg:leading-[20px] xl:leading-[22px] 2xl:leading-[24px] text-[14px] sm:text-[15px] md:text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[17px] text-center text-white whitespace-nowrap">
-                    Enviar mensajes
-                  </span>
-                  <div className="relative shrink-0 size-[16px] md:size-[14px] lg:size-[15px] xl:size-[16px] 2xl:size-[18px]">
-                    <ArrowRight className="w-full h-full text-white" strokeWidth={1.72215} />
+            {/* Imagen de recepcionista - Card derecha */}
+            <div className={styles.imageContainer}>
+              <div className={styles.imageWrapper}>
+                <div className={styles.imageInner}>
+                  <div className={styles.imageTransform}>
+                    <div className={styles.imageContent}>
+                      <img
+                        src={recepcionista}
+                        alt="Recepcionista CEAR"
+                      />
+                    </div>
                   </div>
                 </div>
-              </a>
-
-              {/* Descargar brochure - Transparent button */}
-              <button className="bg-[rgba(255,255,255,0.1)] h-[44px] sm:h-[50px] md:h-[46px] lg:h-[50px] xl:h-[54px] 2xl:h-[58px] rounded-[12px] md:rounded-[10px] lg:rounded-[11px] xl:rounded-[12px] 2xl:rounded-[13px] w-full sm:w-[260px] md:w-[220px] lg:w-[240px] xl:w-[260px] 2xl:w-[280px] border-[1.5px] md:border-[1.3px] lg:border-[1.4px] xl:border-[1.5px] 2xl:border-[1.6px] border-solid border-white hover:bg-[rgba(255,255,255,0.2)] transition-colors">
-                <div className="flex gap-[10px] md:gap-[7px] lg:gap-[8px] xl:gap-[9px] 2xl:gap-[10px] items-center justify-center h-full p-[1.837px] px-3 md:px-2.5 lg:px-3 xl:px-3.5 2xl:px-4">
-                  <div className="relative shrink-0 size-[16px] md:size-[14px] lg:size-[15px] xl:size-[16px] 2xl:size-[18px]">
-                    <Download className="w-full h-full text-white" strokeWidth={1.72215} />
-                  </div>
-                  <span className="font-semibold leading-[22px] md:leading-[18px] lg:leading-[20px] xl:leading-[22px] 2xl:leading-[24px] text-[14px] sm:text-[15px] md:text-[14px] lg:text-[15px] xl:text-[16px] 2xl:text-[17px] text-center text-white whitespace-nowrap">
-                    Descargar brochure
-                  </span>
-                </div>
-              </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Main Contact Form Section */}
-      <section id="contact-form" className="bg-white pt-[60px] md:pt-[90px] pb-[16px] px-4 sm:px-8 lg:px-[111px]">
+      <section id="contact-form" className="bg-white pt-[60px] md:pt-[90px] pb-[16px] px-4 sm:px-8 lg:px-[111px]" style={{ scrollMarginTop: '80px' }}>
         <div className="flex flex-col items-center w-full max-w-[1440px] mx-auto">
           <div className="flex flex-col items-start w-full">
             {/* Section Header */}
@@ -264,7 +292,7 @@ export function Contacto() {
                 <div aria-hidden="true" className="absolute border-[#e5e7eb] border-[2.078px] border-solid inset-0 pointer-events-none rounded-[18.701px]" />
                 <form onSubmit={handleSubmit} className="flex flex-col gap-[12px] md:gap-[14px] items-start w-full h-full flex-1 justify-between">
                   {/* Name and Phone Row */}
-                  <div className="gap-[12px] md:gap-[14px] grid grid-cols-1 md:grid-cols-2 w-full flex-shrink-0">
+                  <div className="gap-[12px] md:gap-[14px] grid grid-cols-1 md:grid-cols-2 w-full shrink-0">
                     {/* Name */}
                     <div className="flex flex-col gap-[5px] items-start">
                       <div className="h-[20px] w-full relative">
@@ -313,7 +341,7 @@ export function Contacto() {
                   </div>
 
                   {/* Email */}
-                  <div className="flex flex-col gap-[5px] items-start w-full flex-shrink-0">
+                  <div className="flex flex-col gap-[5px] items-start w-full shrink-0">
                     <div className="h-[20px] w-full relative">
                       <p className="absolute font-semibold leading-[20px] left-0 text-[#364153] text-[14px] md:text-[15px] top-0">
                         Correo electrónico *
@@ -336,7 +364,7 @@ export function Contacto() {
                   </div>
 
                   {/* Subject */}
-                  <div className="flex flex-col gap-[5px] items-start w-full flex-shrink-0">
+                  <div className="flex flex-col gap-[5px] items-start w-full shrink-0">
                     <div className="h-[20px] w-full relative">
                       <p className="absolute font-semibold leading-[20px] left-0 text-[#364153] text-[14px] md:text-[15px] top-0">
                         Asunto *
@@ -359,7 +387,7 @@ export function Contacto() {
                   </div>
 
                   {/* Message */}
-                  <div className="flex flex-col gap-[5px] items-start w-full flex-shrink-0">
+                  <div className="flex flex-col gap-[5px] items-start w-full shrink-0">
                     <div className="h-[20px] w-full relative">
                       <p className="absolute font-semibold leading-[20px] left-0 text-[#364153] text-[14px] md:text-[15px] top-0">
                         Mensaje *
@@ -381,13 +409,13 @@ export function Contacto() {
                   </div>
 
                   {/* Política de privacidad */}
-                  <div className="flex items-start gap-2 flex-shrink-0 py-1">
+                  <div className="flex items-start gap-2 shrink-0 py-1">
                     <input
                       type="checkbox"
                       id="estado_politica"
                       checked={formData.estado_politica}
                       onChange={(e) => setFormData({ ...formData, estado_politica: e.target.checked })}
-                      className="mt-0.5 w-4 h-4 text-[#0B95BA] border-gray-300 rounded focus:ring-[#0B95BA] flex-shrink-0"
+                      className="mt-0.5 w-4 h-4 text-[#0B95BA] border-gray-300 rounded focus:ring-[#0B95BA] shrink-0"
                       required
                     />
                     <label htmlFor="estado_politica" className="text-xs md:text-sm text-gray-600 leading-tight">
@@ -397,8 +425,8 @@ export function Contacto() {
 
                   {/* Error Message */}
                   {error && (
-                    <div className="flex items-center gap-2 text-red-600 bg-red-50 p-2 rounded-xl border-2 border-red-200 flex-shrink-0 w-full">
-                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <div className="flex items-center gap-2 text-red-600 bg-red-50 p-2 rounded-xl border-2 border-red-200 shrink-0 w-full">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
                       <span className="font-semibold text-xs md:text-sm">{error}</span>
                     </div>
                   )}
@@ -407,7 +435,7 @@ export function Contacto() {
                   <button
                     type="submit"
                     disabled={isSubmitting || !formData.estado_politica}
-                    className="bg-[#ee8a28] h-[56px] md:h-[64px] relative rounded-[12px] shadow-[0px_0px_25.974px_0px_rgba(0,0,0,0.3)] w-full hover:bg-[#d67821] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+                    className="bg-[#ee8a28] h-[56px] md:h-[64px] relative rounded-[12px] shadow-[0px_0px_25.974px_0px_rgba(0,0,0,0.3)] w-full hover:bg-[#d67821] transition-colors disabled:opacity-50 disabled:cursor-not-allowed shrink-0"
                   >
                     <div className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex items-center gap-[10px]">
                       {isSubmitting ? (
@@ -436,8 +464,8 @@ export function Contacto() {
                   </button>
 
                   {formSubmitted && (
-                    <div className="flex items-center gap-2 text-[#0BDDB3] bg-[#0BDDB3]/10 p-2 rounded-xl border-2 border-[#0BDDB3]/30 animate-[fadeIn_0.3s_ease-in-out] flex-shrink-0 w-full">
-                      <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
+                    <div className="flex items-center gap-2 text-[#0BDDB3] bg-[#0BDDB3]/10 p-2 rounded-xl border-2 border-[#0BDDB3]/30 animate-[fadeIn_0.3s_ease-in-out] shrink-0 w-full">
+                      <CheckCircle2 className="w-4 h-4 shrink-0" />
                       <span className="font-semibold text-xs md:text-sm">¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.</span>
                     </div>
                   )}
@@ -445,10 +473,10 @@ export function Contacto() {
               </div>
 
               {/* Contact Info Card - Blue CEAR */}
-              <div className="bg-[#0b95ba] flex flex-col min-h-[659px] lg:h-[659px] items-center justify-between py-[28.052px] rounded-[18.701px] shadow-[0px_0px_25.974px_0px_rgba(0,0,0,0.3)] w-full lg:w-[349px] flex-shrink-0">
+              <div className="bg-[#0b95ba] flex flex-col min-h-[659px] lg:h-[659px] items-center justify-between py-[28.052px] rounded-[18.701px] shadow-[0px_0px_25.974px_0px_rgba(0,0,0,0.3)] w-full lg:w-[349px] shrink-0">
                 {/* Email Section */}
-                <div className="w-full flex flex-col items-center px-4 flex-shrink-0">
-                  <div className="bg-[rgba(255,255,255,0.2)] flex items-center justify-center rounded-full size-[65.455px] mb-4 flex-shrink-0">
+                <div className="w-full flex flex-col items-center px-4 shrink-0">
+                  <div className="bg-[rgba(255,255,255,0.2)] flex items-center justify-center rounded-full size-[65.455px] mb-3 shrink-0">
                     <div className="size-[28.052px]">
                       <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 28.0519 28.0519">
                         <g>
@@ -458,28 +486,32 @@ export function Contacto() {
                       </svg>
                     </div>
                   </div>
-                  <h4 className="font-semibold text-[18.701px] text-white mb-3 text-center">
+                  <h4 className="font-semibold text-[18.701px] text-white mb-2 text-center">
                     Correo electrónico
                   </h4>
-                  <div className="flex flex-col gap-1 w-full">
-                    <a
-                      href="mailto:academico@cearlatinoamericano.edu.pe"
-                      className="font-normal text-[14px] text-[rgba(255,255,255,0.9)] text-center hover:text-white transition-colors break-words px-2"
-                    >
-                      academico@cearlatinoamericano.edu.pe
-                    </a>
-                    <a
-                      href="mailto:area_academica@cearlatinoamericano.pe"
-                      className="font-normal text-[14px] text-[rgba(255,255,255,0.9)] text-center hover:text-white transition-colors break-words px-2"
-                    >
-                      area_academica@cearlatinoamericano.pe
-                    </a>
+                  <div className="flex flex-col items-center justify-center">
+                    <span>
+                      <a
+                        href="mailto:academico@cearlatinoamericano.edu.pe"
+                        className="font-normal text-[14px] text-[rgba(255,255,255,0.9)] text-center hover:text-white transition-colors wrap-break-word px-2"
+                      >
+                        academico@cearlatinoamericano.edu.pe
+                      </a>
+                    </span>
+                    <span>
+                      <a
+                        href="mailto:area_academica@cearlatinoamericano.pe"
+                        className="font-normal text-[14px] text-[rgba(255,255,255,0.9)] text-center hover:text-white transition-colors wrap-break-word px-2"
+                      >
+                        area_academica@cearlatinoamericano.pe
+                      </a>
+                    </span>
                   </div>
                 </div>
 
                 {/* Phone Section */}
-                <div className="w-full flex flex-col items-center px-4 flex-shrink-0">
-                  <div className="bg-[rgba(255,255,255,0.2)] flex items-center justify-center rounded-full size-[65.455px] mb-4 flex-shrink-0">
+                <div className="w-full flex flex-col items-center px-4 shrink-0">
+                  <div className="bg-[rgba(255,255,255,0.2)] flex items-center justify-center rounded-full size-[65.455px] mb-3 shrink-0">
                     <div className="size-[28.052px]">
                       <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 28.0519 28.0519">
                         <g>
@@ -488,30 +520,34 @@ export function Contacto() {
                       </svg>
                     </div>
                   </div>
-                  <h4 className="font-semibold text-[18.701px] text-white mb-3 text-center">
+                  <h4 className="font-semibold text-[18.701px] text-white mb-2 text-center">
                     Teléfonos
                   </h4>
-                  <div className="flex flex-col gap-1 w-full">
-                    <a
-                      href="tel:+5113978586"
-                      className="font-normal text-[16.364px] text-[rgba(255,255,255,0.9)] text-center hover:text-white transition-colors"
-                    >
-                      (01) 397 8586 - Anexo 103
-                    </a>
-                    <a
-                      href="https://wa.me/51986605219"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-normal text-[16.364px] text-[rgba(255,255,255,0.9)] text-center hover:text-white transition-colors"
-                    >
-                      (+51) 986 605 219
-                    </a>
+                  <div className="flex items-center justify-center flex-col gap-1 w-full">
+                    <span>
+                      <a
+                        href="tel:+5113978586"
+                        className="font-normal text-[16.364px] text-[rgba(255,255,255,0.9)] text-center hover:text-white transition-colors"
+                      >
+                        (01) 397 8586 - Anexo 103
+                      </a>
+                    </span>
+                    <span>
+                      <a
+                        href="https://wa.me/51986605219"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-normal text-[16.364px] text-[rgba(255,255,255,0.9)] text-center hover:text-white transition-colors"
+                      >
+                        (+51) 986 605 219
+                      </a>
+                    </span>
                   </div>
                 </div>
 
                 {/* Location Section */}
-                <div className="w-full flex flex-col items-center px-4 flex-shrink-0">
-                  <div className="bg-[rgba(255,255,255,0.2)] flex items-center justify-center rounded-full size-[65.455px] mb-4 flex-shrink-0">
+                <div className="w-full flex flex-col items-center px-4 shrink-0">
+                  <div className="bg-[rgba(255,255,255,0.2)] flex items-center justify-center rounded-full size-[65.455px] mb-4 shrink-0">
                     <div className="size-[28.052px]">
                       <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 28.0519 28.0519">
                         <g>
@@ -799,7 +835,7 @@ export function Contacto() {
                       {/* Error Message */}
                       {suggestionError && (
                         <div className="flex items-center gap-3 text-red-600 bg-red-50 p-4 rounded-xl border-2 border-red-200">
-                          <AlertCircle className="w-6 h-6 flex-shrink-0" />
+                          <AlertCircle className="w-6 h-6 shrink-0" />
                           <span className="font-semibold text-sm">{suggestionError}</span>
                         </div>
                       )}
@@ -826,7 +862,7 @@ export function Contacto() {
 
                       {suggestionSubmitted && (
                         <div className="flex items-center gap-3 text-[#0BDDB3] bg-[#0BDDB3]/10 p-4 rounded-xl border-2 border-[#0BDDB3]/30 animate-[fadeIn_0.3s_ease-in-out]">
-                          <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
+                          <CheckCircle2 className="w-6 h-6 shrink-0" />
                           <span className="font-semibold">Su {suggestionForm.type} ha sido enviada exitosamente</span>
                         </div>
                       )}

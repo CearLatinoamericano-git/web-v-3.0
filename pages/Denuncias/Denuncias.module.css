@@ -1,0 +1,419 @@
+/* ===================================
+   DENUNCIAS PAGE - RESPONSIVE STYLES
+   CSS Module con Media Queries
+   Breakpoints: 468px, 768px, 1024px, 1280px, 1920px
+   =================================== */
+
+/* Base Styles - Desktop First */
+.denunciasPage {
+  min-height: 100vh;
+  background: #f9fafb;
+  overflow-x: hidden;
+}
+
+/* Hero Section */
+.heroSection {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 45px 45px;
+  background: linear-gradient(6.54881deg, rgb(28, 152, 183) 5.3068%, rgb(86, 18, 137) 90.834%);
+  padding: 3rem 1rem;
+  min-height: auto;
+}
+
+@media screen and (min-width: 468px) {
+  .heroSection {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .heroSection {
+    padding: 5rem 2rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .heroSection {
+    padding: 6rem 2rem;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .heroSection {
+    padding: 5rem 2rem;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .heroSection {
+    padding: 5rem 2rem;
+  }
+}
+
+/* Background Image Overlay */
+.heroBackgroundImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.23;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* Content Container */
+.heroContentContainer {
+  position: relative;
+  z-index: 10;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Title Section */
+.titleSection {
+  text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 4.5rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media screen and (min-width: 468px) {
+  .titleSection {
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .titleSection {
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .titleSection {
+    margin-bottom: 4rem;
+  }
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 468px) {
+  .titleContainer {
+    flex-direction: row;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .titleContainer {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.titleWhite {
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-size: 1.75rem;
+}
+
+@media screen and (min-width: 468px) {
+  .titleWhite {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .titleWhite {
+    font-size: 2.25rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .titleWhite {
+    font-size: 2.5rem;
+  }
+}
+
+.titleOrange {
+  font-weight: 700;
+  color: #F08300;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  font-size: 1.75rem;
+}
+
+@media screen and (min-width: 468px) {
+  .titleOrange {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .titleOrange {
+    font-size: 2.25rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .titleOrange {
+    font-size: 2.5rem;
+  }
+}
+
+.description {
+  color: white;
+  line-height: 1.6;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  font-size: 0.875rem;
+}
+
+@media screen and (min-width: 468px) {
+  .description {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .description {
+    font-size: 1.0625rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .description {
+    font-size: 1.125rem;
+  }
+}
+
+/* Main Content Grid */
+.mainContentGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .mainContentGrid {
+    flex-direction: row;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mainContentGrid {
+    gap: 4rem;
+  }
+}
+
+/* Image Container */
+.imageContainer {
+  width: 100%;
+  max-width: 600px;
+}
+
+@media screen and (min-width: 1024px) {
+  .imageContainer {
+    width: 50%;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Text Content Container */
+.textContentContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .textContentContainer {
+    width: 50%;
+    gap: 2rem;
+  }
+}
+
+/* What is Complaint Section */
+.whatIsComplaint {
+  color: white;
+}
+
+.whatIsComplaintTitle {
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 468px) {
+  .whatIsComplaintTitle {
+    font-size: 1.75rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .whatIsComplaintTitle {
+    font-size: 1.875rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .whatIsComplaintTitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.whatIsComplaintText {
+  line-height: 1.6;
+  font-size: 0.9375rem;
+}
+
+@media screen and (min-width: 468px) {
+  .whatIsComplaintText {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .whatIsComplaintText {
+    font-size: 1.125rem;
+  }
+}
+
+/* Features Container */
+.featuresContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .featuresContainer {
+    gap: 1.5rem;
+  }
+}
+
+/* Feature Item */
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .featureItem {
+    gap: 1.25rem;
+  }
+}
+
+.featureIconContainer {
+  background: #1c98b7;
+  border-radius: 1rem;
+  padding: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(209, 213, 220, 0.2);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .featureIconContainer {
+    padding: 1rem;
+  }
+}
+
+.featureIconContainer svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .featureIconContainer svg {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.featureContent {
+  color: white;
+  flex: 1;
+}
+
+.featureTitle {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .featureTitle {
+    font-size: 1.125rem;
+  }
+}
+
+.featureDescription {
+  line-height: 1.6;
+  opacity: 0.9;
+  font-size: 0.8125rem;
+}
+
+@media screen and (min-width: 468px) {
+  .featureDescription {
+    font-size: 0.875rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .featureDescription {
+    font-size: 0.875rem;
+  }
+}
+
+/* Policies Section Container */
+.policiesSectionContainer {
+  position: relative;
+}
+
+/* Modal */
+.modalContainer {
+  /* Estilos del modal se manejan en el componente ComplaintFormModal */
+}
+

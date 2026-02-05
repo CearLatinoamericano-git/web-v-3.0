@@ -1,29 +1,64 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { LogoCompact } from './LogoCompact';
 import { ALIAS_ROUTES } from '../routes';
 
 interface HeaderProps {
-  onCampusClick?: () => void;
   currentPage?: string;
 }
 
-export function Header({ onCampusClick, currentPage = '/' }: HeaderProps) {
+export function Header({ currentPage = '/' }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleCampusAccess = () => {
-    if (onCampusClick) {
-      onCampusClick();
-    }
-  };
-
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     setMobileMenuOpen(prev => !prev);
   };
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
   };
+
+  // Cerrar menú al hacer clic fuera o presionar ESC
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      document.body.style.overflow = '';
+      return;
+    }
+
+    document.body.style.overflow = 'hidden'; // Prevenir scroll cuando el menú está abierto
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeMobileMenu();
+      }
+    };
+
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      // Verificar que el clic no sea en el botón del menú ni dentro del menú
+      if (
+        !target.closest('[data-mobile-menu]') && 
+        !target.closest('[data-mobile-menu-button]')
+      ) {
+        closeMobileMenu();
+      }
+    };
+
+    // Pequeño delay para evitar que se cierre inmediatamente al abrir
+    const timeoutId = setTimeout(() => {
+      document.addEventListener('keydown', handleEscape);
+      // Usar mousedown en lugar de click para mejor detección
+      document.addEventListener('mousedown', handleClickOutside);
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
   
   // Función para determinar si un enlace está activo
   // Soporta tanto rutas nuevas como alias (rutas antiguas)
@@ -115,15 +150,17 @@ export function Header({ onCampusClick, currentPage = '/' }: HeaderProps) {
           </div>
 
           {/* Button */}
-          <button
-            onClick={handleCampusAccess}
+          <a
+            href="https://campus.cearlatinoamericano.edu.pe/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-[#1CB8A4] flex items-center gap-2 px-6 py-2.5 rounded-lg hover:bg-[#19a894] transition-colors"
           >
             <span className="font-semibold text-[14px] text-white whitespace-nowrap">
               Acceso al campus virtual
             </span>
             <ArrowRight className="w-4 h-4 text-white" />
-          </button>
+          </a>
         </div>
 
         {/* Mobile Header */}
@@ -135,95 +172,169 @@ export function Header({ onCampusClick, currentPage = '/' }: HeaderProps) {
 
           {/* Mobile Menu Button */}
           <button
-            className="flex items-center justify-center w-10 h-10"
-            onClick={toggleMobileMenu}
+            data-mobile-menu-button
+            className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-white/10 transition-all duration-200 active:scale-95 z-50 relative"
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleMobileMenu(e);
+            }}
             aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6 text-white" />
+              <X className="w-6 h-6 text-white transition-transform duration-300 rotate-0" />
             ) : (
-              <Menu className="w-6 h-6 text-white" />
+              <Menu className="w-6 h-6 text-white transition-transform duration-300" />
             )}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Overlay */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-[rgba(0,0,0,0.5)] backdrop-blur-lg border-t border-white/20">
-            <div className="flex flex-col p-4 gap-2">
-              <a 
-                href="/" 
-                onClick={closeMobileMenu}
-                className={`text-white hover:bg-white/10 transition-colors px-4 py-3 rounded-lg relative ${
-                  isActive('/') ? 'bg-white/10' : ''
-                }`}
-              >
-                Inicio
-                {isActive('/') && (
-                  <span className="absolute bottom-2 left-4 right-4 h-[2px] bg-white"></span>
-                )}
-              </a>
-              <a 
-                href="/courses" 
-                onClick={closeMobileMenu}
-                className={`text-white hover:bg-white/10 transition-colors px-4 py-3 rounded-lg relative ${
-                  isActive('/courses') ? 'bg-white/10' : ''
-                }`}
-              >
-                Programas
-                {isActive('/courses') && (
-                  <span className="absolute bottom-2 left-4 right-4 h-[2px] bg-white"></span>
-                )}
-              </a>
-              <a 
-                href="/para-instituciones" 
-                onClick={closeMobileMenu}
-                className={`text-white hover:bg-white/10 transition-colors px-4 py-3 rounded-lg relative ${
-                  isActive('/para-instituciones') || isActive('/for-institutions') ? 'bg-white/10' : ''
-                }`}
-              >
-                Para instituciones
-                {(isActive('/para-instituciones') || isActive('/for-institutions')) && (
-                  <span className="absolute bottom-2 left-4 right-4 h-[2px] bg-white"></span>
-                )}
-              </a>
-              <a 
-                href="/nosotros" 
-                onClick={closeMobileMenu}
-                className={`text-white hover:bg-white/10 transition-colors px-4 py-3 rounded-lg relative ${
-                  isActive('/nosotros') || isActive('/about') ? 'bg-white/10' : ''
-                }`}
-              >
-                Nosotros
-                {(isActive('/nosotros') || isActive('/about')) && (
-                  <span className="absolute bottom-2 left-4 right-4 h-[2px] bg-white"></span>
-                )}
-              </a>
-              <a 
-                href="/contacto" 
-                onClick={closeMobileMenu}
-                className={`text-white hover:bg-white/10 transition-colors px-4 py-3 rounded-lg relative ${
-                  isActive('/contacto') || isActive('/contact') ? 'bg-white/10' : ''
-                }`}
-              >
-                Contacto
-                {(isActive('/contacto') || isActive('/contact')) && (
-                  <span className="absolute bottom-2 left-4 right-4 h-[2px] bg-white"></span>
-                )}
-              </a>
-              
-              <button
-                onClick={() => {
-                  closeMobileMenu();
-                  handleCampusAccess();
-                }}
-                className="flex items-center justify-center gap-2 bg-[#1CB8A4] text-white rounded-lg px-4 py-3 mt-2 hover:bg-[#19a894] transition-colors font-semibold"
-              >
-                Acceso al campus virtual
-                <ArrowRight className="w-4 h-4" />
-              </button>
+          <>
+            {/* Backdrop */}
+            <div 
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden animate-[fadeIn_0.3s_ease-out_forwards]"
+              onClick={closeMobileMenu}
+              aria-hidden="true"
+            />
+            
+            {/* Menu Panel */}
+            <div 
+              data-mobile-menu
+              className="fixed inset-y-0 right-0 w-full max-w-sm bg-gradient-to-br from-[#1a0b2e] via-[#16213e] to-[#0f3460] shadow-2xl z-50 lg:hidden animate-[slideInRight_0.3s_ease-out_forwards]"
+            >
+              {/* Header del menú */}
+              <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
+                <a href="/" onClick={closeMobileMenu} className="flex items-center">
+                  <LogoCompact className="h-10 w-auto" variant="white" />
+                </a>
+                <button
+                  onClick={closeMobileMenu}
+                  className="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-white/10 transition-all duration-200 active:scale-95"
+                  aria-label="Cerrar menú"
+                >
+                  <X className="w-6 h-6 text-white" />
+                </button>
+              </div>
+
+              {/* Contenido del menú */}
+              <div className="flex flex-col px-6 py-6 gap-1 h-[calc(100vh-88px)] overflow-y-auto">
+                <a 
+                  href="/" 
+                  onClick={closeMobileMenu}
+                  className={`group relative text-white/90 hover:text-white transition-all duration-200 px-4 py-4 rounded-xl font-medium text-base ${
+                    isActive('/') 
+                      ? 'bg-white/15 text-white shadow-lg shadow-white/5' 
+                      : 'hover:bg-white/10'
+                  }`}
+                >
+                  <span className="relative z-10 flex items-center justify-between">
+                    Inicio
+                    {isActive('/') && (
+                      <span className="w-2 h-2 rounded-full bg-[#1CB8A4] animate-pulse"></span>
+                    )}
+                  </span>
+                  {isActive('/') && (
+                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#1CB8A4] to-[#0B95BA] rounded-l-xl"></span>
+                  )}
+                </a>
+                
+                <a 
+                  href="/courses" 
+                  onClick={closeMobileMenu}
+                  className={`group relative text-white/90 hover:text-white transition-all duration-200 px-4 py-4 rounded-xl font-medium text-base ${
+                    isActive('/courses') 
+                      ? 'bg-white/15 text-white shadow-lg shadow-white/5' 
+                      : 'hover:bg-white/10'
+                  }`}
+                >
+                  <span className="relative z-10 flex items-center justify-between">
+                    Programas
+                    {isActive('/courses') && (
+                      <span className="w-2 h-2 rounded-full bg-[#1CB8A4] animate-pulse"></span>
+                    )}
+                  </span>
+                  {isActive('/courses') && (
+                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#1CB8A4] to-[#0B95BA] rounded-l-xl"></span>
+                  )}
+                </a>
+                
+                <a 
+                  href="/para-instituciones" 
+                  onClick={closeMobileMenu}
+                  className={`group relative text-white/90 hover:text-white transition-all duration-200 px-4 py-4 rounded-xl font-medium text-base ${
+                    (isActive('/para-instituciones') || isActive('/for-institutions'))
+                      ? 'bg-white/15 text-white shadow-lg shadow-white/5' 
+                      : 'hover:bg-white/10'
+                  }`}
+                >
+                  <span className="relative z-10 flex items-center justify-between">
+                    Para instituciones
+                    {(isActive('/para-instituciones') || isActive('/for-institutions')) && (
+                      <span className="w-2 h-2 rounded-full bg-[#1CB8A4] animate-pulse"></span>
+                    )}
+                  </span>
+                  {(isActive('/para-instituciones') || isActive('/for-institutions')) && (
+                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#1CB8A4] to-[#0B95BA] rounded-l-xl"></span>
+                  )}
+                </a>
+                
+                <a 
+                  href="/nosotros" 
+                  onClick={closeMobileMenu}
+                  className={`group relative text-white/90 hover:text-white transition-all duration-200 px-4 py-4 rounded-xl font-medium text-base ${
+                    (isActive('/nosotros') || isActive('/about'))
+                      ? 'bg-white/15 text-white shadow-lg shadow-white/5' 
+                      : 'hover:bg-white/10'
+                  }`}
+                >
+                  <span className="relative z-10 flex items-center justify-between">
+                    Nosotros
+                    {(isActive('/nosotros') || isActive('/about')) && (
+                      <span className="w-2 h-2 rounded-full bg-[#1CB8A4] animate-pulse"></span>
+                    )}
+                  </span>
+                  {(isActive('/nosotros') || isActive('/about')) && (
+                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#1CB8A4] to-[#0B95BA] rounded-l-xl"></span>
+                  )}
+                </a>
+                
+                <a 
+                  href="/contacto" 
+                  onClick={closeMobileMenu}
+                  className={`group relative text-white/90 hover:text-white transition-all duration-200 px-4 py-4 rounded-xl font-medium text-base ${
+                    (isActive('/contacto') || isActive('/contact'))
+                      ? 'bg-white/15 text-white shadow-lg shadow-white/5' 
+                      : 'hover:bg-white/10'
+                  }`}
+                >
+                  <span className="relative z-10 flex items-center justify-between">
+                    Contacto
+                    {(isActive('/contacto') || isActive('/contact')) && (
+                      <span className="w-2 h-2 rounded-full bg-[#1CB8A4] animate-pulse"></span>
+                    )}
+                  </span>
+                  {(isActive('/contacto') || isActive('/contact')) && (
+                    <span className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#1CB8A4] to-[#0B95BA] rounded-l-xl"></span>
+                  )}
+                </a>
+                
+                {/* Botón destacado */}
+                <div className="mt-6 pt-6 border-t border-white/10">
+                  <a
+                    href="https://campus.cearlatinoamericano.edu.pe/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={closeMobileMenu}
+                    className="group w-full flex items-center justify-center gap-3 bg-gradient-to-r from-[#1CB8A4] via-[#19a894] to-[#0B95BA] text-white rounded-xl px-6 py-4 font-semibold text-sm shadow-lg shadow-[#1CB8A4]/30 hover:shadow-[#1CB8A4]/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    <span>Acceso al campus virtual</span>
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </nav>
     </header>

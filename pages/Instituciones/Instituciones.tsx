@@ -1,11 +1,13 @@
-import { Calendar, CheckCircle2, FileText, PhoneCall, Shield, X } from 'lucide-react';
+import { Calendar, CheckCircle2, FileText, PhoneCall, Shield, X, Loader2, AlertCircle } from 'lucide-react';
 import { useState } from 'react';
-import { ImageWithFallback } from '../../components/figma/ImageWithFallback';
+import { storeContacto, type ContactFormData } from '../../services/solicitudes';
 import svgPathsRutas from '../../imports/svg-tyywjenkly';
 import svgPathsForm from '../../imports/svg-39txb514tf';
 import svgPathsBeneficios from '../../imports/svg-zhlbirmz1x';
 
-const inst1 = '/images/institutions/instituciones-1.png';
+const back_patter = "/images/institutions/back_instituciones.webp";
+const banner_instituciones = "/images/institutions/banner_insti.webp";
+const section_instit = "/images/institutions/section_insti.jpeg";
 
 export function Instituciones() {
   const [formData, setFormData] = useState({
@@ -19,6 +21,8 @@ export function Instituciones() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const scrollToForm = () => {
     const formSection = document.getElementById('contact-form-section');
@@ -27,14 +31,60 @@ export function Instituciones() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleBrochure = () => {
+    window.open('https://cearlatinoamericano.edu.pe/sisdocs/brochures/BROCHURE-CORPORATIVO.pdf', '_blank');
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('[INSTITUCIONES FORM] Submit iniciado');
+    console.log('[INSTITUCIONES FORM] Datos del formulario:', formData);
+    
     if (!acceptedPrivacy) {
       alert('Debe aceptar la Política de Privacidad para continuar');
       return;
     }
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 3000);
+
+    setError(null);
+    setIsSubmitting(true);
+
+    try {
+      const contactoData: ContactFormData = {
+        nombre: formData.fullName,
+        celular: formData.phone,
+        email: formData.email,
+        dni: formData.dni || undefined,
+        mensaje: formData.message || '',
+        estado_politica: acceptedPrivacy,
+      };
+
+      console.log('[INSTITUCIONES FORM] Datos preparados para enviar:', contactoData);
+      console.log('[INSTITUCIONES FORM] Llamando a storeContacto...');
+      
+      await storeContacto(contactoData);
+      
+      console.log('[INSTITUCIONES FORM] storeContacto completado exitosamente');
+      setFormSubmitted(true);
+      
+      // Reset form
+      setFormData({
+        fullName: '',
+        phone: '',
+        email: '',
+        dni: '',
+        message: ''
+      });
+      setAcceptedPrivacy(false);
+      
+      setTimeout(() => {
+        setFormSubmitted(false);
+      }, 5000);
+    } catch (err: any) {
+      console.error('[INSTITUCIONES FORM] Error al enviar:', err);
+      setError(err.message || 'Error al enviar la solicitud. Por favor, intente nuevamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -69,7 +119,11 @@ export function Instituciones() {
 
         {/* Background Pattern - Llave Texture */}
         <div className="absolute inset-0 opacity-16 mix-blend-multiply pointer-events-none">
-          <div className="w-full h-full bg-gray-200 scale-[1.2]" />
+          <img
+            src={back_patter}
+            alt=""
+            className="w-full h-full object-cover scale-[1.2]"
+          />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10 pt-16 sm:pt-20 lg:pt-28 pb-0">
@@ -96,23 +150,14 @@ export function Instituciones() {
               </div>
             </div>
 
-            {/* Hero Video */}
+            {/* Hero Banner */}
             <div className="rounded-2xl sm:rounded-[20px] overflow-hidden shadow-[0px_0px_24.821px_0px_rgba(0,0,0,0.3)] h-[250px] sm:h-[380px] lg:h-[480px] relative">
-              <video
+              <img
+                src={banner_instituciones}
+                alt="Capacitación para instituciones"
                 className="w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster="/images/institutions/hero-instituciones.jpg"
-              >
-                <source
-                  src="https://cearlatinoamericano.pe/rsc/public/bienvenida.mp4"
-                  type="video/mp4"
-                />
-                Tu navegador no soporta la reproducción de videos.
-              </video>
+              />
+              <div className="absolute inset-0 bg-[rgba(0,0,0,0.3)]" />
             </div>
           </div>
 
@@ -128,6 +173,7 @@ export function Instituciones() {
             </button>
 
             <button
+              onClick={handleBrochure}
               className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-transparent border-2 border-white text-white rounded-xl hover:bg-white/10 transition-all inline-flex items-center justify-center gap-2 font-bold"
               style={{ fontSize: 'clamp(14px, 1.5vw, 16px)' }}
             >
@@ -381,36 +427,17 @@ export function Instituciones() {
       </section>
 
       {/* Trabajamos con instituciones */}
-      <section className="sm:py-16 lg:py-20 bg-linear-to-l from-[#1c98b7] from-[13.071%] to-[#561289] to-[156.28%] relative overflow-hidden m-0 px-0 py-[54px]">
-        {/* Imagen de fondo solo en la mitad izquierda - oculta en mobile/tablet */}
-        <div className="hidden lg:block absolute inset-y-0 w-[50%] lg:w-[54%] pointer-events-none" style={{ left: '-15%' }}>
-          <div className="aspect-895/744 relative h-full w-auto">
-            <div className="absolute inset-0 opacity-80 overflow-hidden">
-              <img
-                src={''}
-                alt=""
-                className="absolute h-full left-[-10.84%] max-w-none top-0 w-[110.84%]"
-              />
-            </div>
-          </div>
-        </div>
-
+      <section className="relative overflow-hidden m-0 px-0 py-8 sm:py-10 lg:py-12 bg-[#1C98B7]">
+        {/* Background image - only visible on lg screens and up */}
+        <div 
+          className="hidden lg:block absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${section_instit})` }}
+        />
         {/* Contenido principal */}
-        <div className="max-w-[1600px] mx-auto px-8 sm:px-12 lg:px-16 xl:px-20 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 xl:gap-20 items-center rounded-[20px] sm:rounded-[30px] lg:rounded-[34px] border-2 sm:border-[3px] lg:border-4 border-white p-6 sm:p-8 lg:p-12 xl:p-16">
-            {/* Imagen a la izquierda */}
-            <div className="order-2 lg:order-1">
-              <div className="relative rounded-[13.436px] overflow-hidden shadow-2xl">
-                <ImageWithFallback
-                  src={inst1}
-                  alt="Capacitación institucional CEAR"
-                  className="w-full h-auto"
-                />
-              </div>
-            </div>
-
-            {/* Contenido de texto a la derecha */}
-            <div className="order-1 lg:order-2 flex flex-col gap-3 sm:gap-4 lg:gap-5">
+        <div className="max-w-[1800px] mx-auto px-8 sm:px-12 lg:px-16 xl:px-20 relative z-10">
+          <div className="flex justify-end items-center rounded-[20px] sm:rounded-[30px] lg:rounded-[34px] border-2 sm:border-[3px] lg:border-4 border-white p-6 sm:p-8 lg:p-10 xl:p-12">
+            {/* Contenido de texto */}
+            <div className="flex flex-col gap-3 sm:gap-4 lg:gap-5 w-full max-w-[600px] lg:max-w-[700px]">
               <p className="font-light! text-[20px] sm:text-[24px] lg:text-[28px] text-white! tracking-[0.5177px] uppercase leading-[1.3]">
                 alianzas estratégicas
               </p>
@@ -423,7 +450,7 @@ export function Instituciones() {
                 Ofrecemos servicios de capacitación especializada dirigidos a instituciones públicas y privadas, orientados al fortalecimiento de las competencias profesionales de sus equipos, mediante programas formativos rigurosos, actualizados y alineados con la práctica arbitral y la contratación pública.
               </p>
 
-              <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-[#1CB8A4] text-white rounded-[14px] shadow-[0px_0px_22.524px_0px_rgba(0,0,0,0.3)] hover:bg-[#17a08e] hover:scale-105 active:scale-95 transition-all inline-flex items-center justify-center gap-3 mt-2">
+              <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-[#1CB8A4] text-white rounded-[14px] shadow-[0px_0px_22.524px_0px_rgba(0,0,0,0.3)] hover:bg-[#17a08e] hover:scale-105 active:scale-95 transition-all inline-flex items-center justify-center gap-3 mt-2 cursor-pointer">
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="font-semibold text-[14px] sm:text-[16px] lg:text-[16.217px]">Agendar reunión</span>
               </button>
@@ -584,7 +611,7 @@ export function Instituciones() {
                       value={formData.fullName}
                       onChange={handleChange}
                       required
-                      className="w-full px-3 sm:px-4 lg:px-[16.614px] py-2.5 sm:py-3 lg:py-[12.461px] bg-[#f9fafb] rounded-[10px] sm:rounded-[12px] lg:rounded-[14.076px] border border-[#e5e7eb] text-[14px] sm:text-[15px] lg:text-[16.614px] outline-none focus:ring-2 focus:ring-[#1c98b7]"
+                      className="w-full px-3 sm:px-4 lg:px-[16.614px] py-2.5 sm:py-3 lg:py-[12.461px] bg-[#f9fafb] rounded-[10px] sm:rounded-[12px] lg:rounded-[14.076px] border border-[#e5e7eb] text-[14px] sm:text-[15px] lg:text-[16.614px] placeholder:text-[15px] outline-none focus:ring-2 focus:ring-[#1c98b7]"
                       placeholder="Escriba sus nombres y apellidos"
                     />
                   </div>
@@ -602,7 +629,7 @@ export function Instituciones() {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        className="w-full px-[16.614px] py-[12.461px] bg-[#f9fafb] rounded-[14.076px] border-[0.923px] border-[#e5e7eb] text-[16.614px] outline-none focus:ring-2 focus:ring-[#1c98b7]"
+                        className="w-full px-[16.614px] py-[12.461px] bg-[#f9fafb] rounded-[14.076px] border-[0.923px] border-[#e5e7eb] text-[16.614px] placeholder:text-[15px] outline-none focus:ring-2 focus:ring-[#1c98b7]"
                         placeholder="(+51) 999 999 999"
                       />
                     </div>
@@ -620,7 +647,7 @@ export function Instituciones() {
                         onChange={handleChange}
                         required
                         maxLength={8}
-                        className="w-full px-[16.614px] py-[12.461px] bg-[#f9fafb] rounded-[14.076px] border-[0.923px] border-[#e5e7eb] text-[16.614px] outline-none focus:ring-2 focus:ring-[#1c98b7]"
+                        className="w-full px-[16.614px] py-[12.461px] bg-[#f9fafb] rounded-[14.076px] border-[0.923px] border-[#e5e7eb] text-[16.614px] placeholder:text-[15px] outline-none focus:ring-2 focus:ring-[#1c98b7]"
                         placeholder="12345678"
                       />
                     </div>
@@ -638,7 +665,7 @@ export function Instituciones() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-[16.614px] py-[12.461px] bg-[#f9fafb] rounded-[14.076px] border-[0.923px] border-[#e5e7eb] text-[16.614px] outline-none focus:ring-2 focus:ring-[#1c98b7]"
+                      className="w-full px-[16.614px] py-[12.461px] bg-[#f9fafb] rounded-[14.076px] border-[0.923px] border-[#e5e7eb] text-[16.614px] placeholder:text-[15px] outline-none focus:ring-2 focus:ring-[#1c98b7]"
                       placeholder="ejemplo@correo.com"
                     />
                   </div>
@@ -654,7 +681,7 @@ export function Instituciones() {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      className="w-full px-[16.614px] py-[12.461px] bg-[#f9fafb] rounded-[14.076px] border-[0.923px] border-[#e5e7eb] text-[16.614px] leading-[24.921px] outline-none focus:ring-2 focus:ring-[#1c98b7] resize-none"
+                      className="w-full px-[16.614px] py-[12.461px] bg-[#f9fafb] rounded-[14.076px] border-[0.923px] border-[#e5e7eb] text-[16.614px] placeholder:text-[15px] leading-[24.921px] outline-none focus:ring-2 focus:ring-[#1c98b7] resize-none"
                       placeholder="Indique brevemente el tipo de programa de capacitación que requiere su institución."
                     />
                   </div>
@@ -681,12 +708,28 @@ export function Instituciones() {
                     </label>
                   </div>
 
+                  {/* Error Message */}
+                  {error && (
+                    <div className="flex items-center gap-2 text-red-600 bg-red-50 p-4 rounded-xl border border-red-200">
+                      <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                      <span className="text-sm">{error}</span>
+                    </div>
+                  )}
+
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    className="w-full h-[50px] sm:h-[54px] lg:h-[58px] bg-[#1c98b7] text-white rounded-[14.076px] shadow-[0px_0px_23.075px_0px_rgba(0,0,0,0.3)] hover:bg-[#087A98] transition-all flex items-center justify-center"
+                    disabled={isSubmitting || !acceptedPrivacy}
+                    className="w-full h-[50px] sm:h-[54px] lg:h-[58px] bg-[#1c98b7] text-white rounded-[14.076px] shadow-[0px_0px_23.075px_0px_rgba(0,0,0,0.3)] hover:bg-[#087A98] transition-all flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span className="font-semibold text-[14px] sm:text-[15px] lg:text-[16px] leading-normal">Enviar solicitud</span>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin mr-2" />
+                        <span className="font-semibold text-[14px] sm:text-[15px] lg:text-[16px] leading-normal">Enviando...</span>
+                      </>
+                    ) : (
+                      <span className="font-semibold text-[14px] sm:text-[15px] lg:text-[16px] leading-normal">Enviar solicitud</span>
+                    )}
                   </button>
 
                   {formSubmitted && (

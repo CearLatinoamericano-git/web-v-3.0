@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://cearlatinoamericano.edu.pe/sitemap.xml
+
+# Rutas protegidas que no deben indexarse
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /campus/virtual
+Disallow: /campus/
+Disallow: /enrollment/
+

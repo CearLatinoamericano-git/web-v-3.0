@@ -27,6 +27,42 @@ export function CourseBenefitsSection({
   const { colorVariant } = useTheme();
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // Función para formatear fecha correctamente
+  const formatDate = (dateString?: string) => {
+    if (!dateString) return '';
+    try {
+      let date: Date;
+      
+      // Detectar formato DD-MM-YY o DD/MM/YY
+      const dashMatch = dateString.match(/^(\d{2})[-/](\d{2})[-/](\d{2,4})$/);
+      if (dashMatch) {
+        const [, day, month, year] = dashMatch;
+        // Si el año tiene 2 dígitos, asumir 20XX
+        const fullYear = year.length === 2 ? parseInt(`20${year}`) : parseInt(year);
+        const monthNum = parseInt(month);
+        const dayNum = parseInt(day);
+        // Crear fecha usando constructor con números para evitar problemas de zona horaria
+        date = new Date(fullYear, monthNum - 1, dayNum);
+      } else {
+        // Intentar parsear como fecha estándar
+        date = new Date(dateString);
+      }
+      
+      // Verificar que la fecha sea válida
+      if (isNaN(date.getTime())) {
+        return dateString; // Retornar el string original si no se puede parsear
+      }
+      
+      return date.toLocaleDateString('es-PE', { 
+        day: '2-digit', 
+        month: '2-digit',
+        year: 'numeric'
+      });
+    } catch {
+      return dateString;
+    }
+  };
+
   const handlePlayVideo = () => {
     setIsPlaying(true);
   };
@@ -59,13 +95,14 @@ export function CourseBenefitsSection({
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
+        <div className={`grid grid-cols-1 ${videoUrl ? 'lg:grid-cols-2' : ''} gap-8 lg:gap-12 xl:gap-16 items-center`}>
           {/* Description */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className={videoUrl ? '' : 'max-w-4xl mx-auto'}
           >
             <div className="prose prose-lg max-w-none">
               <p className="text-base lg:text-lg xl:text-[20.25px] text-[#364153] leading-relaxed text-justify">
@@ -74,7 +111,7 @@ export function CourseBenefitsSection({
             </div>
           </motion.div>
 
-          {/* Video Player */}
+          {/* Video Player - Only show if videoUrl exists */}
           {videoUrl && (
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -122,26 +159,6 @@ export function CourseBenefitsSection({
 
               {/* Decorative Blur Elements */}
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-24 md:w-28 md:h-28 lg:w-[130px] lg:h-[130px] bg-[#1c98b7]/30 rounded-full blur-[57px]" style={{ zIndex: 0 }} />
-            </motion.div>
-          )}
-
-          {/* If no video, show just description centered */}
-          {!videoUrl && (
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="flex items-center justify-center"
-            >
-              <div className="w-full aspect-video rounded-2xl bg-gradient-to-br from-[#0B95BA]/10 to-[#10E7B0]/10 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 bg-gradient-to-br from-[#0B95BA] to-[#10E7B0] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Play className="w-10 h-10 text-white" />
-                  </div>
-                  <p className="text-gray-600">Video introductorio próximamente</p>
-                </div>
-              </div>
             </motion.div>
           )}
         </div>
@@ -214,11 +231,7 @@ export function CourseBenefitsSection({
                 <div>
                   <p className={`text-2xl mb-1 ${colorVariant === 'dark' ? 'text-white/80' : 'text-gray-500'}`}>Inicio</p>
                   <p className={colorVariant === 'dark' ? 'text-white' : 'text-gray-900'}>
-                    {new Date(startDate).toLocaleDateString('es-PE', { 
-                      day: '2-digit', 
-                      month: '2-digit',
-                      year: 'numeric'
-                    })}
+                    {formatDate(startDate)}
                   </p>
                 </div>
               </div>

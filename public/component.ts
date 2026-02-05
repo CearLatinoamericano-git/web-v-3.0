@@ -574,7 +574,7 @@ export const courses: Course[] = [
   },
   {
     id: 'curso-inversion-privada',
-    title: 'Curso de Especialidad en Mecanismos de Inversión Privada (APP, OxI y G2G)',
+    title: 'Curso de Especialización en Mecanismos de Inversión Privada (APP, OxI y G2G)',
     shortDescription: 'Domina los mecanismos de inversión privada en proyectos públicos.',
     fullDescription: 'Los mecanismos alternativos de inversión en infraestructura pública han cobrado relevancia fundamental como instrumentos para cerrar la brecha de infraestructura en el país. Este curso especializado proporciona formación integral en las Asociaciones Público-Privadas (APP), el mecanismo de Obras por Impuestos (OxI), y los contratos Gobierno a Gobierno (G2G), analizando su marco legal, estructuración, ventajas y desventajas. Aprenderás el procedimiento completo para la promoción y adjudicación de proyectos APP, los beneficios tributarios y el proceso de inversión bajo el esquema de Obras por Impuestos, las particularidades de los contratos G2G y su régimen jurídico especial.',
     type: 'curso',
@@ -646,9 +646,9 @@ export const courses: Course[] = [
   },
   {
     id: 'curso-controversias-ejecucion-contractual',
-    title: 'III Curso de Especialidad en Controversias en la Ejecución Contractual de Obras Públicas',
+    title: 'III Curso de Especialización en Controversias en la Ejecución Contractual de Obras Públicas',
     shortDescription: 'Gestiona y resuelve controversias durante la fase de ejecución de contratos públicos.',
-    fullDescription: 'La ejecución contractual de obras públicas constituye la etapa más sensible del proceso de contratación estatal, donde se concentran los principales riesgos legales, técnicos y económicos del contrato. Este curso de especialidad brinda una formación normativa y práctica sobre la gestión de la ejecución contractual conforme a la Ley N° 32069 y su Reglamento, abordando aspectos críticos como modificaciones contractuales, penalidades, resolución, recepción y liquidación de obra. El programa está orientado a que el participante adquiera criterios técnicos y jurídicos para tomar decisiones informadas, prevenir contingencias y gestionar contratos de obra con solvencia frente a escenarios de control y eventual controversia.',
+    fullDescription: 'La ejecución contractual de obras públicas constituye la etapa más sensible del proceso de contratación estatal, donde se concentran los principales riesgos legales, técnicos y económicos del contrato. Este curso de especialización brinda una formación normativa y práctica sobre la gestión de la ejecución contractual conforme a la Ley N° 32069 y su Reglamento, abordando aspectos críticos como modificaciones contractuales, penalidades, resolución, recepción y liquidación de obra. El programa está orientado a que el participante adquiera criterios técnicos y jurídicos para tomar decisiones informadas, prevenir contingencias y gestionar contratos de obra con solvencia frente a escenarios de control y eventual controversia.',
     type: 'curso',
     modality: 'virtual',
     duration: '28/04/26 – 23/06/26',
@@ -659,7 +659,7 @@ export const courses: Course[] = [
     schedule: '07:00 p.m. - 10:00 p.m.',
     hours: '120 horas académicas',
     category: 'Controversias',
-    benefits: 'La ejecución contractual de obras públicas constituye la etapa más sensible del proceso de contratación estatal, donde se concentran los principales riesgos legales, técnicos y económicos del contrato. Este curso de especialidad brinda una formación normativa y práctica sobre la gestión de la ejecución contractual conforme a la Ley N° 32069 y su Reglamento, abordando aspectos críticos como modificaciones contractuales, penalidades, resolución, recepción y liquidación de obra. El programa está orientado a que el participante adquiera criterios técnicos y jurídicos para tomar decisiones informadas, prevenir contingencias y gestionar contratos de obra con solvencia frente a escenarios de control y eventual controversia.',
+    benefits: 'La ejecución contractual de obras públicas constituye la etapa más sensible del proceso de contratación estatal, donde se concentran los principales riesgos legales, técnicos y económicos del contrato. Este curso de especialización brinda una formación normativa y práctica sobre la gestión de la ejecución contractual conforme a la Ley N° 32069 y su Reglamento, abordando aspectos críticos como modificaciones contractuales, penalidades, resolución, recepción y liquidación de obra. El programa está orientado a que el participante adquiera criterios técnicos y jurídicos para tomar decisiones informadas, prevenir contingencias y gestionar contratos de obra con solvencia frente a escenarios de control y eventual controversia.',
     videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     videoThumbnail: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400',
     certificationImage: diplomadoCertificate,
@@ -800,7 +800,7 @@ export const courses: Course[] = [
   },
   {
     id: 'curso-contratacion-publica-ii',
-    title: 'II Curso de Especialidad en Contratación Pública bajo la Ley N° 32069 y su Reglamento',
+    title: 'II Curso de Especialización en Contratación Pública bajo la Ley N° 32069 y su Reglamento',
     shortDescription: 'Curso especializado en los procedimientos y normativa actual de la contratación pública.',
     fullDescription: 'La entrada en vigencia de la Ley N° 32069 y su Reglamento ha transformado de manera integral el sistema de contratación pública en el Perú, incorporando nuevos enfoques, actores y herramientas de gestión. Este curso ofrece una formación práctica y especializada que abarca desde los fundamentos normativos hasta la ejecución contractual. El programa busca que el participante adquiera criterios técnicos para planificar, conducir y supervisar procesos de contratación pública, reduciendo riesgos legales y mejorando la toma de decisiones en cada etapa del procedimiento.',
     type: 'curso',

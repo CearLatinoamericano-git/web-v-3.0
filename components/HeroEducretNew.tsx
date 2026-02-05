@@ -2,6 +2,7 @@ import { Play, ArrowRight, Award, Star, Briefcase } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ModelClassModal } from './modals/ModelClassModal';
+import styles from './HeroEducretNew.module.css';
 
 // Imágenes de profesionales/docentes desde hero_images
 const jorgeHerrera = "/images/hero_images/jorge_herrera.png";
@@ -114,71 +115,48 @@ export function HeroEducretNew({ onExploreCourses }: HeroEducretNewProps) {
   const currentProfessional = professionals[currentIndex];
 
   return (
-    <section 
-      className="relative w-full overflow-hidden rounded-b-[40px]"
-      style={{ 
-        background: 'linear-gradient(180deg, #561289 0%, #3954A0 50%, #1C98B7 100%)',
-        minHeight: '800px',
-        paddingTop: '0'
-      }}
-    >
+    <section className={styles.heroSection}>
       {/* Background Texture */}
-      <div className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none">
+      <div className={styles.backgroundTexture}>
         <img 
           src={heroBackgroundImage} 
-          alt="sadasdasd" 
+          alt="Hero background" 
           className="w-full h-full object-cover"
         />
       </div>
 
       {/* Hero Content */}
-      <div className="">
-        <div className="flex gap-5 items-center justify-center mt-47 w-[70%] mx-auto">
+      <div className={styles.heroContent}>
+        <div className={styles.heroContainer}>
           {/* Left Content */}
-          <div className="flex-1">
+          <div className={styles.leftContent}>
             {/* Main Title */}
-            <div className="space-y-2">
-              <h1 
-                className="font-bold text-white leading-none"
-                style={{
-                  fontSize: 'clamp(2.5rem, 8vw, 5rem)',
-                  textShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-                  letterSpacing: '-0.02em',
-                  fontFamily: 'var(--font-family-base)'
-                }}
-              >
+            <div className={styles.titleContainer}>
+              <h1 className={styles.mainTitle}>
                 CEAR
               </h1>
-              <h2 
-                className="font-bold text-white leading-tight"
-                style={{
-                  fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-                  textShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-                  letterSpacing: '-0.01em',
-                  fontFamily: 'var(--font-family-base)'
-                }}
-              >
+              <h2 className={styles.subTitle}>
                 FORMACIÓN CONTINUA
               </h2>
             </div>
 
             {/* Subtitle */}
-            <p className="text-white/90 text-base lg:text-lg leading-relaxed max-w-[520px] mt-4 lg:mt-6">
+            <p className={styles.subtitleText}>
               Programas de formación continua orientados a profesionales del Derecho y la Ingeniería, con enfoque especializado y aplicado.
             </p>
 
             {/* Quote */}
-            <p className="text-white text-lg lg:text-xl leading-relaxed mt-4 lg:mt-6">
-              <span className="font-bold">"COMPROMETIDOS</span>
-              <span className="font-normal"> con tu </span>
-              <span className="font-bold">CRECIMIENTO PROFESIONAL"</span>
+            <p className={styles.quoteText}>
+              <span className={styles.quoteBold}>"COMPROMETIDOS</span>
+              <span className={styles.quoteNormal}> con tu </span>
+              <span className={styles.quoteBold}>CRECIMIENTO PROFESIONAL"</span>
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-6 lg:mt-8">
+            <div className={styles.buttonsContainer}>
               <button 
                 onClick={onExploreCourses}
-                className="bg-[rgb(240,131,0)] hover:bg-[#19a894] text-white font-semibold px-6 py-3 lg:px-8 lg:py-3.5 rounded-lg flex items-center justify-center gap-2 transition-colors text-base lg:text-lg"
+                className={styles.primaryButton}
               >
                 Ver programas
                 <ArrowRight className="w-5 h-5" />
@@ -186,7 +164,7 @@ export function HeroEducretNew({ onExploreCourses }: HeroEducretNewProps) {
 
               <button 
                 onClick={() => setIsModelClassModalOpen(true)}
-                className="bg-transparent hover:bg-white/10 text-white font-semibold px-6 py-3 lg:px-8 lg:py-3.5 rounded-lg border-2 border-white flex items-center justify-center gap-2 transition-colors text-base lg:text-lg"
+                className={styles.secondaryButton}
               >
                 <Play className="w-5 h-5 fill-white" />
                 Ver clase modelo
@@ -194,7 +172,7 @@ export function HeroEducretNew({ onExploreCourses }: HeroEducretNewProps) {
             </div>
           </div>
           {/* Right Content - Professional Image with Animation */}
-          <div className="flex-1">
+          <div className={styles.rightContent}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
@@ -202,22 +180,21 @@ export function HeroEducretNew({ onExploreCourses }: HeroEducretNewProps) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
-                className="relative w-full flex items-end justify-end"
-                style={{ minHeight: '520px' }}
+                className={styles.professionalImageContainer}
               >
                 {/* Professional Image - Full Height */}
-                <div className="relative flex justify-center items-center w-full">
+                <div className={styles.professionalImageWrapper}>
                   <img
                     src={currentProfessional.image}
                     alt={currentProfessional.name}
-                    className="h-[520px] w-auto max-w-full object-contain object-bottom"
+                    className={styles.professionalImage}
                     style={{
                       transform: `scale(${currentProfessional.imageScale})`,
                     }}
                   />
 
                   {/* Professional Info Card - Bottom */}
-                  <div className="absolute bottom-6 right-0 left-0 bg-white rounded-xl shadow-2xl px-3 py-2.5 sm:px-4 sm:py-3 w-full z-10">
+                  <div className={styles.professionalInfoCard}>
                     <motion.div
                       key={currentIndex}
                       initial={{ opacity: 0 }}
@@ -226,13 +203,13 @@ export function HeroEducretNew({ onExploreCourses }: HeroEducretNewProps) {
                       transition={{ duration: 0.5 }}
                     >
                       {/* Certificate Badge - Top Right */}
-                      <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-[#0BA5C9]/10 p-1.5 sm:p-2 rounded-lg">
+                      <div className={styles.certificateBadge}>
                         <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0BA5C9]" />
                       </div>
 
                       {/* Stars + Experience Row */}
-                      <div className="flex items-center gap-1.5 sm:gap-2 mb-1 sm:mb-1.5">
-                        <div className="flex items-center gap-0.5">
+                      <div className={styles.starsRow}>
+                        <div className={styles.starsContainer}>
                           {[...Array(5)].map((_, i) => (
                             <Star
                               key={i}
@@ -240,8 +217,8 @@ export function HeroEducretNew({ onExploreCourses }: HeroEducretNewProps) {
                             />
                           ))}
                         </div>
-                        <div className="flex items-center gap-1 text-[10px] sm:text-xs text-gray-600">
-                          <Briefcase className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#0BA5C9]" />
+                        <div className={styles.experienceRow}>
+                          <Briefcase className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-[#0BA5C9]" />
                           <span className="font-semibold">
                             {currentProfessional.experience}
                           </span>
@@ -249,13 +226,13 @@ export function HeroEducretNew({ onExploreCourses }: HeroEducretNewProps) {
                       </div>
 
                       {/* Name */}
-                      <h3 className="font-bold text-sm sm:text-base text-gray-900 mb-2">
-                        {currentProfessional.name}
+                      <h3 className={styles.professionalName}>
+                        Docente: {currentProfessional.name}
                       </h3>
 
                       {/* Highlight Box */}
-                      <div className="bg-linear-to-r from-[#0BA5C9]/5 to-transparent border-l-[3px] border-[#0BA5C9] px-2 py-1.5 sm:px-3 sm:py-2 rounded">
-                        <p className="text-xs sm:text-sm text-gray-700 leading-relaxed text-justify">
+                      <div className={styles.highlightBox}>
+                        <p className={styles.highlightText}>
                           {currentProfessional.highlight}
                         </p>
                       </div>

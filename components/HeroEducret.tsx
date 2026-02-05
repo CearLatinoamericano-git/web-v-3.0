@@ -36,63 +36,63 @@ export function HeroEducret({ onExploreCourses }: HeroEducretProps) {
     {
       id: 1,
       name: 'Dr. Carlos Mendoza',
-      photo:
+      photo: '/images/instructors/lawyer-2.png',
       course: 'Diplomado en Arbitraje Internacional',
       rating: 5
     },
     {
       id: 2,
       name: 'Dr. Roberto Hernández',
-      photo:
+      photo: '/images/instructors/lawyer-3.png',
       course: 'Curso de Contratación con el Estado',
       rating: 5
     },
     {
       id: 3,
       name: 'Mg. Alberto Sánchez',
-      photo:
+      photo: '/images/instructors/lawyer-4.png',
       course: 'Diplomado en JPRD',
       rating: 5
     },
     {
       id: 4,
       name: 'Dra. María Elena Pérez',
-      photo:
+      photo: '/images/instructors/lawyer-5.png',
       course: 'Curso de Recursos Impugnativos',
       rating: 5
     },
     {
       id: 5,
       name: 'Dr. Juan Roberto López',
-      photo:
+      photo: '/images/instructors/lawyer-8.png',
       course: 'Curso de Modificaciones Contractuales',
       rating: 5
     },
     {
       id: 6,
       name: 'Mg. Luis Alberto Vargas',
-      photo:
+      photo: '/images/instructors/lawyer-9.png',
       course: 'Diplomado en Arbitraje Nacional',
       rating: 5
     },
     {
       id: 7,
       name: 'Dr. José Luis Gómez',
-      photo:
+      photo: '/images/instructors/lawyer-2.png',
       course: 'Diplomado en Arbitraje Internacional',
       rating: 5
     },
     {
       id: 8,
       name: 'Mg. Ana María Fernández',
-      photo:
+      photo: '/images/instructors/lawyer-3.png',
       course: 'Curso de Contratación con el Estado',
       rating: 5
     },
     {
       id: 9,
       name: 'Dr. Francisco Javier Ramírez',
-      photo:
+      photo: '/images/instructors/lawyer-4.png',
       course: 'Diplomado en JPRD',
       rating: 5
     }
@@ -360,7 +360,7 @@ export function HeroEducret({ onExploreCourses }: HeroEducretProps) {
                     className="absolute"
                     style={{
                       top: position.top,
-                      bottom: position.bottom,
+                      ...('bottom' in position && { bottom: (position as any).bottom }),
                       left: position.left,
                       right: position.right,
                       zIndex: zIndex,

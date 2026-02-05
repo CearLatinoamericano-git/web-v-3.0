@@ -1,0 +1,334 @@
+/* ===================================
+   HOME PAGE - RESPONSIVE STYLES
+   CSS Module con Media Queries
+   Breakpoints: 468px, 768px, 1024px, 1280px, 1920px
+   =================================== */
+
+/* Base Styles - Desktop First (1920px+) */
+.container {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.statsSection {
+  position: relative;
+  margin-top: -4rem;
+  z-index: 20;
+  overflow: hidden;
+}
+
+.statsContent {
+  width: 75%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.statsTitle {
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.2;
+  font-style: normal;
+  color: #0b95ba;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 0.05em;
+}
+
+.statsSubtitle {
+  text-align: center;
+  font-weight: normal;
+  line-height: 1.6;
+  font-style: normal;
+  color: #111827;
+  margin-top: 0.75rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.statsSubtitleGradient {
+  background-clip: text;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(173.66deg, rgb(11, 149, 186) 0%, rgb(8, 122, 152) 100%);
+}
+
+.testimonialsContainer {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0;
+}
+
+.coursesSection {
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+  background: white;
+}
+
+.coursesContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.coursesTitle {
+  color: #0b95ba;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 3.75rem;
+  line-height: 1.2;
+}
+
+.coursesSubtitle {
+  font-size: 1.875rem;
+  color: #111827;
+  line-height: 1.6;
+  margin-top: 0.5rem;
+}
+
+.buttonContainer {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.verTodosButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  background: #1f2937;
+  color: white;
+  border-radius: 1rem;
+  transition: all 0.3s;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.verTodosButton:hover {
+  background: #374151;
+  transform: scale(1.05);
+}
+
+.verTodosButton:active {
+  transform: scale(0.95);
+}
+
+/* ===================================
+   MEDIA QUERIES - MAX-WIDTH APPROACH
+   =================================== */
+
+/* 1920px - Large Desktop */
+@media screen and (max-width: 1920px) {
+  .coursesContainer {
+    max-width: 1400px;
+  }
+}
+
+/* 1280px - Desktop */
+@media screen and (max-width: 1280px) {
+  .statsContent {
+    width: 90%;
+    padding: 0 1.5rem;
+  }
+
+  .statsTitle {
+    font-size: 2.25rem;
+  }
+
+  .statsSubtitle {
+    font-size: 1.375rem;
+  }
+
+  .coursesTitle {
+    font-size: 3.25rem;
+  }
+
+  .coursesSubtitle {
+    font-size: 1.75rem;
+  }
+
+  .coursesContainer {
+    max-width: 1200px;
+    padding: 0 1.5rem;
+  }
+}
+
+/* 1024px - Tablet Landscape / Small Desktop */
+@media screen and (max-width: 1024px) {
+  .statsSection {
+    margin-top: -3rem;
+  }
+
+  .statsContent {
+    width: 90%;
+    padding: 0 1rem;
+  }
+
+  .statsTitle {
+    font-size: 2rem;
+  }
+
+  .statsSubtitle {
+    font-size: 0.9375rem; /* 15px */
+    margin-bottom: 1.5rem;
+  }
+
+  .coursesSubtitle {
+    font-size: 0.9375rem; /* 15px */
+  }
+
+  /* Todos los párrafos en responsive */
+  p {
+    font-size: 0.9375rem; /* 15px */
+  }
+
+  .coursesSection {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+
+  .coursesTitle {
+    font-size: 2.75rem;
+  }
+
+  .coursesSubtitle {
+    font-size: 1.5rem;
+  }
+
+  .coursesContainer {
+    padding: 0 1rem;
+  }
+
+  .buttonContainer {
+    margin-top: 3rem;
+  }
+
+  .verTodosButton {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* 768px - Tablet Portrait */
+@media screen and (max-width: 768px) {
+  .statsSection {
+    margin-top: -2rem;
+  }
+
+  .statsContent {
+    width: 95%;
+    padding: 0 0.75rem;
+  }
+
+  .statsTitle {
+    font-size: 1.75rem;
+  }
+
+  .statsSubtitle {
+    font-size: 0.9375rem; /* 15px */
+    margin-top: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Todos los párrafos en responsive */
+  p {
+    font-size: 0.9375rem; /* 15px */
+  }
+
+  .coursesSection {
+    padding-top: 3rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .coursesTitle {
+    font-size: 2.25rem;
+  }
+
+  .coursesSubtitle {
+    font-size: 1.25rem;
+  }
+
+  .coursesContainer {
+    padding: 0 0.75rem;
+  }
+
+  .buttonContainer {
+    margin-top: 2.5rem;
+  }
+
+  .verTodosButton {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.9375rem;
+  }
+}
+
+/* 468px - Mobile Large */
+@media screen and (max-width: 468px) {
+  .statsSection {
+    margin-top: -1.5rem;
+  }
+
+  .statsContent {
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .statsTitle {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .statsSubtitle {
+    font-size: 0.9375rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .testimonialsContainer {
+    padding: 0;
+  }
+
+  .coursesSection {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .coursesTitle {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .coursesSubtitle {
+    font-size: 0.9375rem; /* 15px */
+    margin-top: 0.5rem;
+  }
+
+  /* Todos los párrafos en responsive */
+  p {
+    font-size: 0.9375rem; /* 15px */
+  }
+
+  .coursesContainer {
+    padding: 0 0.5rem;
+  }
+
+  .buttonContainer {
+    margin-top: 2rem;
+  }
+
+  .verTodosButton {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.875rem;
+    width: 100%;
+    max-width: 280px;
+  }
+}
+

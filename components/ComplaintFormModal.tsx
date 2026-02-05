@@ -1,5 +1,5 @@
-import { X, Calendar, FileText, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
-import { useState } from 'react';
+import { X, FileText, Loader2, AlertCircle, CheckCircle2, Calendar } from 'lucide-react';
+import { useState, useRef } from 'react';
 import { storeDenuncias, type DenunciaFormData } from '../services/denuncias';
 
 interface ComplaintFormModalProps {
@@ -20,9 +20,13 @@ export function ComplaintFormModal({ isOpen, onClose }: ComplaintFormModalProps)
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const dateFromRef = useRef<HTMLInputElement>(null);
+  const dateToRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('[FORM] Submit iniciado');
+    console.log('[FORM] Datos del formulario:', formData);
     setError(null);
     setIsSubmitting(true);
 
@@ -37,7 +41,10 @@ export function ComplaintFormModal({ isOpen, onClose }: ComplaintFormModalProps)
         prueba: formData.files,
       };
 
+      console.log('[FORM] Datos preparados para enviar:', denunciaData);
+      console.log('[FORM] Llamando a storeDenuncias...');
       await storeDenuncias(denunciaData);
+      console.log('[FORM] storeDenuncias completado exitosamente');
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
@@ -53,8 +60,9 @@ export function ComplaintFormModal({ isOpen, onClose }: ComplaintFormModalProps)
           files: []
         });
       }, 2000);
-    } catch (err: any) {
-      setError(err.message || 'Error al enviar la denuncia. Por favor, intente nuevamente.');
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : 'Error al enviar la denuncia. Por favor, intente nuevamente.';
+      setError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -144,14 +152,30 @@ export function ComplaintFormModal({ isOpen, onClose }: ComplaintFormModalProps)
                 </label>
                 <div className="relative">
                   <input
+                    ref={dateFromRef}
                     type="date"
                     value={formData.dateFrom}
                     onChange={(e) => setFormData({ ...formData, dateFrom: e.target.value })}
                     required={!formData.isContinuing}
                     disabled={formData.isContinuing}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0BDDB3] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0BDDB3] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:w-0 [&::-webkit-calendar-picker-indicator]:h-0 [&::-moz-calendar-picker-indicator]:hidden"
+                    style={{
+                      colorScheme: 'light'
+                    }}
                   />
-                  <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                  <Calendar 
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 cursor-pointer hover:text-[#0BDDB3] transition-colors" 
+                    onClick={() => {
+                      if (!formData.isContinuing && dateFromRef.current) {
+                        dateFromRef.current.focus();
+                        if (dateFromRef.current.showPicker) {
+                          dateFromRef.current.showPicker();
+                        } else {
+                          dateFromRef.current.click();
+                        }
+                      }
+                    }}
+                  />
                 </div>
               </div>
               <div>
@@ -160,14 +184,30 @@ export function ComplaintFormModal({ isOpen, onClose }: ComplaintFormModalProps)
                 </label>
                 <div className="relative">
                   <input
+                    ref={dateToRef}
                     type="date"
                     value={formData.dateTo}
                     onChange={(e) => setFormData({ ...formData, dateTo: e.target.value })}
                     required={!formData.isContinuing}
                     disabled={formData.isContinuing}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0BDDB3] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0BDDB3] focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:w-0 [&::-webkit-calendar-picker-indicator]:h-0 [&::-moz-calendar-picker-indicator]:hidden"
+                    style={{
+                      colorScheme: 'light'
+                    }}
                   />
-                  <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                  <Calendar 
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 cursor-pointer hover:text-[#0BDDB3] transition-colors" 
+                    onClick={() => {
+                      if (!formData.isContinuing && dateToRef.current) {
+                        dateToRef.current.focus();
+                        if (dateToRef.current.showPicker) {
+                          dateToRef.current.showPicker();
+                        } else {
+                          dateToRef.current.click();
+                        }
+                      }
+                    }}
+                  />
                 </div>
               </div>
             </div>
@@ -212,13 +252,27 @@ export function ComplaintFormModal({ isOpen, onClose }: ComplaintFormModalProps)
             <p className="text-[#0BDDB3] text-sm mb-2">
               ¿Cuenta con pruebas de hechos?
             </p>
-            <input
-              type="file"
-              onChange={handleFileChange}
-              multiple
-              accept="image/*,.pdf,.doc,.docx"
-              className="w-full px-4 py-3 border-2 border-[#0B95BA] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0BDDB3] focus:border-transparent file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-[#0B95BA] file:text-white hover:file:bg-[#0a7c9a] file:cursor-pointer"
-            />
+            <div className="relative">
+              <input
+                type="file"
+                id="file-upload"
+                onChange={handleFileChange}
+                multiple
+                accept="image/*,.pdf,.doc,.docx"
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+              />
+              <label
+                htmlFor="file-upload"
+                className="flex items-center justify-center gap-3 w-full px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-gray-50 hover:border-[#0BDDB3] transition-all cursor-pointer group focus-within:ring-2 focus-within:ring-[#0BDDB3] focus-within:border-transparent"
+              >
+                <FileText className="w-5 h-5 text-gray-400 group-hover:text-[#0BDDB3] transition-colors" />
+                <span className="text-gray-600 group-hover:text-[#0BDDB3] transition-colors">
+                  {formData.files.length > 0 
+                    ? `${formData.files.length} archivo${formData.files.length > 1 ? 's' : ''} seleccionado${formData.files.length > 1 ? 's' : ''}`
+                    : 'Haga clic para seleccionar archivos o arrástrelos aquí'}
+                </span>
+              </label>
+            </div>
             <p className="text-gray-500 text-xs mt-2">
               Peso máximo por archivo: 10 MB. Puede seleccionar hasta 5 archivos.
             </p>
@@ -230,7 +284,7 @@ export function ComplaintFormModal({ isOpen, onClose }: ComplaintFormModalProps)
                     className="flex items-center justify-between px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg"
                   >
                     <div className="flex items-center gap-3 flex-1 min-w-0">
-                      <FileText className="w-5 h-5 text-[#0B95BA] flex-shrink-0" />
+                      <FileText className="w-5 h-5 text-[#0B95BA] shrink-0" />
                       <span className="text-sm text-gray-700 truncate">{file.name}</span>
                     </div>
                     <button
@@ -249,7 +303,7 @@ export function ComplaintFormModal({ isOpen, onClose }: ComplaintFormModalProps)
           {/* Error Message */}
           {error && (
             <div className="flex items-center gap-3 text-red-600 bg-red-50 p-4 rounded-lg border-2 border-red-200">
-              <AlertCircle className="w-5 h-5 flex-shrink-0" />
+              <AlertCircle className="w-5 h-5 shrink-0" />
               <span className="text-sm">{error}</span>
             </div>
           )}
@@ -257,7 +311,7 @@ export function ComplaintFormModal({ isOpen, onClose }: ComplaintFormModalProps)
           {/* Success Message */}
           {success && (
             <div className="flex items-center gap-3 text-green-600 bg-green-50 p-4 rounded-lg border-2 border-green-200">
-              <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
+              <CheckCircle2 className="w-5 h-5 shrink-0" />
               <span className="text-sm">Su denuncia ha sido enviada correctamente. Será tratada con estricta confidencialidad.</span>
             </div>
           )}
@@ -268,14 +322,14 @@ export function ComplaintFormModal({ isOpen, onClose }: ComplaintFormModalProps)
               type="button"
               onClick={onClose}
               disabled={isSubmitting}
-              className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               Cancelar
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="flex-1 px-6 py-3 bg-[#0BDDB3] text-white rounded-lg hover:bg-[#09c5a1] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="flex-1 px-6 py-3 bg-[#0BDDB3] text-white rounded-lg hover:bg-[#09c5a1] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 cursor-pointer"
             >
               {isSubmitting ? (
                 <>

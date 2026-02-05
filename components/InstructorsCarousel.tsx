@@ -40,7 +40,7 @@ export function InstructorsCarousel({ instructors }: InstructorsCarouselProps) {
   return (
     <div className="relative">
       {/* Main Content - Horizontal Layout */}
-      <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 xl:gap-[59px] items-center lg:items-end max-w-5xl lg:max-w-6xl mx-auto">
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 xl:gap-[59px] items-center lg:items-end max-w-5xl lg:max-w-6xl mx-auto px-4 sm:px-6">
         {/* Oval/Circular Image - Figma dimensions */}
         <div className="relative shrink-0 pt-[21px] pr-[0px] pb-[0px] pl-[0px] p-[0px]">
           <div 
@@ -55,24 +55,24 @@ export function InstructorsCarousel({ instructors }: InstructorsCarouselProps) {
         </div>
 
         {/* Content */}
-        <div className="flex-1 flex flex-col gap-4 lg:gap-6 xl:gap-[35.789px] max-w-full lg:max-w-[712.632px] pt-[0px] pr-[0px] pb-[64px] pl-[0px]">
+        <div className="flex-1 flex flex-col gap-4 lg:gap-6 xl:gap-[35.789px] max-w-full lg:max-w-[712.632px] pt-0 pr-0 pl-0 w-full">
           {/* Títulos de sección */}
-          <div className="flex flex-col gap-1 lg:gap-2 w-full">
-            <div className="flex items-center justify-start">
-              <h2 className="text-[#1c98b7] text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[67.368px] xl:leading-[36.09px] uppercase tracking-[1.2632px] font-bold text-left">
+          <div className="flex flex-col gap-1 lg:gap-2 w-full items-center lg:items-start">
+            <div className="flex items-center justify-center lg:justify-start w-full">
+              <h2 className="text-[#1c98b7] text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[67.368px] xl:leading-[36.09px] uppercase tracking-[1.2632px] font-bold text-center lg:text-left">
                 Plana docente
               </h2>
             </div>
-            <div className="flex items-center justify-start w-full">
-              <p className="text-[#111827] text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[57.076px] xl:leading-[63.021px] font-normal text-left">
+            <div className="flex items-center justify-center lg:justify-start w-full">
+              <p className="text-[#111827] text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[57.076px] xl:leading-[63.021px] font-normal text-center lg:text-left">
                 Especialistas en la materia
               </p>
             </div>
           </div>
 
           {/* Orange Name Badge */}
-          <div className="inline-flex self-start max-w-full">
-            <div className="bg-[#ee8a28] rounded-[10.702px] px-4 py-2 sm:px-5 sm:py-2.5 lg:px-[11.891px] lg:py-[11.891px] shadow-lg w-full lg:w-auto lg:max-w-[460.175px]">
+          <div className="flex justify-center lg:justify-start w-full">
+            <div className="bg-[#ee8a28] rounded-[10.702px] px-4 py-2 sm:px-5 sm:py-2.5 lg:px-[11.891px] lg:py-[11.891px] shadow-lg w-full sm:w-auto lg:max-w-[700px]">
               <h3 className="text-white text-lg sm:text-xl md:text-2xl lg:text-[32.105px] lg:leading-[42.807px] font-bold text-center break-words">
                 {currentInstructor.name}
               </h3>
@@ -80,7 +80,7 @@ export function InstructorsCarousel({ instructors }: InstructorsCarouselProps) {
           </div>
           
           {/* Bio */}
-          <p className="text-sm sm:text-base lg:text-lg xl:text-[18.728px] xl:leading-[30.433px] text-[rgba(0,0,0,0.95)] text-justify max-h-[265.263px] overflow-hidden">
+          <p className="text-sm sm:text-base lg:text-lg xl:text-[18.728px] xl:leading-[30.433px] text-[rgba(0,0,0,0.95)] text-justify max-h-[265.263px] overflow-hidden px-2 sm:px-0">
             {currentInstructor.bio}
           </p>
         </div>

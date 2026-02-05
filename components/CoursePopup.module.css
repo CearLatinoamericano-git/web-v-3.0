@@ -1,0 +1,507 @@
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Popup Container */
+.popup {
+  position: relative;
+  background: white;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 328px;
+  height: auto;
+  max-height: 95vh;
+  overflow-y: auto;
+  animation: scaleIn 0.3s ease-out;
+}
+
+.popupVisible {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* Popup Content */
+.popupContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  height: auto;
+}
+
+/* Left Section */
+.leftSection {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+}
+
+.backgroundImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.gradientOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    134.479deg,
+    rgba(28, 152, 183, 0.9) 0%,
+    rgba(28, 184, 164, 0.85) 100%
+  );
+}
+
+.blurEffect {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(64px);
+  left: 0;
+  bottom: 20px;
+  border-radius: 9999px;
+  width: 120px;
+  height: 120px;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+}
+
+.overlayImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right Section */
+.rightSection {
+  position: relative;
+  padding: 1rem;
+}
+
+/* Adjust layout for screens smaller than 1024px */
+@media screen and (max-width: 1023px) {
+  .popupContent {
+    display: block;
+  }
+
+  .leftSection {
+    height: auto;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .backgroundImage {
+    position: relative;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    pointer-events: auto;
+  }
+}
+
+.rightContent {
+  padding: 0;
+}
+
+/* Registrations Banner */
+.registrationsBanner {
+  display: inline-flex;
+  background: rgba(240, 131, 0, 0.1);
+  height: 26px;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0 12px;
+  margin-bottom: 1rem;
+}
+
+.registrationsBanner span {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  color: #f08300;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Main Title */
+.mainTitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.2;
+  color: #111827;
+  margin: 0 0 20px 0;
+}
+
+/* Description */
+.description {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  color: #4b5563;
+  margin: 0 0 1.5rem 0;
+  text-align: justify;
+}
+
+/* Benefits List */
+.benefitsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.benefitItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  background: rgba(28, 184, 164, 0.1);
+  border-radius: 9999px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.checkSvg {
+  width: 14px;
+  height: 14px;
+}
+
+.benefitTitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 19px;
+  color: #111827;
+  margin: 0 0 0.25rem 0;
+}
+
+.benefitDescription {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+}
+
+.viewProgramButton {
+  flex: 1;
+  background: #1cb8a4;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  height: 48px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.viewProgramButton:hover {
+  background: #17a593;
+}
+
+.arrowIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.enrollButton {
+  flex: 1;
+  background: white;
+  color: #111827;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  height: 48px;
+  border-radius: 12px;
+  border: 2px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.enrollButton:hover {
+  background: #f9fafb;
+}
+
+/* Social Proof */
+.socialProof {
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.usersIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.socialProofText {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  line-height: 16px;
+  color: #4b5563;
+  margin: 0;
+}
+
+.socialProofBold {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Close Button */
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 10;
+  border: none;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background: white;
+  transform: scale(1.1);
+}
+
+.closeIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsive Design */
+@media screen and (min-width: 640px) {
+  .popup {
+    max-width: 1000px;
+    border-radius: 20px;
+  }
+
+  .blurEffect {
+    width: 180px;
+    height: 180px;
+  }
+
+  .rightSection {
+    padding: 1.25rem;
+  }
+
+  .registrationsBanner {
+    height: 30px;
+    padding: 0 13.5px;
+    margin-bottom: 1.5rem;
+  }
+
+  .registrationsBanner span {
+    font-size: 11px;
+    letter-spacing: 0.55px;
+  }
+
+  .mainTitle {
+    font-size: 24px;
+    margin-bottom: 27px;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 22.4px;
+    margin-bottom: 2rem;
+  }
+
+  .benefitsList {
+    gap: 13.5px;
+    margin-bottom: 2rem;
+  }
+
+  .benefitItem {
+    gap: 0.75rem;
+  }
+
+  .checkIcon {
+    width: 22.5px;
+    height: 22.5px;
+    margin-top: 2.25px;
+  }
+
+  .checkSvg {
+    width: 15.75px;
+    height: 15.75px;
+  }
+
+  .benefitTitle {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .benefitDescription {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .actionButtons {
+    flex-direction: row;
+    gap: 11.25px;
+    margin-bottom: 1.5rem;
+  }
+
+  .viewProgramButton {
+    font-size: 14px;
+    height: 52px;
+    gap: 9px;
+  }
+
+  .arrowIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .enrollButton {
+    font-size: 14px;
+    height: 52px;
+    gap: 9px;
+  }
+
+  .socialProof {
+    padding-top: 20px;
+    gap: 9px;
+  }
+
+  .usersIcon {
+    width: 15.75px;
+    height: 15.75px;
+  }
+
+  .socialProofText {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .closeButton {
+    width: 40px;
+    height: 44px;
+  }
+
+  .closeIcon {
+    width: 20.25px;
+    height: 20.25px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .popup {
+    max-width: 1000px;
+    border-radius: 24px;
+  }
+
+  .popupContent {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .leftSection {
+    height: auto;
+    min-height: 600px;
+  }
+
+  .rightSection {
+    display: block;
+    padding: 0;
+  }
+
+  .rightContent {
+    padding: 30px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .popup {
+    max-width: 1200px;
+  }
+
+  .rightContent {
+    padding: 36px;
+  }
+
+  .mainTitle {
+    font-size: 26px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mainTitle {
+    font-size: 28px;
+  }
+}

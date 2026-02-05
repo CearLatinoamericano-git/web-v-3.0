@@ -1,108 +1,121 @@
 import { ComplaintFormModal } from "../../components/ComplaintFormModal";
 import { useState } from "react";
-import { Shield, FileText, CheckCircle, AlertCircle, Mail } from "lucide-react";
-import {
-  policies,
-  regulations,
-  getRegulationUrl,
-} from "../../data/policiesAndRegulations";
+import svgPathsDenuncias from "../../imports/svg-iuf63vznk4";
+import svgPathsSeguro from "../../imports/svg-vrcgs3on2l";
+import PoliticasReglamentosSection from "../../imports/Frame286-9038-372";
+import styles from "./Denuncias.module.css";
+
+// Imágenes - usando rutas de imágenes reales
+const imgDenuncias = "/images/denuncias/denuncias.webp"; // Ajustar según la ruta real
+const imgFondoDenuncias = "/images/denuncias/banner_denuncias.webp"; // Ajustar según la ruta real
 
 export function Denuncias() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#EFF6FF]">
+    <div className={styles.denunciasPage}>
       {/* Hero Section */}
-      <div className="relative bg-white py-16 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Hero Content */}
-          <div className="text-center max-w-5xl mx-auto">
-            {/* Main Heading */}
-            <h1 className="text-gray-900 mb-8 text-5xl lg:text-7xl leading-tight tracking-tight mt-4">
-              Canal de <span className="text-[#0B95BA]">denuncias</span>
-            </h1>
+      <div className={styles.heroSection}>
+        {/* Imagen de fondo */}
+        <img 
+          src={imgFondoDenuncias}
+          alt="" 
+          className={styles.heroBackgroundImage}
+        />
 
-            {/* Description Box */}
-            <div className="inline-block px-8 py-6 border-2 border-[#0B95BA] rounded-3xl mb-10 max-w-3xl">
-              <p className="text-[#0B95BA] text-lg lg:text-xl leading-relaxed">
-                Este espacio recibe denuncias de forma confidencial y cada
-                reporte será tratado con absoluta reserva por un equipo
-                profesional especializado.
-              </p>
+        {/* Contenido */}
+        <div className={styles.heroContentContainer}>
+          {/* Título */}
+          <div className={styles.titleSection}>
+            <div className={styles.titleContainer}>
+              <h1 className={styles.titleWhite}>
+                Canal de
+              </h1>
+              <h1 className={styles.titleOrange}>
+                denuncias
+              </h1>
+            </div>
+            <p className={styles.description}>
+              Este espacio recibe denuncias de forma confidencial y cada reporte será tratado con absoluta reserva por un equipo profesional especializado.
+            </p>
+          </div>
+
+          {/* Contenido principal */}
+          <div className={styles.mainContentGrid}>
+            {/* Imagen */}
+            <div className={styles.imageContainer}>
+              <div className={styles.imageWrapper}>
+                <img 
+                  src={imgDenuncias}
+                  alt="Denuncias" 
+                />
+              </div>
             </div>
 
-            {/* Info Cards */}
-            <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-[#0B95BA] rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="white"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="font-semibold text-lg mb-2 text-gray-900">
-                  Confidencial
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Su identidad y reporte están completamente protegidos
+            {/* Contenido de texto */}
+            <div className={styles.textContentContainer}>
+              {/* ¿Qué es una denuncia? */}
+              <div className={styles.whatIsComplaint}>
+                <h2 className={styles.whatIsComplaintTitle}>
+                  ¿Qué es una denuncia?
+                </h2>
+                <p className={styles.whatIsComplaintText}>
+                  Es la comunicación que puede establecer con nosotros para reportar cualquier infracción o irregularidad relacionada con nuestras políticas o reglamentos. Nuestro objetivo es investigar y resolver estas situaciones, garantizando la transparencia y la integridad de todas nuestras operaciones.
                 </p>
               </div>
 
-              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-[#0B95BA] rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="white"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+              {/* Características */}
+              <div className={styles.featuresContainer}>
+                {/* Confidencial */}
+                <div className={styles.featureItem}>
+                  <div className={styles.featureIconContainer}>
+                    <svg fill="none" viewBox="0 0 50.1505 51.3041">
+                      <path d={svgPathsDenuncias.p1f09c740} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4.227" />
+                    </svg>
+                  </div>
+                  <div className={styles.featureContent}>
+                    <h3 className={styles.featureTitle}>
+                      Confidencial
+                    </h3>
+                    <p className={styles.featureDescription}>
+                      Su identidad y reporte están completamente protegidos
+                    </p>
+                  </div>
                 </div>
-                <h3 className="font-semibold text-lg mb-2 text-gray-900">
-                  Seguro
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Proceso transparente con seguimiento profesional
-                </p>
-              </div>
 
-              <div className="bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-                <div className="w-12 h-12 bg-[#0B95BA] rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="white"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                {/* Seguro */}
+                <div className={styles.featureItem}>
+                  <div className={styles.featureIconContainer}>
+                    <svg fill="none" viewBox="0 0 42.6691 43.5515">
+                      <path d={svgPathsSeguro.p2358a300} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4.31078" />
+                    </svg>
+                  </div>
+                  <div className={styles.featureContent}>
+                    <h3 className={styles.featureTitle}>
+                      Seguro
+                    </h3>
+                    <p className={styles.featureDescription}>
+                      Proceso transparente con seguimiento profesional
+                    </p>
+                  </div>
                 </div>
-                <h3 className="font-semibold text-lg mb-2 text-gray-900">
-                  Rápido
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  Atención inmediata y respuesta oportuna
-                </p>
+
+                {/* Rápido */}
+                <div className={styles.featureItem}>
+                  <div className={styles.featureIconContainer}>
+                    <svg fill="none" viewBox="0 0 58.4988 59.8445">
+                      <path d={svgPathsDenuncias.p2dc7db00} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4.93065" />
+                    </svg>
+                  </div>
+                  <div className={styles.featureContent}>
+                    <h3 className={styles.featureTitle}>
+                      Rápido
+                    </h3>
+                    <p className={styles.featureDescription}>
+                      Atención inmediata y respuesta oportuna
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -110,133 +123,16 @@ export function Denuncias() {
       </div>
 
       {/* Contenido principal */}
-      <div className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-[1440px] mx-auto">
-          {/* ¿Qué es una denuncia? Card - Full Width */}
-          <div className="mb-8 lg:mb-10">
-            <div className="bg-white rounded-3xl p-6 lg:p-10 border border-gray-100">
-              <div className="flex flex-col md:flex-row items-start gap-6">
-                <div className="bg-gradient-to-br from-[#0B95BA] to-[#087A98] rounded-2xl p-4 flex-shrink-0 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
-                  <AlertCircle className="w-7 h-7 md:w-8 md:h-8 text-white" />
-                </div>
-                <div className="flex-1">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#0B95BA] mb-4">
-                    ¿Qué es una denuncia?
-                  </h2>
-                  <p className="text-gray-700 text-base lg:text-lg leading-relaxed">
-                    Es la comunicación que puede establecer con nosotros para
-                    reportar cualquier infracción o irregularidad relacionada
-                    con nuestras políticas o reglamentos. Nuestro objetivo es
-                    investigar y resolver estas situaciones, garantizando la
-                    transparencia y la integridad de todas nuestras operaciones.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Content Grid - Reorganized Layout */}
-          <div className="grid lg:grid-cols-4 gap-6 lg:gap-8">
-            {/* Left Column - Policies and Regulations (2/5 width - thinner) */}
-            <div className="lg:col-span-2 space-y-6 lg:space-y-8">
-              {/* NUESTRAS POLÍTICAS Card */}
-              <div className="bg-gradient-to-br from-[#0B95BA] to-[#087A98] rounded-2xl p-4 lg:p-5 shadow-xl">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-white bg-opacity-25 rounded-lg p-2 flex-shrink-0">
-                    <Shield className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
-                  </div>
-                  <h2 className="text-lg lg:text-xl xl:text-2xl font-bold text-white uppercase">
-                    NUESTRAS POLÍTICAS
-                  </h2>
-                </div>
-                <p className="text-white text-xs lg:text-sm xl:text-base mb-4 opacity-95">
-                  Denuncie si se cometió una infracción a nuestras políticas:
-                </p>
-                <div className="space-y-2">
-                  {policies.map((politica) => (
-                    <a
-                      key={politica.id}
-                      href={politica.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white rounded-lg p-2.5 lg:p-3 flex items-center gap-2 hover:shadow-md hover:scale-[1.02] transition-all cursor-pointer"
-                    >
-                      <CheckCircle className="w-4 h-4 lg:w-5 lg:h-5 text-[#0B95BA] flex-shrink-0" />
-                      <span className="text-[#0B95BA] font-medium text-xs lg:text-sm">
-                        {politica.title}
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* NUESTROS REGLAMENTOS Card */}
-              <div className="bg-white rounded-2xl p-4 lg:p-5 shadow-xl border border-gray-100">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="bg-[#087A98] rounded-lg p-2 flex-shrink-0">
-                    <FileText className="w-5 h-5 lg:w-6 lg:h-6 text-white" />
-                  </div>
-                  <h2 className="text-lg lg:text-xl xl:text-2xl font-bold text-[#087A98] uppercase">
-                    NUESTROS REGLAMENTOS
-                  </h2>
-                </div>
-                <p className="text-gray-700 text-xs lg:text-sm xl:text-base mb-4">
-                  Denuncie si se cometió una infracción a nuestros reglamentos:
-                </p>
-                <div className="space-y-2 mb-4">
-                  {regulations.map((reglamento) => (
-                    <a
-                      key={reglamento.id}
-                      href={getRegulationUrl(reglamento, false)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-[#0A8FB2] rounded-lg p-2.5 lg:p-3 flex items-center gap-2 hover:bg-[#087A98] hover:scale-[1.02] transition-all cursor-pointer"
-                    >
-                      <CheckCircle className="w-4 h-4 lg:w-5 lg:h-5 text-white flex-shrink-0" />
-                      <span className="text-white font-medium text-xs lg:text-sm">
-                        {reglamento.title}
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-            {/* Right Column - Illustration (3/5 width - larger) */}
-            <div className="lg:col-span-2 flex flex-col">
-              {/* Illustration Card */}
-              <div className="flex flex-col items-center justify-center h-full sticky top-8">
-                <div className="relative w-full max-w-[380px] lg:max-w-[400px] xl:max-w-[530px] mx-auto flex items-center justify-center mt-3">
-                  <img
-                    src="/assets/denuncias.svg"
-                    alt="Ilustración de denuncia"
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Botón Realizar denuncia - Moved to bottom */}
-          <div className="mt-6 max-w-[600px] mx-auto">
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="w-full bg-[#0B95BA] text-white rounded-xl p-2 lg:p-3 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-3 font-bold text-base lg:text-lg group"
-            >
-              <Mail className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 transition-transform" />
-              <span>Realizar denuncia</span>
-            </button>
-            <p className="text-center text-gray-700 text-xs lg:text-sm mt-4">
-              Todas las denuncias son tratadas con estricta confidencialidad
-            </p>
-          </div>
-        </div>
+      <div className={styles.policiesSectionContainer}>
+        {/* Nueva sección de Políticas y Reglamentos */}
+        <PoliticasReglamentosSection onDenunciaClick={() => setIsModalOpen(true)} />
       </div>
 
       {/* Modal */}
-      <ComplaintFormModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+      <ComplaintFormModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
       />
     </div>
   );
 }
-

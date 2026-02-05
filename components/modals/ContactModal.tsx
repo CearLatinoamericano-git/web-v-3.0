@@ -23,6 +23,8 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('[CONTACT FORM] Submit iniciado');
+    console.log('[CONTACT FORM] Datos del formulario:', formData);
     setError(null);
     setIsSubmitting(true);
 
@@ -35,7 +37,10 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         estado_politica: formData.estado_politica,
       };
 
+      console.log('[CONTACT FORM] Datos preparados para enviar:', contactoData);
+      console.log('[CONTACT FORM] Llamando a storeContacto...');
       await storeContacto(contactoData);
+      console.log('[CONTACT FORM] storeContacto completado exitosamente');
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
@@ -175,9 +180,9 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
                 {/* Success Message */}
                 {success && (
-                  <div className="flex items-center gap-3 text-green-600 bg-green-50 p-3 rounded-xl border-2 border-green-200">
+                  <div className="flex items-center gap-3 text-white bg-green-600 p-4 rounded-xl border-2 border-green-700 shadow-lg">
                     <CheckCircle2 className="w-5 h-5 flex-shrink-0" />
-                    <span className="text-sm">¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.</span>
+                    <span className="text-sm font-medium">¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.</span>
                   </div>
                 )}
 

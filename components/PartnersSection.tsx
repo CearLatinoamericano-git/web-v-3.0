@@ -64,7 +64,7 @@ export function PartnersSection() {
               instituciones universitarias
             </span>
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-2 lg:px-4">
+          <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-2 lg:px-4 text-justify">
             La certificación de nuestros programas se emite conforme a convenios académicos vigentes con universidades licenciadas por SUNEDU.
           </p>
         </motion.div>

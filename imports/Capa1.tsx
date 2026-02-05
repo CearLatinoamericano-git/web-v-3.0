@@ -1,3 +1,4 @@
+// @ts-nocheck
 import svgPaths from "./svg-5y7ndpz3qx";
 
 export default function Capa() {

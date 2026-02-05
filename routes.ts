@@ -15,11 +15,8 @@ export type PageType =
   | 'forInstitutions'
   | 'complaintChannel'
   | 'dashboard'
-  | 'campus'
   | 'enrollment'
-  | 'profile'
-  | 'campusLogin'
-  | 'campusVirtual';
+  | 'profile';
 
 // Interfaz para definir una ruta
 export interface Route {
@@ -110,13 +107,6 @@ export const PROTECTED_ROUTES: Route[] = [
     description: 'Perfil de usuario',
     requiresAuth: true,
   },
-  {
-    path: '/campus',
-    pageType: 'campusLogin',
-    title: 'Campus Virtual',
-    description: 'Acceso al campus virtual',
-    requiresAuth: false, // Tiene su propia página de login
-  },
 ];
 
 /**
@@ -178,10 +168,6 @@ export function getPathFromPageType(pageType: PageType, params?: Record<string, 
   // Casos especiales
   if (pageType === 'courseDetail' && params?.courseId) {
     return `/course/${params.courseId}`;
-  }
-  
-  if (pageType === 'campus' && params?.courseId) {
-    return `/campus/${params.courseId}`;
   }
   
   if (pageType === 'enrollment' && params?.courseId) {

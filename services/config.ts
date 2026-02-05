@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { type InternalAxiosRequestConfig, type AxiosResponse, type AxiosError } from "axios";
 
 /**
  * Configuración de la API
@@ -7,8 +7,8 @@ import axios from "axios";
  */
 const getApiBaseUrl = (): string => {
   // Si hay una variable de entorno definida, usarla
-  if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL;
+  if (import.meta.env.VITE_API_BASE_URL) {
+    return import.meta.env.VITE_API_BASE_URL;
   }
   
   // En desarrollo, usar localhost
@@ -21,6 +21,11 @@ const getApiBaseUrl = (): string => {
 };
 
 export const API_BASE_URL = getApiBaseUrl();
+
+// Log de la URL base configurada
+console.log('[API CONFIG] URL Base configurada:', API_BASE_URL);
+console.log('[API CONFIG] Modo desarrollo:', import.meta.env.DEV);
+console.log('[API CONFIG] VITE_API_BASE_URL:', import.meta.env.VITE_API_BASE_URL);
 
 /**
  * Obtiene el token de autenticación del localStorage
@@ -48,20 +53,32 @@ export const apiClient = axios.create({
  * Interceptor para agregar el token de autenticación a las peticiones
  */
 apiClient.interceptors.request.use(
-  (config: any) => {
+  (config: InternalAxiosRequestConfig) => {
+    console.log('[AXIOS REQUEST] Petición interceptada:', {
+      method: config.method,
+      url: config.url,
+      baseURL: config.baseURL,
+      fullURL: `${config.baseURL}${config.url}`,
+      headers: config.headers,
+      hasData: !!config.data,
+      dataType: config.data instanceof FormData ? 'FormData' : typeof config.data
+    });
+    
     const token = getAuthToken();
-    if (token) {
+    if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
 
     // Si es FormData, eliminar Content-Type para que axios lo establezca automáticamente
-    if (config.data instanceof FormData) {
+    if (config.data instanceof FormData && config.headers) {
       delete config.headers["Content-Type"];
+      console.log('[AXIOS REQUEST] FormData detectado, Content-Type eliminado');
     }
 
     return config;
   },
-  (error: any) => {
+  (error: AxiosError) => {
+    console.error('[AXIOS REQUEST ERROR] Error en interceptor de request:', error);
     return Promise.reject(error);
   }
 );
@@ -70,10 +87,33 @@ apiClient.interceptors.request.use(
  * Interceptor para manejar errores de respuesta, incluyendo CORS
  */
 apiClient.interceptors.response.use(
-  (response: any) => response,
-  (error: any) => {
+  (response: AxiosResponse) => {
+    console.log('[AXIOS RESPONSE] Respuesta exitosa:', {
+      status: response.status,
+      statusText: response.statusText,
+      url: response.config.url,
+      data: response.data
+    });
+    return response;
+  },
+  (error: AxiosError) => {
+    console.error('[AXIOS RESPONSE ERROR] Error en respuesta:', {
+      message: error.message,
+      code: error.code,
+      response: error.response ? {
+        status: error.response.status,
+        statusText: error.response.statusText,
+        data: error.response.data
+      } : null,
+      request: error.request ? {
+        url: error.config?.url,
+        method: error.config?.method
+      } : null
+    });
+    
     // Manejar errores de CORS específicamente
     if (error.code === "ERR_NETWORK" || error.message === "Network Error") {
+      console.error('[AXIOS RESPONSE ERROR] Error de red detectado - posible problema de CORS o servidor no disponible');
       // Si es un error de CORS, puede ser que withCredentials esté causando el problema
       // Intentar sin credenciales si el error persiste
     }

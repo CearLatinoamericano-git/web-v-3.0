@@ -1,0 +1,801 @@
+/* ===================================
+   CONTACTO PAGE - RESPONSIVE STYLES
+   CSS Module con Media Queries
+   Breakpoints: 468px, 768px, 1024px, 1280px, 1920px
+   =================================== */
+
+/* Base Styles - Desktop First (1920px+) */
+.contactoPage {
+  min-height: 100vh;
+  background: white;
+}
+
+/* Hero Section */
+.heroSection {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(5.70811deg, rgb(28, 152, 183) 5.3068%, rgb(86, 18, 137) 90.834%);
+  height: 850px;
+  min-height: 600px;
+  border-radius: 0 0 30px 30px;
+  display: flex;
+  align-items: center;
+}
+
+/* Background Image Container */
+.heroBackgroundContainer {
+  position: absolute;
+  height: 750px;
+  left: 150px;
+  top: 110px;
+  width: 1200px;
+  padding: 0;
+}
+
+.heroBackgroundOverlay {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heroBackgroundImage {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  max-width: none;
+  top: 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Decorative Waves */
+.heroWavesContainer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 144px;
+}
+
+.waveLayer1 {
+  position: absolute;
+  inset: 30.83% 0 0 0;
+}
+
+.waveLayer2 {
+  position: absolute;
+  inset: 47.92% 0 0 0;
+}
+
+.waveSvg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Content Container */
+.heroContentWrapper {
+  position: relative;
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.heroContentContainer {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Text Content */
+.textContentWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  align-items: flex-start;
+  padding: 16px;
+  position: relative;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 13px;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.title {
+  color: white;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.descriptionWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.description {
+  color: white;
+  text-align: justify;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+/* Buttons Container */
+.buttonsContainer {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 29.661px;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 8px;
+  padding: 16px 0;
+}
+
+.button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  height: 58px;
+  padding: 0 16px;
+  border-radius: 13px;
+  width: 280px;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+.buttonOrange {
+  background: #ee8a28;
+}
+
+.buttonOrange:hover {
+  background: #d67821;
+}
+
+.buttonGreen {
+  background: #25D366;
+}
+
+.buttonGreen:hover {
+  background: #20BA5A;
+}
+
+.buttonContent {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.buttonText {
+  font-weight: 600;
+  line-height: 24px;
+  font-size: 17px;
+  text-align: center;
+  color: white;
+  white-space: nowrap;
+}
+
+.buttonIcon {
+  position: relative;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.buttonIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Image Container */
+.imageContainer {
+  display: none;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageWrapper {
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1.1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.imageInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.imageTransform {
+  flex: none;
+  transform: rotate(180deg) scaleY(-1);
+  width: 100%;
+  height: 100%;
+}
+
+.imageContent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.imageContent img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ===================================
+   MEDIA QUERIES - MAX-WIDTH APPROACH
+   =================================== */
+
+/* 1920px - Large Desktop */
+@media screen and (max-width: 1920px) {
+  .heroSection {
+    height: 850px;
+    min-height: 850px;
+  }
+
+  .heroBackgroundContainer {
+    height: 750px;
+    left: 150px;
+    top: 110px;
+    width: 1200px;
+  }
+
+  .heroContentWrapper {
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  .heroContentContainer {
+    gap: 40px;
+    width: 80%;
+  }
+
+  .textContentWrapper {
+    gap: 13px;
+    padding: 16px;
+  }
+
+  .textContent {
+    gap: 13px;
+  }
+
+  .title {
+    font-size: 60px;
+  }
+
+  .description {
+    font-size: 20px;
+  }
+
+  .buttonsContainer {
+    gap: 29.661px;
+    margin-top: 24px;
+    padding: 16px 0;
+  }
+
+  .button {
+    height: 58px;
+    padding: 0 16px;
+    border-radius: 13px;
+    width: 280px;
+  }
+
+  .buttonText {
+    font-size: 17px;
+    line-height: 24px;
+  }
+
+  .buttonIcon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .imageWrapper {
+    max-width: 520px;
+  }
+}
+
+/* 1536px - XL Desktop */
+@media screen and (max-width: 1536px) {
+  .heroSection {
+    height: 850px;
+    min-height: 850px;
+  }
+
+  .heroBackgroundContainer {
+    height: 750px;
+    left: 150px;
+    top: 110px;
+    width: 1200px;
+  }
+}
+
+/* 1280px - Desktop */
+@media screen and (max-width: 1280px) {
+  .heroSection {
+    height: 850px;
+    min-height: 800px;
+    border-radius: 0 0 30px 30px;
+  }
+
+  .heroBackgroundContainer {
+    height: 680px;
+    left: 100px;
+    top: 100px;
+    width: 1000px;
+    padding: 0 16px;
+  }
+
+  .heroContentWrapper {
+    padding-top: 4%;
+    padding-bottom: 4%;
+  }
+
+  .heroContentContainer {
+    gap: 30px;
+    width: 85%;
+  }
+
+  .textContentWrapper {
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .textContent {
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 48px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+
+  .buttonsContainer {
+    flex-direction: row;
+    gap: 22px;
+    margin-top: 20px;
+    padding: 14px 0;
+  }
+
+  .button {
+    height: 54px;
+    padding: 0 14px;
+    border-radius: 12px;
+    width: 260px;
+  }
+
+  .buttonText {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .buttonIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .imageWrapper {
+    max-width: 480px;
+  }
+}
+
+/* 1024px - Tablet Landscape / Small Desktop */
+@media screen and (max-width: 1024px) {
+  .heroSection {
+    height: 800px;
+    min-height: 750px;
+    border-radius: 0 0 30px 30px;
+  }
+
+  .heroBackgroundContainer {
+    height: 680px;
+    left: 60px;
+    top: 90px;
+    width: 850px;
+    padding: 0;
+  }
+
+  .heroContentWrapper {
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+
+  .heroContentContainer {
+    gap: 24px;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .textContentWrapper {
+    gap: 10px;
+    padding: 12px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .textContent {
+    gap: 10px;
+    align-items: center;
+  }
+
+  .titleWrapper {
+    justify-content: center;
+  }
+
+  .title {
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .descriptionWrapper {
+    justify-content: center;
+  }
+
+  .description {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .buttonsContainer {
+    flex-direction: row;
+    gap: 18px;
+    margin-top: 16px;
+    padding: 12px 0;
+    justify-content: center;
+  }
+
+  .button {
+    height: 50px;
+    padding: 0 12px;
+    border-radius: 11px;
+    width: 240px;
+  }
+
+  .buttonText {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .buttonIcon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .imageContainer {
+    display: none;
+  }
+}
+
+/* 1280px - XL Desktop - Show image */
+@media screen and (min-width: 1280px) {
+  .imageContainer {
+    display: flex;
+  }
+}
+
+/* 768px - Tablet Portrait */
+@media screen and (max-width: 768px) {
+  .heroSection {
+    height: 750px;
+    min-height: 700px;
+    border-radius: 0 0 25px 25px;
+  }
+
+  .heroBackgroundContainer {
+    height: 620px;
+    left: 40px;
+    top: 90px;
+    width: 850px;
+    padding: 0 16px;
+  }
+
+  .heroContentWrapper {
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+
+  .heroContentContainer {
+    gap: 20px;
+    width: 95%;
+  }
+
+  .textContentWrapper {
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .textContent {
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .buttonsContainer {
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 12px;
+    padding: 10px 0;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .button {
+    height: 46px;
+    padding: 0 10px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .buttonText {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .buttonIcon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* 640px - Mobile Large */
+@media screen and (max-width: 640px) {
+  .heroSection {
+    height: 700px;
+    min-height: 650px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .heroBackgroundContainer {
+    height: 550px;
+    left: 0;
+    top: 60px;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .heroContentWrapper {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 100%;
+  }
+
+  .heroContentContainer {
+    width: 100%;
+    padding: 0 16px;
+    gap: 16px;
+  }
+
+  .textContentWrapper {
+    padding: 12px 8px;
+    width: 100%;
+  }
+
+  .textContent {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .buttonsContainer {
+    gap: 12px;
+    padding: 8px 0;
+    width: 100%;
+  }
+
+  .button {
+    height: 44px;
+    padding: 0 12px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .buttonText {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .buttonIcon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* 468px - Mobile Medium */
+@media screen and (max-width: 468px) {
+  .heroSection {
+    height: 659px;
+    min-height: 600px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .heroBackgroundContainer {
+    height: 500px;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    padding: 0 12px;
+  }
+
+  .heroContentWrapper {
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    width: 100%;
+  }
+
+  .heroContentContainer {
+    padding: 0 12px;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .textContentWrapper {
+    gap: 8px;
+    padding: 8px 4px;
+    width: 100%;
+  }
+
+  .textContent {
+    gap: 8px;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .description {
+    font-size: 13px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .buttonsContainer {
+    gap: 10px;
+    margin-top: 8px;
+    padding: 8px 0;
+    width: 100%;
+  }
+
+  .button {
+    height: 44px;
+    padding: 0 12px;
+    border-radius: 12px;
+    width: 100%;
+  }
+
+  .buttonText {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .buttonIcon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* 375px - Mobile Small */
+@media screen and (max-width: 375px) {
+  .heroSection {
+    height: 600px;
+    min-height: 550px;
+  }
+
+  .heroBackgroundContainer {
+    height: 450px;
+    top: 40px;
+  }
+
+  .heroContentWrapper {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    width: 100%;
+  }
+
+  .heroContentContainer {
+    padding: 0 8px;
+    width: 100%;
+  }
+
+  .textContentWrapper {
+    padding: 8px 4px;
+  }
+
+  .title {
+    font-size: 20px;
+    line-height: 1.2;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .description {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .buttonsContainer {
+    padding: 6px 0;
+  }
+
+  .button {
+    height: 42px;
+    padding: 0 10px;
+    width: 100%;
+  }
+
+  .buttonText {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .buttonIcon {
+    width: 13px;
+    height: 13px;
+  }
+}
+

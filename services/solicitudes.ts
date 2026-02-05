@@ -47,6 +47,7 @@ export interface SuggestionComplaintData {
  * @returns Promise con la respuesta del servidor
  */
 export async function storeContacto(data: ContactFormData): Promise<any> {
+  console.log('[storeContacto] Función llamada con datos:', data);
   try {
     // Si el asunto viene directamente en los datos, usarlo
     // Si no, intentar extraerlo del mensaje (formato: "Asunto: ...\n\nMensaje")
@@ -76,8 +77,12 @@ export async function storeContacto(data: ContactFormData): Promise<any> {
     console.log(`[API] Llamando a la ruta del backend: ${rutaCompleta}`);
     console.log(`[API] Método: POST`);
     console.log(`[API] Endpoint: /contacto`);
+    console.log(`[API] API_BASE_URL:`, API_BASE_URL);
+    console.log(`[API] Datos a enviar:`, contactoData);
 
+    console.log(`[API] Realizando petición POST...`);
     const response = await apiClient.post('/contacto', contactoData);
+    console.log(`[API] Respuesta recibida:`, response);
     return response.data;
   } catch (error: any) {
     console.error('Error al enviar contacto:', error);
@@ -98,6 +103,7 @@ export async function storeContacto(data: ContactFormData): Promise<any> {
  * @returns Promise con la respuesta del servidor
  */
 export async function storeQuejas(data: SuggestionComplaintData): Promise<any> {
+  console.log('[storeQuejas] Función llamada con datos:', data);
   try {
     // Convertir es_sugerencia (boolean) a tipo_queja (string)
     const tipo_queja = data.es_sugerencia ? 'Sugerencia' : 'Reclamo';
@@ -116,8 +122,12 @@ export async function storeQuejas(data: SuggestionComplaintData): Promise<any> {
     console.log(`[API] Llamando a la ruta del backend: ${rutaCompleta}`);
     console.log(`[API] Método: POST`);
     console.log(`[API] Endpoint: /quejas`);
+    console.log(`[API] API_BASE_URL:`, API_BASE_URL);
+    console.log(`[API] Datos a enviar:`, quejasData);
 
+    console.log(`[API] Realizando petición POST...`);
     const response = await apiClient.post('/quejas', quejasData);
+    console.log(`[API] Respuesta recibida:`, response);
     return response.data;
   } catch (error: any) {
     console.error('Error al enviar queja/sugerencia:', error);

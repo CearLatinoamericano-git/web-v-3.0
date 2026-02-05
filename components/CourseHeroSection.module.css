@@ -1,0 +1,835 @@
+/* ===================================
+   COURSE HERO SECTION - RESPONSIVE STYLES
+   CSS Module con Media Queries
+   Breakpoints: 468px, 768px, 1024px, 1280px, 1920px
+   =================================== */
+
+/* Base Styles - Desktop First (1920px+) */
+.heroSection {
+  position: relative;
+  min-height: 900px;
+  padding-bottom: 80px;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  margin: 0;
+  border-radius: 0 0 50px 50px;
+  background: linear-gradient(5.70811deg, rgb(28, 152, 183) 5.3068%, rgb(86, 18, 137) 90.834%);
+}
+
+.backgroundImage {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+  opacity: 0.14;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 0 0 50px 50px;
+}
+
+.backgroundImage img {
+  position: absolute;
+  height: 139.1%;
+  left: 0;
+  max-width: none;
+  top: -21.73%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.contentContainer {
+  position: relative;
+  z-index: 10;
+  max-width: 1368px;
+  margin: 0 auto;
+  padding: 180px 108px 60px 108px;
+}
+
+.badgeContainer {
+  padding-top: 20px;
+  margin-bottom: 6px;
+}
+
+.badge {
+  display: inline-flex;
+  height: 33px;
+  align-items: center;
+  padding: 7.75px 14.5px;
+  border-radius: 11.25px;
+  background: rgba(59, 181, 217, 0.1);
+  border: 2px solid rgba(16, 231, 176, 0.3);
+  color: rgb(255, 255, 255);
+}
+
+.badgeTaller {
+  display: inline-flex;
+  height: 33px;
+  align-items: center;
+  padding: 7.75px 14.5px;
+  border-radius: 11.25px;
+  background: rgba(11, 221, 179, 0.2);
+  border: 2px solid rgba(11, 221, 179, 0.5);
+  color: rgb(255, 255, 255);
+}
+
+.badgeText {
+  font-weight: normal;
+  line-height: 18px;
+  font-size: 13.5px;
+  color: rgb(255, 255, 255);
+  letter-spacing: 0.675px;
+  text-transform: uppercase;
+}
+
+.titleContainer {
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+.title {
+  font-weight: normal;
+  line-height: 1.2;
+  font-size: clamp(32px, 4.5vw, 67.5px);
+  color: white;
+  margin-bottom: 6px;
+  margin-top: 20px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.description {
+  font-weight: normal;
+  line-height: 1.6;
+  font-size: 20.25px;
+  color: white;
+  /* border: 1px solid #fff; */
+  margin-top: 20px;
+}
+
+.statsContainer {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
+  padding: 28px 37px;
+  margin-bottom: 40px;
+  margin-top: 50px;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+}
+
+.statsGridTaller {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13.5px;
+  padding-right: 16px;
+  border-right: 2px solid #f3f4f6;
+}
+
+.statItem:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+/* Remove border on last item in each row for responsive grids */
+@media screen and (max-width: 1023px) {
+  .statItem:nth-child(3n) {
+    border-right: none;
+  }
+  
+  .statsGridTaller .statItem:nth-child(2n) {
+    border-right: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .statItem:nth-child(2n) {
+    border-right: none;
+  }
+  
+  .statsGridTaller {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .statsGridTaller .statItem {
+    border-right: none;
+  }
+}
+
+.statIconContainer {
+  background: linear-gradient(to bottom, #0b95ba, #087a98);
+  border-radius: 15.25px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
+  width: 63px;
+  height: 63px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statIcon {
+  width: 31.5px;
+  height: 31.5px;
+}
+
+.statIcon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  preserveAspectRatio: none;
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.statLabel {
+  font-weight: normal;
+  line-height: 18px;
+  font-size: 13.5px;
+  text-align: center;
+  color: #6a7282;
+  letter-spacing: 0.675px;
+  text-transform: uppercase;
+}
+
+.statValue {
+  font-weight: normal;
+  line-height: 19.688px;
+  font-size: 15.75px;
+  text-align: center;
+  color: #111827;
+}
+
+.statValueSmall {
+  font-weight: normal;
+  line-height: 16.875px;
+  font-size: 13.5px;
+  text-align: center;
+  color: #111827;
+  padding: 0 4px;
+}
+
+.statValueCapitalize {
+  text-transform: capitalize;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 20px;
+  /* margin-top: 40px; */
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.enrollButton {
+  background: #F08300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 58px;
+  padding: 0 36px;
+  border-radius: 15.25px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+}
+
+.enrollButton:hover {
+  background: #d67400;
+}
+
+.enrollButtonText {
+  font-weight: 500;
+  line-height: 27px;
+  font-size: 18px;
+  text-align: center;
+  color: white;
+}
+
+.brochureButton {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 58px;
+  padding: 0 36px;
+  border-radius: 15.25px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.brochureButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.brochureButtonIcon {
+  width: 22.5px;
+  height: 22.5px;
+}
+
+.brochureButtonIcon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  preserveAspectRatio: none;
+}
+
+.brochureButtonText {
+  font-weight: 500;
+  line-height: 27px;
+  font-size: 18px;
+  text-align: center;
+  color: white;
+}
+
+/* Taller-specific button styles */
+.enrollButtonTaller {
+  background: #F08300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 58px;
+  padding: 0 36px;
+  border-radius: 15.25px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+  color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+}
+
+.enrollButtonTaller:hover {
+  background: #d67400;
+}
+
+.brochureButtonTaller {
+  background: rgba(59, 181, 217, 0.8);
+  border: 2px solid rgba(59, 181, 217, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 58px;
+  padding: 0 36px;
+  border-radius: 15.25px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.brochureButtonTaller:hover {
+  background: rgba(59, 181, 217, 0.9);
+  border-color: rgba(59, 181, 217, 0.7);
+}
+
+.contactButton {
+  background: #25D366;
+  border: 2px solid #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 58px;
+  padding: 0 36px;
+  border-radius: 15.25px;
+  box-shadow: 0px 0px 25px 0px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.contactButton:hover {
+  background: #20BA5A;
+  border-color: #20BA5A;
+  box-shadow: 0px 0px 25px 0px rgba(37, 211, 102, 0.5);
+}
+
+.contactButtonTaller {
+  background: #25D366;
+  border: 2px solid #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 58px;
+  padding: 0 36px;
+  border-radius: 15.25px;
+  box-shadow: 0px 0px 25px 0px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.contactButtonTaller:hover {
+  background: #20BA5A;
+  border-color: #20BA5A;
+  box-shadow: 0px 0px 25px 0px rgba(37, 211, 102, 0.5);
+}
+
+.contactButtonIcon {
+  width: 22.5px;
+  height: 22.5px;
+}
+
+.contactButtonIcon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: white;
+  preserveAspectRatio: none;
+}
+
+.contactButtonText {
+  font-weight: 500;
+  line-height: 27px;
+  font-size: 18px;
+  text-align: center;
+  color: white;
+}
+
+/* ===================================
+   MEDIA QUERIES - MAX-WIDTH APPROACH
+   =================================== */
+
+/* 1920px - Large Desktop */
+@media screen and (max-width: 1920px) {
+  .contentContainer {
+    max-width: 1400px;
+  }
+}
+
+/* 1280px - Desktop */
+@media screen and (max-width: 1280px) {
+  .heroSection {
+    min-height: 960px;
+    padding-bottom: 80px;
+  }
+
+  .contentContainer {
+    padding: 180px 48px 60px 48px;
+  }
+
+  .title {
+    font-size: 56px;
+    line-height: 1.2;
+  }
+
+  .description {
+    font-size: 18px;
+    line-height: 1.55;
+  }
+
+  .statsContainer {
+    padding: 28px 32px;
+  }
+
+  .statIconContainer {
+    width: 60px;
+    height: 60px;
+  }
+
+  .statIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .enrollButton,
+  .brochureButton,
+  .contactButton,
+  .enrollButtonTaller,
+  .brochureButtonTaller,
+  .contactButtonTaller {
+    height: 56px;
+    padding: 0 32px;
+  }
+
+  .enrollButtonText,
+  .brochureButtonText,
+  .contactButtonText {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+/* 1024px - Tablet Landscape / Small Desktop */
+@media screen and (max-width: 1024px) {
+  .heroSection {
+    min-height: 920px;
+    padding-bottom: 60px;
+  }
+
+  .contentContainer {
+    padding: 180px 32px 50px 32px;
+  }
+
+  .badgeContainer {
+    padding-top: 16px;
+    margin-bottom: 5px;
+  }
+
+  .titleContainer {
+    margin-bottom: 8px;
+  }
+
+  .title {
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.2;
+    margin-bottom: 5px;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .statsContainer {
+    padding: 24px 32px;
+    margin-bottom: 32px;
+    margin-top: 40px;
+    border: none;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  
+  .statsGridTaller {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .statItem {
+    border-right: none;
+    padding-right: 0;
+    gap: 14px;
+  }
+
+  .statIconContainer {
+    width: 56px;
+    height: 56px;
+  }
+
+  .statIcon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .statLabel {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .statValue {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .statValueSmall {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .buttonsContainer {
+    flex-direction: row;
+    gap: 5px;
+    margin-bottom: 16px;
+  }
+
+  .enrollButton,
+  .brochureButton,
+  .contactButton,
+  .enrollButtonTaller,
+  .brochureButtonTaller,
+  .contactButtonTaller {
+    height: 56px;
+    padding: 0 32px;
+    border-radius: 14px;
+  }
+
+  .enrollButtonText,
+  .brochureButtonText,
+  .contactButtonText {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .brochureButtonIcon,
+  .contactButtonIcon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* 768px - Tablet Portrait */
+@media screen and (max-width: 768px) {
+  .heroSection {
+    min-height: 880px;
+    padding-bottom: 50px;
+    border-radius: 0 0 30px 30px;
+  }
+
+  .backgroundImage {
+    border-radius: 0 0 30px 30px;
+  }
+
+  .contentContainer {
+    padding: 120px 24px 40px 24px;
+  }
+
+  .badgeContainer {
+    padding-top: 12px;
+    margin-bottom: 4px;
+  }
+
+  .badge {
+    height: 30px;
+    padding: 6px 12px;
+    border-radius: 10px;
+  }
+
+  .badgeText {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .titleContainer {
+    margin-bottom: 6px;
+  }
+
+  .title {
+    font-size: clamp(24px, 5vw, 32px);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .statsContainer {
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    margin-top: 30px;
+    border: none;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .statItem {
+    gap: 12px;
+  }
+
+  .statIconContainer {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+  }
+
+  .statIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .statLabel {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .statValue {
+    font-size: 13px;
+    line-height: 17px;
+  }
+
+  .statValueSmall {
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  .buttonsContainer {
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 21px;
+  }
+
+  .enrollButton,
+  .brochureButton,
+  .contactButton,
+  .enrollButtonTaller,
+  .brochureButtonTaller,
+  .contactButtonTaller {
+    width: 100%;
+    height: 54px;
+    padding: 0 28px;
+    border-radius: 12px;
+  }
+
+  .enrollButtonText,
+  .brochureButtonText,
+  .contactButtonText {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .brochureButtonIcon,
+  .contactButtonIcon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* 468px - Mobile Large */
+@media screen and (max-width: 468px) {
+  .heroSection {
+    min-height: 800px;
+    padding-bottom: 40px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .backgroundImage {
+    border-radius: 0 0 20px 20px;
+  }
+
+  .contentContainer {
+    padding: 110px 16px 30px 16px;
+  }
+
+  .badgeContainer {
+    padding-top: 10px;
+    margin-bottom: 3px;
+  }
+
+  .badge {
+    height: 28px;
+    padding: 5px 10px;
+    border-radius: 8px;
+  }
+
+  .badgeText {
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .titleContainer {
+    margin-bottom: 5px;
+  }
+
+  .title {
+    font-size: clamp(22px, 6vw, 40px);
+    line-height: 1.2;
+    margin-bottom: 3px;
+  }
+
+  .description {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .statsContainer {
+    padding: 16px 16px;
+    margin-bottom: 24px;
+    margin-top: 25px;
+    border-radius: 12px;
+    border: none;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .statItem {
+    gap: 8px;
+  }
+
+  .statIconContainer {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+
+  .statIcon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .statContent {
+    gap: 2px;
+  }
+
+  .statLabel {
+    font-size: 10px;
+    line-height: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .statValue {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .statValueSmall {
+    font-size: 10px;
+    line-height: 13px;
+    padding: 0 2px;
+  }
+
+  .buttonsContainer {
+    gap: 10px;
+    margin-bottom: 16px;
+    margin-top: 20px;
+  }
+
+  .enrollButton,
+  .brochureButton,
+  .contactButton,
+  .enrollButtonTaller,
+  .brochureButtonTaller,
+  .contactButtonTaller {
+    height: 50px;
+    padding: 0 20px;
+    border-radius: 10px;
+  }
+
+  .enrollButtonText,
+  .brochureButtonText,
+  .contactButtonText {
+    font-size: 13px;
+    line-height: 20px;
+  }
+
+  .brochureButtonIcon,
+  .contactButtonIcon {
+    width: 16px;
+    height: 16px;
+  }
+}
+

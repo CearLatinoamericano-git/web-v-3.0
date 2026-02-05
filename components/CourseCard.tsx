@@ -1,4 +1,4 @@
-import { Clock, Award, Users, ArrowRight, BookOpen } from 'lucide-react';
+import { Clock, Award, ArrowRight, BookOpen } from 'lucide-react';
 import type { Course } from '../data/coursesUpdated';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
@@ -23,21 +23,27 @@ export function CourseCard({ course, onClick, colorVariant = 'default' }: Course
           alt={course.title}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
         {course.featured && (
           <div className="absolute top-4 right-4 px-4 py-1.5 bg-[rgb(216,216,216)] text-[rgb(39,39,39)] text-xs rounded-full shadow-lg">
             Virtual
           </div>
         )}
-        <div className="absolute top-4 left-4 px-4 py-1.5 bg-[#0B95BA] text-white text-xs rounded-full shadow-md">
-          {course.type === 'diplomado' ? 'Diplomado' : 'Curso'}
+        <div className={`absolute top-4 left-4 px-4 py-1.5 text-white text-xs rounded-full shadow-md flex items-center justify-center ${
+          course.type === 'diplomado' 
+            ? 'bg-[#F18B01]' 
+            : course.type === 'curso'
+            ? 'bg-[#7C37FE]'
+            : 'bg-[#0BDDB3]'
+        }`}>
+          {course.type === 'diplomado' ? 'Diplomado' : course.type === 'curso' ? 'Curso' : 'Taller'}
         </div>
       </div>
 
       {/* Content */}
       <div className="p-6 lg:p-7">
-        <h3 className={`mb-3 text-gray-900 transition-colors min-h-[4.5rem] ${
+        <h3 className={`mb-3 text-gray-900 transition-colors min-h-18 ${
           colorVariant === 'dark' ? 'group-hover:text-[#0A8DA8]' : 'group-hover:text-[#0B95BA]'
         }`}>
           {course.title}
