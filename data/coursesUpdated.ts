@@ -150,7 +150,8 @@ export const courses: Course[] = [
         certificationImage: cpCertificate,
         institutionLogos: [cearLogo],
         enrollmentDeadline: "16-02-2026",
-        brochure: "https://cearlatinoamericano.edu.pe/sisdocs/brochures/BROCHURE%20CP.pdf",
+        brochure:
+            "https://cearlatinoamericano.edu.pe/sisdocs/brochures/BROCHURE%20CP.pdf",
         syllabus: [
             {
                 module: "MÓDULO I: INTRODUCCIÓN A LA CONTRATACIÓN PÚBLICA EN EL PERÚ",
@@ -521,7 +522,8 @@ export const courses: Course[] = [
         certificationImage: jprdCertificate,
         institutionLogos: [cearLogo],
         enrollmentDeadline: "27-02-2026",
-        brochure: "https://cearlatinoamericano.edu.pe/sisdocs/brochures/BROCHURE%20JPRD.pdf",
+        brochure:
+            "https://cearlatinoamericano.edu.pe/sisdocs/brochures/BROCHURE%20JPRD.pdf",
         syllabus: [
             {
                 module: "MÓDULO I: MARCO CONCEPTUAL DE LA JPRD",
@@ -946,7 +948,8 @@ export const courses: Course[] = [
         certificationImage: mipCertificate,
         institutionLogos: [cearLogo],
         enrollmentDeadline: "27-02-2026",
-        brochure: "https://cearlatinoamericano.edu.pe/sisdocs/brochures/BROCHURE-MIP.pdf",
+        brochure:
+            "https://cearlatinoamericano.edu.pe/sisdocs/brochures/BROCHURE-MIP.pdf",
         syllabus: [
             {
                 module: "MÓDULO I: INTRODUCCIÓN A LOS MECANISMOS DE INVERSIÓN PRIVADA",
@@ -1153,7 +1156,9 @@ export const courses: Course[] = [
                 title: "Ingeniera Civil | Especialista en Gestión de la Construcción",
                 bio: "Ingeniera civil por la Pontificia Universidad Católica del Perú, con especialidad en Gestión de la Construcción. Cuenta con experiencia en el sector público y privado en proyectos de inversión de gran envergadura. Se especializa en Obras por Impuestos y en la gestión de proyectos bajo contratos estandarizados.",
                 image: mipMariaVeiga,
-                degrees: ["Ingeniera civil - Pontificia Universidad Católica del Perú"],
+                degrees: [
+                    "Ingeniera civil - Pontificia Universidad Católica del Perú",
+                ],
                 masterDoctorate: ["Especialidad en Gestión de la Construcción"],
                 professionalExperience: [
                     "Experiencia en el sector público y privado en proyectos de inversión de gran envergadura",
@@ -1193,7 +1198,9 @@ export const courses: Course[] = [
                 title: "Economista | Especialista en APP e Infraestructura",
                 bio: "Economista por la Universidad Nacional Mayor de San Marcos y Magíster en Administración de Empresas por la Universidad del Pacífico. Cuenta con amplia experiencia en estructuración y gestión de proyectos de infraestructura bajo Asociaciones Público-Privadas. Ha participado en procesos de promoción de la inversión privada y en la gestión de proyectos en el sector público.",
                 image: mipYacoRosas,
-                degrees: ["Economista - Universidad Nacional Mayor de San Marcos"],
+                degrees: [
+                    "Economista - Universidad Nacional Mayor de San Marcos",
+                ],
                 masterDoctorate: [
                     "Magíster en Administración de Empresas - Universidad del Pacífico",
                 ],
@@ -1208,76 +1215,80 @@ export const courses: Course[] = [
         featured: true,
     },
     {
-        id: 'como-elaborar-las-bases-de-contratacion-publica',
-        title: '¿Como elaborar las bases de contratación pública?',
-        shortDescription: 'En este taller especializado, el participante aprenderá a descifrar la naturaleza de las bases y su correcta redacción de forma clara, completa y coherente al requerimiento del proceso.',
-        fullDescription: 'La presentación explica que la oferta es el acto central del procedimiento de contratación pública, ya que expresa la voluntad del postor de contratar con el Estado y asumir obligaciones técnicas, económicas y legales conforme a las bases del proceso. Su correcta presentación y evaluación, regulada por los artículos 68 al 79 del Reglamento de la Ley N.° 32069, es clave para asegurar la validez del procedimiento, elegir adecuadamente al postor ganador y evitar controversias durante la ejecución del contrato.\n\nEl taller especializado tiene como objetivo analizar las principales características de la oferta, abarcando la integración de bases, admisión, contenido, tipos y requisitos de calificación, así como la evaluación técnica y económica y los mecanismos de subsanación. El enfoque combina análisis normativo y casos prácticos, con la finalidad de brindar un aprendizaje completo y aplicado.',
-        type: 'taller',
-        modality: 'virtual',
-        duration: '21/02/26',
+        id: "como-elaborar-las-bases-de-contratacion-publica",
+        title: "¿Como elaborar las bases de contratación pública?",
+        shortDescription:
+            "En este taller especializado, el participante aprenderá a descifrar la naturaleza de las bases y su correcta redacción de forma clara, completa y coherente al requerimiento del proceso.",
+        fullDescription:
+            "La presentación explica que la oferta es el acto central del procedimiento de contratación pública, ya que expresa la voluntad del postor de contratar con el Estado y asumir obligaciones técnicas, económicas y legales conforme a las bases del proceso. Su correcta presentación y evaluación, regulada por los artículos 68 al 79 del Reglamento de la Ley N.° 32069, es clave para asegurar la validez del procedimiento, elegir adecuadamente al postor ganador y evitar controversias durante la ejecución del contrato.\n\nEl taller especializado tiene como objetivo analizar las principales características de la oferta, abarcando la integración de bases, admisión, contenido, tipos y requisitos de calificación, así como la evaluación técnica y económica y los mecanismos de subsanación. El enfoque combina análisis normativo y casos prácticos, con la finalidad de brindar un aprendizaje completo y aplicado.",
+        type: "taller",
+        modality: "virtual",
+        duration: "21/02/26",
         price: 200,
-        certification: 'Certificado por UNHEVAL',
+        certification: "Certificado por UNHEVAL",
         image: taller1,
-        frequency: 'Mar - Jue',
-        schedule: '07:00 p.m. - 10:00 p.m.',
-        hours: '10 horas académicas',
-        category: 'Contratación Pública',
-        benefits: 'La presentación explica que la oferta es el acto central del procedimiento de contratación pública, ya que expresa la voluntad del postor de contratar con el Estado y asumir obligaciones técnicas, económicas y legales conforme a las bases del proceso. Su correcta presentación y evaluación, regulada por los artículos 68 al 79 del Reglamento de la Ley N.° 32069, es clave para asegurar la validez del procedimiento, elegir adecuadamente al postor ganador y evitar controversias durante la ejecución del contrato.\n\nEl taller especializado tiene como objetivo analizar las principales características de la oferta, abarcando la integración de bases, admisión, contenido, tipos y requisitos de calificación, así como la evaluación técnica y económica y los mecanismos de subsanación. El enfoque combina análisis normativo y casos prácticos, con la finalidad de brindar un aprendizaje completo y aplicado.',
+        frequency: "Mar - Jue",
+        schedule: "09:00 a.m. - 04:00 p.m.",
+        hours: "10 horas académicas",
+        category: "Contratación Pública",
+        benefits:
+            "La presentación explica que la oferta es el acto central del procedimiento de contratación pública, ya que expresa la voluntad del postor de contratar con el Estado y asumir obligaciones técnicas, económicas y legales conforme a las bases del proceso. Su correcta presentación y evaluación, regulada por los artículos 68 al 79 del Reglamento de la Ley N.° 32069, es clave para asegurar la validez del procedimiento, elegir adecuadamente al postor ganador y evitar controversias durante la ejecución del contrato.\n\nEl taller especializado tiene como objetivo analizar las principales características de la oferta, abarcando la integración de bases, admisión, contenido, tipos y requisitos de calificación, así como la evaluación técnica y económica y los mecanismos de subsanación. El enfoque combina análisis normativo y casos prácticos, con la finalidad de brindar un aprendizaje completo y aplicado.",
         // videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         videoThumbnail: contratacionPublicaPortada,
         certificationImage: certificadoTaller,
         institutionLogos: [cearLogo],
-        enrollmentDeadline: '27-02-2026',
-        brochure: 'https://cearlatinoamericano.edu.pe/sisdocs/brochures/TALLER_CP.pdf',
+        enrollmentDeadline: "27-02-2026",
+        brochure:
+            "https://cearlatinoamericano.edu.pe/sisdocs/brochures/TALLER_CP.pdf",
         syllabus: [
             {
-                module: 'MÓDULO I. Presentación de ofertas y reglas de admisión (arts. 68 y 69)',
+                module: "MÓDULO I. Presentación de ofertas y reglas de admisión (arts. 68 y 69)",
                 topics: [
-                    'Forma, oportunidad y condiciones para la presentación de ofertas',
-                    'Contenido mínimo de la oferta técnica y económica',
-                    'Principio de igualdad de trato y prohibición de exigencias no previstas en bases',
-                    'Supuestos de no admisión de ofertas',
-                    'Responsabilidad de la DEC o del órgano evaluador',
+                    "Forma, oportunidad y condiciones para la presentación de ofertas",
+                    "Contenido mínimo de la oferta técnica y económica",
+                    "Principio de igualdad de trato y prohibición de exigencias no previstas en bases",
+                    "Supuestos de no admisión de ofertas",
+                    "Responsabilidad de la DEC o del órgano evaluador",
                 ],
             },
             {
-                module: 'MÓDULO II. Verificación de requisitos y subsanación de ofertas (arts. 70 y 71)',
+                module: "MÓDULO II. Verificación de requisitos y subsanación de ofertas (arts. 70 y 71)",
                 topics: [
-                    'Diferencia entre defectos formales y sustanciales en la presentación de la oferta',
-                    'Supuestos permitidos para la subsanación de la oferta',
-                    'Plazos y procedimiento de subsanación',
-                    'Límites legales a la subsanación de ofertas',
-                    'Riesgos frecuentes por indebida admisión o exclusión',
+                    "Diferencia entre defectos formales y sustanciales en la presentación de la oferta",
+                    "Supuestos permitidos para la subsanación de la oferta",
+                    "Plazos y procedimiento de subsanación",
+                    "Límites legales a la subsanación de ofertas",
+                    "Riesgos frecuentes por indebida admisión o exclusión",
                 ],
             },
             {
-                module: 'MÓDULO III. Evaluación técnica de las ofertas (arts. 72 al 74)',
+                module: "MÓDULO III. Evaluación técnica de las ofertas (arts. 72 al 74)",
                 topics: [
-                    'Aplicación de los factores técnicos previstos en las bases',
-                    'Evaluación de experiencia, metodología, personal clave y equipamiento',
-                    'Prohibición de criterios subjetivos o discrecionales',
-                    'Uso correcto de matrices y cuadros comparativos',
-                    'Casos de evaluación incorrecta y sus consecuencias jurídicas',
+                    "Aplicación de los factores técnicos previstos en las bases",
+                    "Evaluación de experiencia, metodología, personal clave y equipamiento",
+                    "Prohibición de criterios subjetivos o discrecionales",
+                    "Uso correcto de matrices y cuadros comparativos",
+                    "Casos de evaluación incorrecta y sus consecuencias jurídicas",
                 ],
             },
             {
-                module: 'MÓDULO IV. Evaluación económica y razonabilidad de la oferta (arts. 75 al 77)',
+                module: "MÓDULO IV. Evaluación económica y razonabilidad de la oferta (arts. 75 al 77)",
                 topics: [
-                    'Análisis de precios ofertados y consistencia económica',
-                    'Comparación con el valor estimado o referencial',
-                    'Identificación de ofertas no razonables o inviables',
-                    'Reglas para la evaluación económica objetiva',
-                    'Integración del puntaje técnico y económico',
+                    "Análisis de precios ofertados y consistencia económica",
+                    "Comparación con el valor estimado o referencial",
+                    "Identificación de ofertas no razonables o inviables",
+                    "Reglas para la evaluación económica objetiva",
+                    "Integración del puntaje técnico y económico",
                 ],
             },
             {
-                module: 'MÓDULO V. Calificación final, orden de prelación y otorgamiento de la buena pro (arts. 78 y 79)',
+                module: "MÓDULO V. Calificación final, orden de prelación y otorgamiento de la buena pro (arts. 78 y 79)",
                 topics: [
-                    'Determinación del orden de prelación',
-                    'Criterio de desempate',
-                    'Elaboración del acta y del informe de evaluación',
-                    'Motivación técnica y legal de la buena pro',
-                    'Riesgo de nulidad y control posterior del procedimiento',
+                    "Determinación del orden de prelación",
+                    "Criterio de desempate",
+                    "Elaboración del acta y del informe de evaluación",
+                    "Motivación técnica y legal de la buena pro",
+                    "Riesgo de nulidad y control posterior del procedimiento",
                 ],
             },
         ],
@@ -1300,7 +1311,7 @@ export const courses: Course[] = [
                 ],
             },
         ],
-        startDate: '21-02-26',
+        startDate: "21-02-26",
         featured: true,
     },
     {
@@ -1328,7 +1339,8 @@ export const courses: Course[] = [
         certificationImage: dapaCertificate,
         institutionLogos: [cearLogo],
         enrollmentDeadline: "30-01-2026",
-        brochure: "https://cearlatinoamericano.edu.pe/sisdocs/brochures/BROCHURE-DAA.pdf",
+        brochure:
+            "https://cearlatinoamericano.edu.pe/sisdocs/brochures/BROCHURE-DAA.pdf",
         syllabus: [
             {
                 module: "MÓDULO I: FUNDAMENTOS DEL DERECHO ADMINISTRATIVO",

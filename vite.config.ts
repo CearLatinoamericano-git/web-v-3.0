@@ -66,6 +66,24 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    // Aumentar el umbral de advertencia para chunks grandes (KB)
+    chunkSizeWarningLimit: 1200,
+    // Mejorar particionado de bundle para reducir tamaño del chunk principal
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id) return undefined
+          // separar dependencias en 'vendor'
+          if (id.includes('node_modules')) {
+            return 'vendor'
+          }
+          // separar componentes/imports estáticos generados en carpeta imports
+          if (id.includes(`${path.sep}imports${path.sep}`) || id.includes('/imports/')) {
+            return 'imports'
+          }
+        },
+      },
+    },
   },
 })
 
