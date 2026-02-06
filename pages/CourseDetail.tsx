@@ -55,7 +55,11 @@ interface Course {
     category?: string;
     duration: string;
     modality: string;
-    certification: string;
+    certification: string | {
+        issuedBy: string;
+        partnerInstitution: string;
+        requirements: string[];
+    };
     frequency: string;
     schedule: string;
     hours: string;
@@ -64,7 +68,7 @@ interface Course {
     enrollmentDeadline?: string;
     instructors: Instructor[];
     syllabus: Module[];
-    benefits?: string;
+    benefits?: string | string[];
     videoUrl?: string;
     videoThumbnail?: string;
     certificationImage?: string;
@@ -772,7 +776,7 @@ export default function CourseDetail({
             {/* Benefits/Results Section */}
             {course.benefits && (
                 <CourseBenefitsSection
-                    description={course.benefits}
+                    description={Array.isArray(course.benefits) ? course.benefits.join(' ') : course.benefits}
                     videoUrl={course.videoUrl}
                     videoThumbnail={course.videoThumbnail}
                 />

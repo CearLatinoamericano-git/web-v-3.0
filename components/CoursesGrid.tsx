@@ -9,7 +9,11 @@ interface Course {
   modality: 'presencial' | 'virtual' | 'híbrido';
   duration: string;
   price: number;
-  certification: string;
+  certification: string | {
+    issuedBy: string;
+    partnerInstitution: string;
+    requirements: string[];
+  };
   image: string;
   hours?: string;
   startDate: string;
@@ -22,15 +26,31 @@ interface CoursesGridProps {
 }
 
 export function CoursesGrid({ courses, onCourseClick }: CoursesGridProps) {
-  // Convertir fecha de formato DD-MM-YYYY a Date
+  // Convertir fecha de formato DD-MM-YYYY o DD-MM-YY a Date
   const parseDate = (dateStr: string) => {
-    // Si el formato es DD-MM-YYYY
+    if (!dateStr) return new Date(0); // Fecha por defecto si está vacía
+    
+    // Si el formato es DD-MM-YYYY o DD-MM-YY (con guiones)
     if (dateStr.includes('-') && dateStr.split('-')[0].length <= 2) {
       const [day, month, year] = dateStr.split('-');
-      return new Date(`${year}-${month}-${day}`);
+      // Si el año tiene 2 dígitos, convertirlo a 4 dígitos (20XX)
+      const fullYear = year.length === 2 ? `20${year}` : year;
+      const date = new Date(`${fullYear}-${month}-${day}`);
+      // Validar que la fecha sea válida
+      return isNaN(date.getTime()) ? new Date(0) : date;
+    }
+    // Si el formato es DD/MM/YYYY o DD/MM/YY (con barras)
+    if (dateStr.includes('/') && dateStr.split('/')[0].length <= 2) {
+      const [day, month, year] = dateStr.split('/');
+      // Si el año tiene 2 dígitos, convertirlo a 4 dígitos (20XX)
+      const fullYear = year.length === 2 ? `20${year}` : year;
+      const date = new Date(`${fullYear}-${month}-${day}`);
+      // Validar que la fecha sea válida
+      return isNaN(date.getTime()) ? new Date(0) : date;
     }
     // Si el formato es YYYY-MM-DD
-    return new Date(dateStr);
+    const date = new Date(dateStr);
+    return isNaN(date.getTime()) ? new Date(0) : date;
   };
 
   // Ordenar por fecha de inicio: cursos futuros primero (más cercana primero), cursos pasados al final (más reciente primero)
@@ -232,7 +252,9 @@ export function CoursesGrid({ courses, onCourseClick }: CoursesGridProps) {
                     </svg>
                   </div>
                   <p className="font-bold leading-[16px] text-[#1e397e] text-[15px]">
-                    {course.certification}
+                    {typeof course.certification === 'string' 
+                      ? course.certification 
+                      : `${course.certification.issuedBy}${course.certification.partnerInstitution ? ` - ${course.certification.partnerInstitution}` : ''}`}
                   </p>
                 </div>
 

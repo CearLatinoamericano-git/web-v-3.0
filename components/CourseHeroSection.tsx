@@ -8,7 +8,11 @@ interface CourseHeroSectionProps {
     image: string;
     type: "diplomado" | "curso" | "taller";
     stats: {
-        certification: string;
+        certification: string | {
+            issuedBy: string;
+            partnerInstitution: string;
+            requirements: string[];
+        };
         modality: string;
         duration: string;
         frequency: string;
@@ -144,7 +148,9 @@ export function CourseHeroSection({
                                     Certificación
                                 </p>
                                 <p className={styles.statValue}>
-                                    {stats.certification}
+                                    {typeof stats.certification === 'string' 
+                                      ? stats.certification 
+                                      : `${stats.certification.issuedBy}${stats.certification.partnerInstitution ? ` - ${stats.certification.partnerInstitution}` : ''}`}
                                 </p>
                             </div>
                         </div>
@@ -489,14 +495,7 @@ export function CourseHeroSection({
                     {/* Brochure Button - Light blue for taller, transparent for others */}
                     {onBrochure && (
                         <button
-                            onClick={() => {
-                                window.open(
-                                    "https://cearlatinoamericano.edu.pe/sisdocs/brochures/TALLER_CP_1.pdf",
-                                    "_blank",
-                                    "noopener,noreferrer",
-                                );
-                                onBrochure && onBrochure();
-                            }}
+                            onClick={onBrochure}
                             className={
                                 isTaller
                                     ? styles.brochureButtonTaller

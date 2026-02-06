@@ -57,7 +57,11 @@ export function CourseCard({ course, onClick, colorVariant = 'default' }: Course
           </div>
           <div className="flex items-center gap-2 text-sm text-gray-600">
             <Award className={`w-4 h-4 ${colorVariant === 'dark' ? 'text-[#0A8DA8]' : 'text-[#0B95BA]'}`} />
-            <span>{course.certification}</span>
+            <span>
+              {typeof course.certification === 'string' 
+                ? course.certification 
+                : course.certification.issuedBy}
+            </span>
           </div>
           <div className="flex items-center gap-2">
             <BookOpen className={`w-4 h-4 ${colorVariant === 'dark' ? 'text-[#0A8DA8]' : 'text-[#0B95BA]'}`} />

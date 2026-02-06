@@ -11,7 +11,11 @@ interface CourseBenefitsSectionProps {
   sessions?: string;
   startDate?: string;
   modality?: string;
-  certification?: string;
+  certification?: string | {
+    issuedBy: string;
+    partnerInstitution: string;
+    requirements: string[];
+  };
 }
 
 export function CourseBenefitsSection({
@@ -274,7 +278,11 @@ export function CourseBenefitsSection({
                 </div>
                 <div>
                   <p className={`text-2xl mb-1 ${colorVariant === 'dark' ? 'text-white/80' : 'text-gray-500'}`}>Certificación</p>
-                  <p className={colorVariant === 'dark' ? 'text-white' : 'text-gray-900'}>{certification}</p>
+                  <p className={colorVariant === 'dark' ? 'text-white' : 'text-gray-900'}>
+                    {typeof certification === 'string' 
+                      ? certification 
+                      : `${certification.issuedBy}${certification.partnerInstitution ? ` - ${certification.partnerInstitution}` : ''}`}
+                  </p>
                 </div>
               </div>
             )}

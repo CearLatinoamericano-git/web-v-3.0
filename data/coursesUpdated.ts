@@ -69,6 +69,9 @@ const inversionPrivadaPortada = "/images/courses/mip.jpeg";
 const taller1 = "/images/courses/taller-abogado.jpeg";
 const certificadoTaller = "/images/courses/taller_certificado.jpeg";
 
+const taller4 = "/images/courses/taller-4.jpeg";
+const certificadoTaller4 = "/certificates/Certificado_taller_4.jpeg";
+
 const hugoVallejos = "/images/instructors/hugo_vallejos.png";
 
 export interface Course {
@@ -78,15 +81,21 @@ export interface Course {
     fullDescription: string;
     type: "diplomado" | "curso" | "taller";
     modality: "presencial" | "virtual" | "híbrido";
+    platform?: string;
     duration: string;
     price: number;
-    certification: string;
+    certification: string | {
+        issuedBy: string;
+        partnerInstitution: string;
+        requirements: string[];
+    };
     image: string;
     frequency: string;
     schedule: string;
     hours: string;
+    sessions?: number;
     category?: string;
-    benefits?: string;
+    benefits?: string | string[];
     videoUrl?: string;
     videoThumbnail?: string;
     certificationImage?: string;
@@ -122,6 +131,7 @@ export interface Course {
     }[];
     startDate: string;
     featured: boolean;
+    materials?: string[];
 }
 
 export const courses: Course[] = [
@@ -1314,6 +1324,119 @@ export const courses: Course[] = [
         startDate: "21-02-26",
         featured: true,
     },
+    {
+        id: "presentacion-y-evaluacion-de-ofertas-contratacion-publica",
+        title: "Presentación y evaluación de ofertas en la contratación pública",
+        shortDescription:
+          "Taller especializado orientado a fortalecer las capacidades técnicas para la correcta presentación, admisión y evaluación de ofertas en los procesos de contratación pública, conforme a la Ley N.° 32069 y su Reglamento.",
+        fullDescription:
+          "Durante el procedimiento de contratación pública, la oferta constituye el eje central de la fase de selección, al expresar la voluntad del postor de contratar con el Estado y someterse a las bases del proceso, asumiendo obligaciones técnicas, económicas y legales. Su adecuada presentación y evaluación, conforme a los artículos 68 al 79 del Reglamento de la Ley N.° 32069, resulta esencial para la validez del procedimiento, la correcta selección del adjudicatario y la prevención de controversias durante la ejecución contractual.\n\nEl taller especializado tiene como finalidad identificar y analizar los aspectos esenciales vinculados a la presentación y evaluación de la oferta, desde la integración de bases y la admisión, hasta su contenido, tipos, requisitos de calificación, evaluación técnica y económica, así como los mecanismos de subsanación. El enfoque combina análisis normativo y estudio de casos reales, garantizando un aprendizaje integral y aplicado.",
+        type: "taller",
+        modality: "virtual",
+        platform: "Google Meet",
+        startDate: "28-02-2026",
+        schedule: "09:00 a.m. - 04:00 p.m.",
+        duration: "28/02/2026",
+        hours: "10 horas académicas",
+        sessions: 1,
+        brochure:
+            "https://cearlatinoamericano.edu.pe/sisdocs/brochures/BROCHURE_EVALUACION_TALLER.pdf",
+        price: 200,
+        frequency: "Sesión única",
+        image: taller4,
+        certificationImage: certificadoTaller4,
+        category: "Contratación Pública",
+        certification: {
+          issuedBy: "CEAR LATINOAMERICANO",
+          partnerInstitution: "UNHEVAL",
+          requirements: [
+            "Registro correcto en la ficha de inscripción",
+            "Asistencia a la sesión del taller",
+            "No mantener obligaciones administrativas o económicas pendientes con la institución"
+          ]
+        },
+        benefits: [
+          "Aplicación correcta de las reglas de presentación, admisión y evaluación de ofertas",
+          "Análisis técnico y económico objetivo de las ofertas",
+          "Reducción de riesgos de observaciones y nulidades",
+          "Sustento adecuado del otorgamiento de la buena pro",
+          "Fortalecimiento de la seguridad jurídica en la contratación pública"
+        ],
+        syllabus: [
+          {
+            module: "MÓDULO I. Presentación de ofertas y reglas de admisión (arts. 68 y 69)",
+            topics: [
+              "Forma, oportunidad y condiciones para la presentación de ofertas",
+              "Contenido mínimo de la oferta técnica y económica",
+              "Principio de igualdad de trato y prohibición de exigencias no previstas en bases",
+              "Supuestos de no admisión de ofertas",
+              "Responsabilidad de la DEC o del órgano evaluador"
+            ]
+          },
+          {
+            module: "MÓDULO II. Verificación de requisitos y subsanación de ofertas (arts. 70 y 71)",
+            topics: [
+              "Diferencia entre defectos formales y sustanciales",
+              "Supuestos permitidos para la subsanación",
+              "Plazos y procedimiento de subsanación",
+              "Límites legales a la subsanación de ofertas",
+              "Riesgos frecuentes por indebida admisión o exclusión"
+            ]
+          },
+          {
+            module: "MÓDULO III. Evaluación técnica de las ofertas (arts. 72 al 74)",
+            topics: [
+              "Aplicación de los factores técnicos previstos en las bases",
+              "Evaluación de experiencia, metodología, personal clave y equipamiento",
+              "Prohibición de criterios subjetivos o discrecionales",
+              "Uso correcto de matrices y cuadros comparativos",
+              "Casos de evaluación incorrecta y consecuencias jurídicas"
+            ]
+          },
+          {
+            module: "MÓDULO IV. Evaluación económica y razonabilidad de la oferta (arts. 75 al 77)",
+            topics: [
+              "Análisis de precios ofertados y consistencia económica",
+              "Comparación con el valor estimado o referencial",
+              "Identificación de ofertas no razonables o inviables",
+              "Reglas para la evaluación económica objetiva",
+              "Integración del puntaje técnico y económico"
+            ]
+          },
+          {
+            module: "MÓDULO V. Calificación final, orden de prelación y otorgamiento de la buena pro (arts. 78 y 79)",
+            topics: [
+              "Determinación del orden de prelación",
+              "Criterios de desempate",
+              "Elaboración del acta y del informe de evaluación",
+              "Motivación técnica y legal de la buena pro",
+              "Riesgos de nulidad y control posterior del procedimiento"
+            ]
+          }
+        ],
+        instructors: [
+          {
+            name: "Ignacio Hugo Vallejos Campbell",
+            title: "Consultor en Gestión Pública",
+            bio:
+              "Licenciado en Administración, con más de 20 años de experiencia en gestión pública, logística, contratación estatal, planeamiento estratégico y presupuesto. Ha ocupado cargos directivos en el Ministerio de Justicia y Derechos Humanos, el Ministerio de Transportes y Comunicaciones, el Ministerio de Cultura y el OECE. Actualmente se desempeña como consultor, capacitador y docente en temas de gestión pública y contrataciones del Estado.",
+            image: hugoVallejos,
+            degrees: ["Licenciado en Administración"],
+            professionalExperience: [
+              "Gestión pública",
+              "Contratación estatal",
+              "Planeamiento estratégico",
+              "Evaluación de ofertas",
+              "Capacitación y docencia especializada"
+            ]
+          }
+        ],
+        materials: [
+          "Opinión Nº D000049-2025-OECE-DTN",
+          "Opinión Nº D000014-2025-OECE-DTN"
+        ],
+        featured: true
+    },  
     {
         id: "diplomado-derecho-administrativo-ii",
         title: "II Diplomado de Especialización en Derecho Administrativo para Árbitros",

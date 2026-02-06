@@ -90,7 +90,7 @@ export function ISOSection() {
                 alt="Profesional CEAR LATINOAMERICANO"
                 className={styles.image}
               />
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -100,7 +100,7 @@ export function ISOSection() {
                 <p className={styles.imageOverlayText}>
                   La adopción de estándares internacionales de calidad y gestión constituye un soporte transversal para el desarrollo de nuestra oferta académica, fortaleciendo la confianza, la transparencia y la mejora continua en los procesos formativos.
                 </p>
-              </motion.div>
+              </motion.div> */}
             </div>
           </motion.div>
 

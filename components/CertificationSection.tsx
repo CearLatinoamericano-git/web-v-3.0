@@ -5,7 +5,11 @@ import CearLogoWhite from '../imports/Capa1-2854-459';
 import styles from './CertificationSection.module.css';
 
 interface CertificationSectionProps {
-  certification: string;
+  certification: string | {
+    issuedBy: string;
+    partnerInstitution: string;
+    requirements: string[];
+  };
   certificationImage?: string;
   institutionLogos?: string[];
 }
